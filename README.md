@@ -109,3 +109,11 @@ Fix-it/
 1. Clone o repositório utilizando o terminal:
    ```bash
    git clone [https://github.com/yakuza7coder/fix-it.git](https://github.com/yakuza7coder/fix-it.git)
+
+2. Abra o GameMaker Studio 2 no seu computador.
+
+3. Clique na opção "Abrir" e navegue até a pasta clonada.
+
+4. Selecione o arquivo Fix-it.yyp.
+
+5. Pressione a tecla F5 (ou clique em Play) para rodar o jogo 
