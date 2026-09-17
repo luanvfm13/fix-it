@@ -31,7 +31,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_dialogo",
+    "path":"sprites/spr_dialogo/spr_dialogo.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
