@@ -1,6 +1,3 @@
-window_set_cursor(cr_none)
-cursor_sprite = lupa
-
 if (instance_exists(obj_diagnostico)) exit;
 var hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
@@ -21,7 +18,3 @@ else if (sprite_index == spr_prota_esq) sprite_index = spr_prota_esq_idle;
 else if (sprite_index == spr_prota_fren) sprite_index = spr_prota_par;
 else if (sprite_index == spr_prota_tras) sprite_index = spr_prota_tras_idle;
 }
-
-
-
-

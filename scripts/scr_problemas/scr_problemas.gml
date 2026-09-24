@@ -57,10 +57,10 @@ function get_problem_data(_id) {
                 nome: "Vazamento de Gás na Linha dos Fogões",
                 empresa: "Lanchonete",
                 opcoes: [
-                    { texto: "Ignorar o cheiro e acelerar os pedidos para terminar o expediente mais rápido.", coesao: 10 }
+                    { texto: "Ignorar o cheiro e acelerar os pedidos para terminar o expediente mais rápido.", coesao: 10 },
                     { texto: "Desligar apenas o fogão que está vazando e continuar usando os outros queimadores.", coesao: 60 },
                     { texto: "Fechar o registro central imediatamente, evacuar a área e abrir todas as janelas.", coesao: 100 },
-                    { texto: "Vedar o cano com fita isolante provisória sem interromper o serviço.", coesao: 40 },
+                    { texto: "Vedar o cano com fita isolante provisória sem interromper o serviço.", coesao: 40 }
                 ]
             };
 
@@ -71,8 +71,8 @@ function get_problem_data(_id) {
                 opcoes: [
                     { texto: "Manter os alimentos no refrigerador quebrado e torcer para o técnico chegar logo.", coesao: 40 },
                     { texto: "Cozinhar imediatamente os ingredientes que começaram a descongelar para não perder.", coesao: 60 },
-                    { texto: "Servir os produtos mesmo com alteração de odor, mascarando o sabor com tempero.", coesao: 10 }
-                    { texto: "Transferir insumos críticos para freezers parceiros e descartar o que estragou.", coesao: 100 },
+                    { texto: "Servir os produtos mesmo com alteração de odor, mascarando o sabor com tempero.", coesao: 10 },
+                    { texto: "Transferir insumos críticos para freezers parceiros e descartar o que estragou.", coesao: 100 }
                 ]
             };
         
@@ -82,9 +82,9 @@ function get_problem_data(_id) {
                 empresa: "Lanchonete",
                 opcoes: [
                     { texto: "Colocar equipamentos mais novos e práticos.", coesao: 60 },
-                    { texto: "Usar equipamentos antigos e comprar comida congelada.", coesao: 10 }
+                    { texto: "Usar equipamentos antigos e comprar comida congelada.", coesao: 10 },
                     { texto: "Organizar e melhorar equipamentos da cozinha.", coesao: 100 },
-                    { texto: "Distribuir as tarefas para cada um.", coesao: 40 },
+                    { texto: "Distribuir as tarefas para cada um.", coesao: 40 }
                 ]
             };
     }

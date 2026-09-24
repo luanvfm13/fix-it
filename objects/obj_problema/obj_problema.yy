@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_ex",
-    "path":"sprites/spr_ex/spr_ex.yy",
+    "name":"Sprite15",
+    "path":"sprites/Sprite15/Sprite15.yy",
   },
   "spriteMaskId":null,
   "visible":true,
