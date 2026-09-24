@@ -3,7 +3,7 @@ if (!global.ui_bloqueando_jogo && distance_to_object(obj_prota) < 11) {
 	if(keyboard_check_pressed(ord("E")))
 	{	
 		show_message("so testando")
-		room_goto(Room2)
+		room_goto(Room1)
 		show_message("imagine isso como dentro da empresa")
 	} else if(obj_prota.iGotThis){
 		obj_men.text = "Clique E para entrar ou R para usar a lupa"

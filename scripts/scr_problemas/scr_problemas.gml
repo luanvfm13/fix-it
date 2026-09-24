@@ -76,7 +76,7 @@ function get_problem_data(_id) {
                 ]
             };
         
-        case "modelo_exemplo":
+        case "lentidao_cozinha":
             return {
                 nome: "Cozinha com Lentidão de Entrega",
                 empresa: "Lanchonete",

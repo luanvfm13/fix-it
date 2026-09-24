@@ -18,7 +18,7 @@ with (obj_problema) {
 }
 
 
-if (target_problema != noone && keyboard_check_pressed(ord("E"))) {
+if (!global.ui_bloqueando_jogo && target_problema != noone && keyboard_check_pressed(ord("E"))) {
     var _perto_de_porta = (instance_exists(obj_porta) && distance_to_object(obj_porta) < 11);
 
     if (!_perto_de_porta && !instance_exists(obj_diagnostico)) {

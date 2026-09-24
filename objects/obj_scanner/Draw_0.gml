@@ -1,6 +1,7 @@
 
 if (!scanner_active) exit;
 if (player == noone) exit;
+if (global.ui_bloqueando_jogo) exit;
 
 var _pulse_scale = 0.8 + (scan_pulse / scan_pulse_max) * 0.2;
 

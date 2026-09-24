@@ -39,6 +39,7 @@
     {"id":{"name":"obj_men","path":"objects/obj_men/obj_men.yy",},},
     {"id":{"name":"obj_npc1","path":"objects/obj_npc1/obj_npc1.yy",},},
     {"id":{"name":"obj_porta","path":"objects/obj_porta/obj_porta.yy",},},
+    {"id":{"name":"obj_porta2","path":"objects/obj_porta2/obj_porta2.yy",},},
     {"id":{"name":"obj_problema","path":"objects/obj_problema/obj_problema.yy",},},
     {"id":{"name":"obj_prota","path":"objects/obj_prota/obj_prota.yy",},},
     {"id":{"name":"obj_scanner","path":"objects/obj_scanner/obj_scanner.yy",},},
