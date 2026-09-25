@@ -1,8 +1,14 @@
 if (player == noone || !instance_exists(player)) exit;
-
+if (!variable_instance_exists(player, "tem_lupa")) {
+    show_debug_message("AVISO: obj_prota sem 'tem_lupa' bugbubgubgubgubguhgubg5");
+    exit;
+}
+if (!player.tem_lupa) exit;
 
 x = player.x + 10;
 y = player.y - 6;
+
+if (!player.tem_lupa) exit;
 
 target_problema = noone;                      
 var _menor_dist = lupa_range;
