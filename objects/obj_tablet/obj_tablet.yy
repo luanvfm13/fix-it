@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_tablet",
+    "path":"sprites/spr_tablet/spr_tablet.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

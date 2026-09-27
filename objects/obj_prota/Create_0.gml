@@ -6,6 +6,6 @@ iGotThis = false;
 lupa_inst = instance_create_layer(x, y, "Instances", obj_lupa);
 lupa_inst.player = id;
 
-tem_scanner = false;
-tem_lupa = false;
-tem_tablet = false;
+tem_scanner = variable_global_exists("tem_scanner") ? global.tem_scanner : false;
+tem_lupa    = variable_global_exists("tem_lupa")    ? global.tem_lupa    : false;
+tem_tablet  = variable_global_exists("tem_tablet")  ? global.tem_tablet  : false;

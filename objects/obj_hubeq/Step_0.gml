@@ -4,6 +4,10 @@ if (!global.ui_bloqueando_jogo && distance_to_object(obj_prota) < 20) {
         obj_prota.tem_lupa = true;
         obj_prota.tem_tablet = true;
 
+        global.tem_scanner = true;
+        global.tem_lupa = true;
+        global.tem_tablet = true;
+
         obj_men.text = "Equipamento completo! Scanner, Lupa e Tablet prontos.";
         obj_men.tempo = 120;
     } else {

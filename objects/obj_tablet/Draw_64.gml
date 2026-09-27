@@ -1,7 +1,11 @@
 var gui_w = display_get_gui_width();
 var gui_h = display_get_gui_height();
 
-var _escala = (gui_w * 0.6) / sprite_get_width(spr_tablet);
+var _margem = 0.9; 
+var _escala_w = (gui_w * _margem) / sprite_get_width(spr_tablet);
+var _escala_h = (gui_h * _margem) / sprite_get_height(spr_tablet);
+var _escala = min(_escala_w, _escala_h);
+
 var _tab_w = sprite_get_width(spr_tablet) * _escala;
 var _tab_h = sprite_get_height(spr_tablet) * _escala;
 var _tab_x = (gui_w - _tab_w) / 2;

@@ -26,12 +26,15 @@ with (obj_problema) {
 
 if (!global.ui_bloqueando_jogo && target_problema != noone && keyboard_check_pressed(ord("E"))) {
     if (!variable_instance_exists(player, "tem_tablet") || !player.tem_tablet) {
+		 show_debug_message("BLOQUEADO: player sem tem_tablet");
         obj_men.text = "Você precisa do Tablet pra aplicar uma solução.";
         obj_men.tempo = 90;
         exit;
     }
 
     var _perto_de_porta = (instance_exists(obj_porta) && distance_to_object(obj_porta) < 11);
+    if (_perto_de_porta) show_debug_message("BLOQUEADO: perto demais de uma porta");
+    if (instance_exists(obj_tablet)) show_debug_message("BLOQUEADO: já existe um obj_tablet na room");
 
     if (!_perto_de_porta && !instance_exists(obj_tablet)) {
         var _ui = instance_create_layer(x, y, "Instances", obj_tablet);
