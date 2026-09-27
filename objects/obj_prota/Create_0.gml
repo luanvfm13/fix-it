@@ -1,6 +1,6 @@
 move_spd = 2;
 tilemap = layer_tilemap_get_id("tile_col");
-window_set_cursor(fa_none);
+window_set_cursor(cr_none);
 iGotThis = false;
 
 lupa_inst = instance_create_layer(x, y, "Instances", obj_lupa);

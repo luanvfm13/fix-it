@@ -12,7 +12,7 @@ switch (estado) {
         alpha -= velocidade;
         if (alpha <= 0) {
             alpha = 0;
-            estado = "idle";
+            estado = "parado";
             global.ui_bloqueando_jogo = false;
         }
         break;

@@ -47,6 +47,7 @@
     {"id":{"name":"obj_problema","path":"objects/obj_problema/obj_problema.yy",},},
     {"id":{"name":"obj_prota","path":"objects/obj_prota/obj_prota.yy",},},
     {"id":{"name":"obj_scanner","path":"objects/obj_scanner/obj_scanner.yy",},},
+    {"id":{"name":"obj_tablet","path":"objects/obj_tablet/obj_tablet.yy",},},
     {"id":{"name":"gamer","path":"rooms/gamer/gamer.yy",},},
     {"id":{"name":"Hosp","path":"rooms/Hosp/Hosp.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},

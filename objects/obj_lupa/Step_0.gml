@@ -25,10 +25,16 @@ with (obj_problema) {
 
 
 if (!global.ui_bloqueando_jogo && target_problema != noone && keyboard_check_pressed(ord("E"))) {
+    if (!variable_instance_exists(player, "tem_tablet") || !player.tem_tablet) {
+        obj_men.text = "Você precisa do Tablet pra aplicar uma solução.";
+        obj_men.tempo = 90;
+        exit;
+    }
+
     var _perto_de_porta = (instance_exists(obj_porta) && distance_to_object(obj_porta) < 11);
 
-    if (!_perto_de_porta && !instance_exists(obj_diagnostico)) {
-        var _ui = instance_create_layer(x, y, "Instances", obj_diagnostico);
+    if (!_perto_de_porta && !instance_exists(obj_tablet)) {
+        var _ui = instance_create_layer(x, y, "Instances", obj_tablet);
         _ui.problema_alvo = target_problema;
     }
 }
