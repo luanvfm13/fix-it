@@ -12,5 +12,5 @@ scan_pulse_max = 30;
 player = instance_find(obj_prota, 0);
 
 if (player == noone) {
-    show_debug_message("ERRO: obj_prota não encontrado na sala!");
+    show_debug_message("n ta c obj player");
 }

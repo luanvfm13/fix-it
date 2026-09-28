@@ -1,18 +1,13 @@
-if(distance_to_object(obj_prota) < 11) 
-{
-	balaou.visible = true;
+var _perto = distance_to_object(obj_prota) < 11;
 
-	if (keyboard_check_pressed(ord("E")) && instance_exists(obj_men)) {
-	    obj_men.text = mensagens[dialogo_indice];
-	    obj_men.tempo = 150;
+balaou.visible = _perto && !global.ui_bloqueando_jogo;
 
-	    dialogo_indice += 1;
-	    if (dialogo_indice >= array_length(mensagens)) {
-	        dialogo_indice = 0;
-	    }
-	}
-} else 
-{
-	balaou.visible = false;
-	dialogo_indice = 0;
+if (_perto && !global.ui_bloqueando_jogo && !instance_exists(obj_dialogo)) {
+    if (keyboard_check_pressed(ord("E"))) {
+        var _id_dialogo = dialogo_id;
+        var _d = instance_create_layer(x, y, "Instances", obj_dialogo);
+        with (_d) {
+            setup_dialogo(_id_dialogo);
+        }
+    }
 }
