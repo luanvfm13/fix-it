@@ -1,1 +1,0 @@
-   dialogo_id = "gerente_intro";

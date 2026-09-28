@@ -23,7 +23,9 @@
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.sdfshaders-1.0.0","name":"io.gamemaker.sdfshaders-1.0.0","path":"io.gamemaker.sdfshaders-1.0.0.yyp",},
   ],
-  "IncludedFiles":[],
+  "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"tablet.aseprite","CopyToMask":-1,"filePath":"datafiles","name":"tablet.aseprite","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+  ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
@@ -41,6 +43,7 @@
     {"id":{"name":"obj_hubeq","path":"objects/obj_hubeq/obj_hubeq.yy",},},
     {"id":{"name":"obj_lupa","path":"objects/obj_lupa/obj_lupa.yy",},},
     {"id":{"name":"obj_men","path":"objects/obj_men/obj_men.yy",},},
+    {"id":{"name":"obj_misaof","path":"objects/obj_misaof/obj_misaof.yy",},},
     {"id":{"name":"obj_npc1","path":"objects/obj_npc1/obj_npc1.yy",},},
     {"id":{"name":"obj_porta","path":"objects/obj_porta/obj_porta.yy",},},
     {"id":{"name":"obj_porta2","path":"objects/obj_porta2/obj_porta2.yy",},},
@@ -48,8 +51,8 @@
     {"id":{"name":"obj_prota","path":"objects/obj_prota/obj_prota.yy",},},
     {"id":{"name":"obj_scanner","path":"objects/obj_scanner/obj_scanner.yy",},},
     {"id":{"name":"obj_tablet","path":"objects/obj_tablet/obj_tablet.yy",},},
+    {"id":{"name":"Object18","path":"objects/Object18/Object18.yy",},},
     {"id":{"name":"escritorio","path":"rooms/escritorio/escritorio.yy",},},
-
     {"id":{"name":"gamer","path":"rooms/gamer/gamer.yy",},},
     {"id":{"name":"Hosp","path":"rooms/Hosp/Hosp.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
@@ -75,9 +78,11 @@
     {"id":{"name":"spr_caixadedealogo","path":"sprites/spr_caixadedealogo/spr_caixadedealogo.yy",},},
     {"id":{"name":"spr_colision","path":"sprites/spr_colision/spr_colision.yy",},},
     {"id":{"name":"spr_djabo","path":"sprites/spr_djabo/spr_djabo.yy",},},
-
     {"id":{"name":"spr_es","path":"sprites/spr_es/spr_es.yy",},},
-
+    {"id":{"name":"spr_gerente_andando_frente","path":"sprites/spr_gerente_andando_frente/spr_gerente_andando_frente.yy",},},
+    {"id":{"name":"spr_gerente_andando_lado","path":"sprites/spr_gerente_andando_lado/spr_gerente_andando_lado.yy",},},
+    {"id":{"name":"spr_gerente_andando_tras","path":"sprites/spr_gerente_andando_tras/spr_gerente_andando_tras.yy",},},
+    {"id":{"name":"spr_gerente_idle","path":"sprites/spr_gerente_idle/spr_gerente_idle.yy",},},
     {"id":{"name":"spr_hosp","path":"sprites/spr_hosp/spr_hosp.yy",},},
     {"id":{"name":"spr_interagivel","path":"sprites/spr_interagivel/spr_interagivel.yy",},},
     {"id":{"name":"spr_porta","path":"sprites/spr_porta/spr_porta.yy",},},
@@ -114,9 +119,7 @@
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
     {"roomId":{"name":"Hosp","path":"rooms/Hosp/Hosp.yy",},},
-
     {"roomId":{"name":"escritorio","path":"rooms/escritorio/escritorio.yy",},},
-
   ],
   "templateType":"game",
   "TextureGroups":[

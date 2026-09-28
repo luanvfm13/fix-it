@@ -5,6 +5,7 @@ global.ui_bloqueando_jogo = false;
 global.tempo_restante = 360;
 global.timer_ativo = false; 
 global.jogo_acabou = false;
+global.jogo_vencido = false;
 tempo_step_acumulado = 0;
 global.tem_scanner = false;
 global.tem_lupa = false;

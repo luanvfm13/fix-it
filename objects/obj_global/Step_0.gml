@@ -1,5 +1,15 @@
 if (!global.timer_ativo || global.jogo_acabou) exit;
-if (global.ui_bloqueando_jogo) exit; // pra isso criei a variavel e botei em quase td, se tiver em diálogo, transição, diagnóstico trava a tela
+if (global.ui_bloqueando_jogo) exit;
+
+if (instance_number(obj_problema) == 0) {
+    global.jogo_vencido = true;
+    global.jogo_acabou = true;
+    global.timer_ativo = false;
+
+    var _res = instance_create_depth(0, 0, -10000, obj_misaof);
+    _res.venceu = true;
+    exit;
+}
 
 tempo_step_acumulado += 1;
 if (tempo_step_acumulado >= game_get_speed(gamespeed_fps)) {
@@ -10,7 +20,8 @@ if (tempo_step_acumulado >= game_get_speed(gamespeed_fps)) {
         global.tempo_restante = 0;
         global.jogo_acabou = true;
         global.timer_ativo = false;
-        // n tem ainda tela de game over ou vitória ent só acaba
-        show_debug_message("TEMPO ACABOU — Game Over ainda não botado por greve dos artistas");
+
+        var _res = instance_create_depth(0, 0, -10000, obj_misaof);
+        _res.venceu = false;
     }
 }
