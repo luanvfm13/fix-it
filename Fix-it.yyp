@@ -49,6 +49,7 @@
     {"id":{"name":"obj_scanner","path":"objects/obj_scanner/obj_scanner.yy",},},
     {"id":{"name":"obj_tablet","path":"objects/obj_tablet/obj_tablet.yy",},},
     {"id":{"name":"escritorio","path":"rooms/escritorio/escritorio.yy",},},
+
     {"id":{"name":"gamer","path":"rooms/gamer/gamer.yy",},},
     {"id":{"name":"Hosp","path":"rooms/Hosp/Hosp.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
@@ -74,7 +75,9 @@
     {"id":{"name":"spr_caixadedealogo","path":"sprites/spr_caixadedealogo/spr_caixadedealogo.yy",},},
     {"id":{"name":"spr_colision","path":"sprites/spr_colision/spr_colision.yy",},},
     {"id":{"name":"spr_djabo","path":"sprites/spr_djabo/spr_djabo.yy",},},
+
     {"id":{"name":"spr_es","path":"sprites/spr_es/spr_es.yy",},},
+
     {"id":{"name":"spr_hosp","path":"sprites/spr_hosp/spr_hosp.yy",},},
     {"id":{"name":"spr_interagivel","path":"sprites/spr_interagivel/spr_interagivel.yy",},},
     {"id":{"name":"spr_porta","path":"sprites/spr_porta/spr_porta.yy",},},
@@ -111,7 +114,9 @@
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
     {"roomId":{"name":"Hosp","path":"rooms/Hosp/Hosp.yy",},},
+
     {"roomId":{"name":"escritorio","path":"rooms/escritorio/escritorio.yy",},},
+
   ],
   "templateType":"game",
   "TextureGroups":[
