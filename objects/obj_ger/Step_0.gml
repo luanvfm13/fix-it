@@ -36,8 +36,10 @@ switch (estado) {
         x += _dir_x * move_spd;
         y += _dir_y * move_spd;
 
-        if (abs(_dy) > abs(_dx)) {
-            sprite_index = (_dy < 0) ? spr_gerente_andando_tras : spr_gerente_andando_frente;
+        if (_dy > 0.05) {
+            sprite_index = spr_gerente_andando_frente;
+        } else if (_dy < -0.05) {
+            sprite_index = spr_gerente_andando_tras;
         } else {
             sprite_index = spr_gerente_andando_lado;
             image_xscale = (_dx < 0) ? -escala_base : escala_base;
