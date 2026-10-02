@@ -1,17 +1,16 @@
-if (!global.ui_bloqueando_jogo && distance_to_object(obj_prota) < 20) {
-    if (keyboard_check_pressed(ord("E"))) {
-        obj_prota.tem_scanner = true;
-        obj_prota.tem_lupa = true;
-        obj_prota.tem_tablet = true;
+var _equipado = variable_global_exists("tem_" + ferramenta_alvo) ? variable_global_get("tem_" + ferramenta_alvo) : false;
+if (_equipado) exit;
 
-        global.tem_scanner = true;
-        global.tem_lupa = true;
-        global.tem_tablet = true;
+var _mx = device_mouse_x_to_gui(0);
+var _my = device_mouse_y_to_gui(0);
+var _dentro = (_mx > x && _mx < x + largura && _my > y && _my < y + altura);
 
-        obj_men.text = "Equipamento completo! Scanner, Lupa e Tablet prontos.";
-        obj_men.tempo = 120;
-    } else {
-        obj_men.text = "[E] Equipar Scanner, Lupa e Tablet";
-        obj_men.tempo = 10;
+if (_dentro && mouse_check_button_pressed(mb_left)) {
+    variable_global_set("tem_" + ferramenta_alvo, true);
+
+    if (variable_instance_exists(obj_prota, "tem_" + ferramenta_alvo)) {
+        obj_prota.tem_scanner = (ferramenta_alvo == "scanner") ? true : obj_prota.tem_scanner;
+        obj_prota.tem_lupa    = (ferramenta_alvo == "lupa")    ? true : obj_prota.tem_lupa;
+        obj_prota.tem_tablet  = (ferramenta_alvo == "tablet")  ? true : obj_prota.tem_tablet;
     }
 }

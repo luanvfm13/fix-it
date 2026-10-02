@@ -1,0 +1,1 @@
+draw_sprite_ext(spr_hubeq, 0, painel_x, painel_y, painel_w / sprite_get_width(spr_hubeq), painel_w / sprite_get_width(spr_hubeq), 0, c_white, 1);
