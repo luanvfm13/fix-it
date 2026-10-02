@@ -34,5 +34,5 @@
     "path":"sprites/spr_porta/spr_porta.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

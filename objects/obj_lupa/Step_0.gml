@@ -1,8 +1,14 @@
 if (player == noone || !instance_exists(player)) exit;
-
+if (!variable_instance_exists(player, "tem_lupa")) {
+    show_debug_message("AVISO: obj_prota sem 'tem_lupa' bugbubgubgubgubguhgubg5");
+    exit;
+}
+if (!player.tem_lupa) exit;
 
 x = player.x + 10;
 y = player.y - 6;
+
+if (!player.tem_lupa) exit;
 
 target_problema = noone;                      
 var _menor_dist = lupa_range;
@@ -18,11 +24,20 @@ with (obj_problema) {
 }
 
 
-if (target_problema != noone && keyboard_check_pressed(ord("E"))) {
-    var _perto_de_porta = (instance_exists(obj_porta) && distance_to_object(obj_porta) < 11);
+if (!global.ui_bloqueando_jogo && target_problema != noone && keyboard_check_pressed(ord("E"))) {
+    if (!variable_instance_exists(player, "tem_tablet") || !player.tem_tablet) {
+		 show_debug_message("BLOQUEADO: player sem tem_tablet");
+        obj_men.text = "Você precisa do Tablet pra aplicar uma solução.";
+        obj_men.tempo = 90;
+        exit;
+    }
 
-    if (!_perto_de_porta && !instance_exists(obj_diagnostico)) {
-        var _ui = instance_create_layer(x, y, "Instances", obj_diagnostico);
+    var _perto_de_porta = (instance_exists(obj_porta) && distance_to_object(obj_porta) < 11);
+    if (_perto_de_porta) show_debug_message("BLOQUEADO: perto demais de uma porta");
+    if (instance_exists(obj_tablet)) show_debug_message("BLOQUEADO: já existe um obj_tablet na room");
+
+    if (!_perto_de_porta && !instance_exists(obj_tablet)) {
+        var _ui = instance_create_layer(x, y, "Instances", obj_tablet);
         _ui.problema_alvo = target_problema;
     }
 }

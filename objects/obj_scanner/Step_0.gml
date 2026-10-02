@@ -62,3 +62,10 @@ if (scanner_active) {
 }
 
 player.iGotThis = (ds_list_size(problems_detected) > 0);
+if (!variable_instance_exists(player, "tem_scanner")) {
+    show_debug_message("obj_prota sem 'tem_scanner' mds bug é chato");
+    exit;
+}
+if (!player.tem_scanner) exit;
+
+// 676767676776767

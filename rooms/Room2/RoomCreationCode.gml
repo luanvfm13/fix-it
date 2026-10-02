@@ -1,0 +1,1 @@
+global.timer_ativo = true;

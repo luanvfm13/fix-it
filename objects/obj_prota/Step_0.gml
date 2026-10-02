@@ -1,8 +1,15 @@
-if (instance_exists(obj_diagnostico)) exit;
+if (global.ui_bloqueando_jogo) exit;
 var hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
-move_and_collide(hor * move_spd, ver * move_spd, tilemap, undefined, undefined, undefined);
+
+var vel_fin = move_spd
+if(keyboard_check(vk_shift))
+{
+	vel_fin = move_spd * 2
+}
+move_and_collide(hor * vel_fin, ver * vel_fin, tilemap, undefined, undefined, undefined);
+
 
 if (hor !=0 or ver != 0)
 {
