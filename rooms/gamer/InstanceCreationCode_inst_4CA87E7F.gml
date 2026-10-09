@@ -1,1 +1,1 @@
-alvo_instancia = porta_Esc; 
+alvo_instancia = gamer_p_esc; 

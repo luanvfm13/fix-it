@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"porta_game",
+  "%Name":"esc__p_gamer",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"porta_game",
+  "name":"esc__p_gamer",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",

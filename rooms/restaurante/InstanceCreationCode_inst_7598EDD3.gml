@@ -1,1 +1,1 @@
-setup_problem("vazoGais");
+setup_problem("lentidao_cozinha");

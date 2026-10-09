@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_porta",
+  "%Name":"gamer_p_esc",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_porta",
+  "name":"gamer_p_esc",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":true,
   "spriteId":{
-    "name":"spr_porta",
-    "path":"sprites/spr_porta/spr_porta.yy",
+    "name":"spr_interagivel",
+    "path":"sprites/spr_interagivel/spr_interagivel.yy",
   },
   "spriteMaskId":null,
   "visible":true,
