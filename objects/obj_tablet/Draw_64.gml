@@ -39,14 +39,15 @@ if (estado == "escolhendo") {
 
     var _y_cursor = _tela_y + 6 + string_height_ext(_nome, 20, _largura_texto) + 16;
 
-    for (var i = 0; i < array_length(_opcoes); i++) {
+    for (var i = 0; i < array_length(ordem_opcoes); i++) {
+		var _opcao = _opcoes[ordem_opcoes[i]]
         var _cor = (i == opcao_selecionada) ? c_green : c_white;
         draw_set_color(_cor);
+		
         var _prefixo = (i == opcao_selecionada) ? "> " : "   ";
-        var _texto_opcao = _prefixo + _opcoes[i].texto;
+        var _texto_opcao = _prefixo + _opcao.texto;
 
         draw_text_ext(_tela_x + 10, _y_cursor, _texto_opcao, 20, _largura_texto);
-
        
         _y_cursor += string_height_ext(_texto_opcao, 20, _largura_texto) + 12;
     }

@@ -7,7 +7,8 @@ if (instance_number(obj_problema) == 0) {
     global.timer_ativo = false;
 
     var _res = instance_create_depth(0, 0, -10000, obj_misaof);
-    _res.venceu = true;
+    _res.demitido = global.foi_demitido;
+	_res.venceu = true;
     exit;
 }
 
@@ -22,6 +23,7 @@ if (tempo_step_acumulado >= game_get_speed(gamespeed_fps)) {
         global.timer_ativo = false;
 
         var _res = instance_create_depth(0, 0, -10000, obj_misaof);
-        _res.venceu = false;
+        _res.demitido = global.foi_demitido;
+		_res.venceu = false;
     }
 }

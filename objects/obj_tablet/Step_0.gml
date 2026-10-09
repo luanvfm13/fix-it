@@ -7,6 +7,10 @@ switch (estado) {
 
         var _opcoes = problema_alvo.problem_data.opcoes;
         var _total = array_length(_opcoes);
+		
+		if (array_length(ordem_opcoes) != _total) {
+    ordem_opcoes = criar_ordem_embaralhada(_total);
+}
 
         if (keyboard_check_pressed(vk_down)) {
             opcao_selecionada = (opcao_selecionada + 1) mod _total;
@@ -20,7 +24,8 @@ switch (estado) {
         }
 
         if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(ord("E"))) {
-            resultado = resolve_problem(problema_alvo, opcao_selecionada);
+           var _indice_real = ordem_opcoes[opcao_selecionada];
+		resultado = resolve_problem(problema_alvo, _indice_real);
             if (resultado == undefined) {
                 instance_destroy();
                 exit;

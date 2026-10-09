@@ -6,27 +6,56 @@
 
 function get_dialogo_data(_id) {
     switch (_id) {
+		case "bronca_freezer_torcer":
+    return {
+        "1": { nome: "Gerente", texto: "Deixou os alimentos lá apodrecendo e só ficou torcendo? Isso não é gestão de risco, é esperar o pior acontecer.", opcoes: [] }
+    };
+		case "bronca_fila_reclamar":
+    return {
+        "1": { nome: "", texto: "Você ficou ali reclamando com os clientes, sem resolver nada de verdade.", opcoes: [ { texto: "Continuar", proximo_id: 2 } ] },
+        "2": { nome: "Gerente", texto: "Reclamar não é solução. A gente precisa de automação, não de discussão com cliente.", opcoes: [] }
+    };
 
+		case "bronca_freezer_cozinhar":
+    return {
+        "1": { nome: "Gerente", texto: "Cozinhou tudo correndo sem nem avaliar o que dava pra salvar? Resolveu o problema de hoje e criou um de amanhã.", opcoes: [] }
+    };
+
+		case "bronca_freezer_mascarar":
+    return {
+        "1": { nome: "Gerente", texto: "Você serviu comida estragada pros clientes!? Isso é risco sério à saúde das pessoas...", opcoes: [ { texto: "Continuar", proximo_id: 2 } ] },
+        "2": { nome: "Gerente", texto: "...não posso ter alguém assim representando a empresa.", opcoes: [] }
+    };
+	case "info_caixa_desligaliga":
+    return {
+        "1": { nome: "", texto: "Desligou e ligou de novo... mas nada mudou.", opcoes: [] }
+    };
+
+	case "bronca_caixa_bater":
+    return {
+        "1": { nome: "", texto: "Bater no caixa só piorou tudo... Agora nem a trava do teclado funciona direito.", opcoes: [ { texto: "Continuar", proximo_id: 2 } ] },
+        "2": { nome: "Gerente", texto: "Sério que você bateu no equipamento? Isso não é jeito de resolver nada.", opcoes: [] }
+    };
         case "gerente_intro":
             return {
                 "1": {
                     nome: "Gerente",
-                    texto: "Ah, você deve ser o novo agente de campo! Bem-vindo à G.A.M.E.R Technologies.",
+                    texto: "Ah, você deve ser o novo consultor de campo! Bem-vindo à G.A.M.E.R Meu querido.",
                     opcoes: [ { texto: "Continuar", proximo_id: 2 } ]
                 },
                 "2": {
                     nome: "Gerente",
-                    texto: "Nosso trabalho é simples: visitamos pequenos comércios e aplicamos Gestão, Automação, Modernização, Eficiência e Resiliência.",
+                    texto: "Nosso trabalho é simples: visitamos pequenos comércios e aplicamos Gestão, Automação, Modernização, Eficiência e Resiliência. Isso que significa nossa sigla.",
                     opcoes: [ { texto: "Continuar", proximo_id: 3 } ]
                 },
                 "3": {
                     nome: "Gerente",
-                    texto: "Use o Scanner (tecla R) pra achar os gargalos operacionais, e a Lupa (tecla E) pra inspecionar de perto.",
+                    texto: "Use o Scanner (tecla R) pra achar os gargalos operacionais, e a Lupa (tecla E) pra inspecionar de perto. Logo após o tablet vai subir e você pode escolher a opção mais adequada.",
                     opcoes: [ { texto: "Continuar", proximo_id: 4 } ]
                 },
                 "4": {
                     nome: "Gerente",
-                    texto: "Antes de ir a campo, passe no seu escritório pra equipar o equipamento. Boa sorte!",
+                    texto: "Antes de ir a seu teste, passe no seu escritório pra equipar o equipamento que você deverá usar. Boa sorte, e cuidado pra não ser demitido logo no primeiro dia.",
                     opcoes: []
                 }
             };

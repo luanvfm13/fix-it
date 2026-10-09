@@ -14,7 +14,7 @@ move_spd = 1.5;
 estado = "esperando"; // esperando, andando e 
 timer_espera = 45;
 
-blink_timer = irandom_range(180, 360);
+blink_timer = game_get_speed(gamespeed_fps) * 2;
 
 balaou = instance_create_layer(x, y - 40, "Instances", obj_dialog);
 balaou.visible = false;

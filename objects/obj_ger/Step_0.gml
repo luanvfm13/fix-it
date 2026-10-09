@@ -54,7 +54,7 @@ switch (estado) {
             blink_timer = 8;
         } else {
             image_index = 0;
-            blink_timer = irandom_range(180, 360);
+           blink_timer = game_get_speed(gamespeed_fps) * 2;
         }
 
         var _perto = distance_to_object(obj_prota) < 11;
