@@ -1,0 +1,38 @@
+{
+  "$GMTileSet":"v1",
+  "%Name":"TileSet8",
+  "autoTileSets":[],
+  "macroPageTiles":{
+    "SerialiseHeight":0,
+    "SerialiseWidth":0,
+    "TileSerialiseData":[],
+  },
+  "name":"TileSet8",
+  "out_columns":33,
+  "out_tilehborder":0,
+  "out_tilevborder":0,
+  "parent":{
+    "name":"tileset inicio",
+    "path":"folders/Sprites/tileset inicio.yy",
+  },
+  "resourceType":"GMTileSet",
+  "resourceVersion":"2.0",
+  "spriteId":{
+    "name":"spr_tilesetinc",
+    "path":"sprites/spr_tilesetinc/spr_tilesetinc.yy",
+  },
+  "spriteNoExport":false,
+  "textureGroupId":{
+    "name":"Default",
+    "path":"texturegroups/Default",
+  },
+  "tileAnimationFrames":[],
+  "tileAnimationSpeed":15.0,
+  "tileHeight":16,
+  "tilehsep":1,
+  "tilevsep":1,
+  "tileWidth":16,
+  "tilexoff":0,
+  "tileyoff":0,
+  "tile_count":1064,
+}
