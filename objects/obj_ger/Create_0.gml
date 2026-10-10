@@ -1,4 +1,4 @@
-image_speed = 2;
+image_speed = 0;
 
 escala_base = abs(image_xscale);
 

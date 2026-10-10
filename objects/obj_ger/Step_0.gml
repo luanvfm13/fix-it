@@ -11,6 +11,7 @@ switch (estado) {
         break;
 
     case "andando":
+		image_speed = 2;
         var _alvo = caminho[indice_caminho];
         var _dist = point_distance(x, y, _alvo.x, _alvo.y);
 
@@ -47,6 +48,7 @@ switch (estado) {
         break;
 
     case "parado":
+		image_speed = 0;
         if (blink_timer > 0) {
             blink_timer--;
         } else if (image_index == 0) {
@@ -54,7 +56,7 @@ switch (estado) {
             blink_timer = 8;
         } else {
             image_index = 0;
-           blink_timer = game_get_speed(gamespeed_fps) * 2;
+           blink_timer = game_get_speed(gamespeed_fps) * 8;
         }
 
         var _perto = distance_to_object(obj_prota) < 11;
