@@ -4,7 +4,8 @@ move_spd_base = 2;
 var _escala = (abs(image_xscale) + abs(image_yscale)) / 2;
 move_spd = move_spd_base * (_escala / escala_ref);
 
-tilemap = layer_tilemap_get_id("tile_col");
+var _collision_layer = (room == restaurante) ? "a" : "tile_col";
+tilemap = layer_tilemap_get_id(_collision_layer);
 window_set_cursor(cr_none);
 iGotThis = false;
 

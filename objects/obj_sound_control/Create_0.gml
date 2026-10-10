@@ -1,0 +1,1 @@
+audio_play_sound(sound_ini, 10, true)

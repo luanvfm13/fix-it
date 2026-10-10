@@ -18,4 +18,8 @@ if (instance_exists(follow)) {
 x += (xto - x)/25;
 y += (yto - y)/25;
 
-camera_set_view_pos(view_camera[0],x-(camWidth*0.5),y-(camHeight*0.5));
+camera_set_view_pos(
+    view_camera[0],
+    clamp(x - (camWidth * 0.5), 0, max(0, room_width - camWidth)),
+    clamp(y - (camHeight * 0.5), 0, max(0, room_height - camHeight))
+);

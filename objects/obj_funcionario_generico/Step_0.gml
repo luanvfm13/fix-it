@@ -35,7 +35,7 @@ switch (estado) {
             sprite_index = spr_gerente_andando_tras;
         } else {
             sprite_index = spr_gerente_andando_lado;
-            image_xscale = (_dx < 0) ? escala_base : -escala_base;
+            image_xscale = (_dx < 0) ? -escala_base : escala_base;
         }
         break;
 
