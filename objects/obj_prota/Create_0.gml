@@ -1,8 +1,9 @@
+escala_ref = 2.68;
+move_spd_base = 2;
 
-image_xscale = 1.2;
-image_yscale = 1.16;
+var _escala = (abs(image_xscale) + abs(image_yscale)) / 2;
+move_spd = move_spd_base * (_escala / escala_ref);
 
-move_spd = 2;
 tilemap = layer_tilemap_get_id("tile_col");
 window_set_cursor(cr_none);
 iGotThis = false;
