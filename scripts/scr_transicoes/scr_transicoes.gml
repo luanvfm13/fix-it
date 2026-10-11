@@ -12,4 +12,25 @@ function fade_to_room(_room) {
 
     global.ui_bloqueando_jogo = true;
 }
-//67
+
+function reset_jogo() {
+    global.moedas = 0;
+    global.coesao_total = 0;
+    global.coesao_count = 0;
+    global.ui_bloqueando_jogo = false;
+    global.tempo_restante = 240;
+    global.timer_ativo = false;
+    global.jogo_acabou = false;
+    global.jogo_vencido = false;
+    global.tem_scanner = false;
+    global.tem_lupa = false;
+    global.tem_tablet = false;
+    global.bronca_pendente = "";
+    global.foi_demitido = false;
+    global.taxi_visto = false;
+    global.spawn_alvo = "";
+
+    with (obj_global) {
+        tempo_step_acumulado = 0;
+    }
+}

@@ -1,3 +1,7 @@
+if (variable_global_exists("taxi_visto") && global.taxi_visto) {
+    instance_destroy();
+    exit;
+}
 sprite_index = spr_carro_fre;
 move_spd = 1.2;
 
@@ -16,3 +20,4 @@ with (obj_prota) {
     visible = false;
 }
 global.ui_bloqueando_jogo = true;
+ida_completa = false;

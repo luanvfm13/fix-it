@@ -23,7 +23,7 @@ with (obj_problema) {
 if (!global.ui_bloqueando_jogo && target_problema != noone && keyboard_check_pressed(ord("E"))) {
  
 
-    var _perto_de_porta = (instance_exists(inicio_p_restaurantye) && distance_to_object(inicio_p_restaurantye) < 11);
+    var _perto_de_porta = (instance_exists(inicio_p_restaurante) && distance_to_object(inicio_p_restaurante) < 11);
 
     if (!_perto_de_porta && !instance_exists(obj_tablet)) {
         var _ui = instance_create_layer(x, y, "Instances", obj_tablet);

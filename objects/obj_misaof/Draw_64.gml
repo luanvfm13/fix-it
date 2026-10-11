@@ -43,7 +43,7 @@ draw_text(gui_w / 2, _y, "Moedas totais: " + string(global.moedas));
 _y += 36;
 
 draw_set_color(c_gray);
-draw_text(gui_w / 2, _y, "[E / Enter / Espaço] Voltar ao escritório");
+draw_text(gui_w / 2, _y, "[E / Enter / Espaço] Voltar ao Menu Inicial. Muito Obrigado por testar nosso jogo! Tenha um ótimo dia.");
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);

@@ -15,19 +15,29 @@ switch (estado) {
             x = _alvo.x;
             y = _alvo.y;
             indice_caminho++;
+			if (indice_caminho >= array_length(caminho)) {
+                if (!ida_completa) {
+					
+                    ida_completa = true;
+					global.taxi_visto = true;
+                    estado = "despedida";
 
-            if (indice_caminho >= array_length(caminho)) {
-                estado = "parado";
+                    var _px = x;
+                    var _py = y - 10;
+                    with (obj_prota) {
+                        x = _px;
+                        y = _py;
+                        visible = true;
+                    }
 
-
-                var _px = x;
-                var _py = y - 10;
-                with (obj_prota) {
-                    x = _px;
-                    y = _py;
-                    visible = true;
+                    var _d = instance_create_layer(x, y, "Instances", obj_dialogo);
+                    with (_d) {
+                        setup_dialogo("despedida_taxi");
+                    }
+                } else {
+					
+                    instance_destroy();
                 }
-                global.ui_bloqueando_jogo = false;
             }
             exit;
         }
@@ -43,6 +53,19 @@ switch (estado) {
 		else                                sprite_index = spr_carro_dir; 
         break;
 
-    case "parado":
+    case "despedida":
+
+        if (!instance_exists(obj_dialogo) && instance_exists(obj_prota)
+            && point_distance(x, y, obj_prota.x, obj_prota.y) > 120) {
+
+            var _ida = caminho;
+            var _volta = [];
+            for (var i = array_length(_ida) - 1; i >= 0; i--) {
+                array_push(_volta, _ida[i]);
+            }
+            caminho = _volta;
+            indice_caminho = 1;
+            estado = "andando";
+        }
         break;
 }

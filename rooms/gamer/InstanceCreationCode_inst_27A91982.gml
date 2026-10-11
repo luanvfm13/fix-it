@@ -1,0 +1,1 @@
+spawn_id = "esc_p_gamer";

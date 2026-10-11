@@ -6,6 +6,19 @@
 
 function get_dialogo_data(_id) {
     switch (_id) {
+		case "despedida_taxi":
+    return {
+        "1": {
+            nome: "Você",
+            texto: "Valeu por me trazer. Já está pago no aplicativo. Tenha um ótimo dia!",
+            opcoes: [ { texto: "Continuar", proximo_id: 2 } ]
+        },
+        "2": {
+            nome: "Motorista",
+            texto: "Valeu, um ótimo dia pra você também, vou indo.",
+            opcoes: []
+        }
+    };
 		case "bronca_freezer_torcer":
     return {
         "1": { nome: "Gerente", texto: "Deixou os alimentos lá apodrecendo e só ficou torcendo? Isso não é gestão de risco, é esperar o pior acontecer.", opcoes: [] }
