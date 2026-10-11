@@ -6,6 +6,9 @@ move_spd = move_spd_base * (_escala / escala_ref);
 
 var _collision_layer = (room == restaurante) ? "a" : "tile_col";
 tilemap = layer_tilemap_get_id(_collision_layer);
+if (room == escritorio) {
+	layer_set_visible(layer_get_id(_collision_layer), false);
+}
 window_set_cursor(cr_none);
 iGotThis = false;
 

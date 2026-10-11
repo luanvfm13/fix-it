@@ -44,6 +44,45 @@ function get_dialogo_data(_id) {
         "1": { nome: "", texto: "Desligou e ligou de novo... mas nada mudou.", opcoes: [] }
     };
 
+        case "escritorio_maquina":
+    return {
+        "1": { nome: "Você", texto: "Uma máquina de apoio. A carcaça está gasta, mas ainda parece funcionar.", opcoes: [] }
+    };
+
+        case "escritorio_bancada":
+    return {
+        "1": { nome: "Você", texto: "Uma bancada de trabalho. Tem marcas de uso e algumas ferramentas guardadas por perto.", opcoes: [] }
+    };
+
+        case "escritorio_arquivo":
+    return {
+        "1": { nome: "Você", texto: "Um gaveteiro de arquivos. Os documentos estão separados por assunto e prontos para consulta.", opcoes: [] }
+    };
+
+        case "escritorio_armario":
+    return {
+        "1": { nome: "Você", texto: "Um armário de armazenamento. Melhor deixar tudo organizado antes de sair para o próximo atendimento.", opcoes: [] }
+    };
+
+        case "escritorio_mesa":
+    return {
+        "1": { nome: "Você", texto: "Uma mesa de apoio cheia de coisas do escritório. Nada aqui parece precisar de atenção agora.", opcoes: [] }
+    };
+
+        case "escritorio_computadores":
+    return {
+        "1": { nome: "Você", texto: "Os computadores do escritório. Um deles está ligado, com relatórios e chamados abertos na tela.", opcoes: [] }
+    };
+		case "teste_d":
+	return {
+		"1": {nome : "Maura", texto: "O 1 DS É LULAAAAAAAAAAAA", opcoes: [] }
+	};
+		case "veia":
+		return {
+			"1": {nome: "Senhora", texto : "Como que pode um gerente tão compromissado largar os estabelecimentos um caos assim, vixe.", opcoes: [{texto: "Continuar", proximo_id: 2}]},
+			"2": {nome: "Senhora", texto: "E ainda sobra pros pobres coitados que 'trabaiam' ai. Na minha época era preso.", opcoes: []}
+		};
+
 	case "bronca_caixa_bater":
     return {
         "1": { nome: "", texto: "Bater no caixa só piorou tudo... Agora nem a trava do teclado funciona direito.", opcoes: [ { texto: "Continuar", proximo_id: 2 } ] },

@@ -56,6 +56,7 @@
     {"id":{"name":"obj_hubeq","path":"objects/obj_hubeq/obj_hubeq.yy",},},
     {"id":{"name":"obj_hubp","path":"objects/obj_hubp/obj_hubp.yy",},},
     {"id":{"name":"obj_ind","path":"objects/obj_ind/obj_ind.yy",},},
+    {"id":{"name":"obj_interacao_ambiente","path":"objects/obj_interacao_ambiente/obj_interacao_ambiente.yy",},},
     {"id":{"name":"obj_jogajoga","path":"objects/obj_jogajoga/obj_jogajoga.yy",},},
     {"id":{"name":"obj_lupa","path":"objects/obj_lupa/obj_lupa.yy",},},
     {"id":{"name":"obj_maura","path":"objects/obj_maura/obj_maura.yy",},},
