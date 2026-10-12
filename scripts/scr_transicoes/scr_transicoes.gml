@@ -38,7 +38,19 @@ function reset_jogo() {
     global.spawn_alvo = "";
 	global.etapa = 0;
 	global.problemas_resolvidos = [];
+	global.scans_usados = 0;
+    global.scans_ultimo = 0;
+    global.scans_custo_ultimo = 0;
+	global.tempo_flash_t = 0;
+	global.tempo_flash_txt = "";
+	global.tempo_flash_cor = c_red;
     with (obj_global) {
         tempo_step_acumulado = 0;
     }
+}
+function cobrar_scanner() {
+    global.scans_ultimo = global.scans_usados;
+    global.scans_custo_ultimo = min(global.moedas, global.scans_usados);
+    global.moedas -= global.scans_custo_ultimo;
+    global.scans_usados = 0;
 }

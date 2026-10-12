@@ -1,4 +1,4 @@
-
+if (global.tempo_flash_t > 0) global.tempo_flash_t--;
 if (player == noone) exit;
 
 if (keyboard_check_pressed(ord("R")) && scanner_cooldown <= 0 && !global.ui_bloqueando_jogo) {
@@ -7,19 +7,22 @@ if (keyboard_check_pressed(ord("R")) && scanner_cooldown <= 0 && !global.ui_bloq
             obj_men.text = "Scanner não equipado.";
             obj_men.tempo = 90;
         }
-    } else if (global.moedas < scanner_cost) {
+    } else if (global.tempo_restante <= scan_custo_tempo) {
         if (instance_exists(obj_men)) {
-            obj_men.text = "Scanner exige 1 moeda.";
+            obj_men.text = "Tempo insuficiente para varrer.";
             obj_men.tempo = 90;
         }
     } else {
-        global.moedas -= scanner_cost;
+        global.tempo_restante -= scan_custo_tempo;
+        global.scans_usados += 1;
+		global.tempo_flash_t = 90;
+        global.tempo_flash_txt = "-" + string(scan_custo_tempo) + "s";
         scanner_active = true;
         scan_timer = scan_duration;
         scanner_cooldown = scanner_cooldown_max;
 
         if (instance_exists(obj_men)) {
-            obj_men.text = "Varrendo área... (-" + string(scanner_cost) + ")";
+            obj_men.text = "Varrendo área... (-" + string(scan_custo_tempo) + " s)";
             obj_men.tempo = scan_duration;
         }
     }
@@ -35,7 +38,6 @@ if (scanner_active) {
         scanner_active = false;
     }
 }
-
 
 if (scanner_active) {
     scan_pulse += 1;
@@ -80,5 +82,3 @@ if (!variable_instance_exists(player, "tem_scanner")) {
     exit;
 }
 if (!player.tem_scanner) exit;
-
-// 676767676776767

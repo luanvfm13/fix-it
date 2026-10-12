@@ -5,13 +5,15 @@ function alvo_da_etapa() {
     switch (room) {
         case inicio:
             if (_e == 0) return instance_find(inicio_p_gamer, 0);
-            if (_e >= 3) return instance_find(inicio_p_restaurante, 0);
+            if (_e == 3) return instance_find(inicio_p_restaurante, 0);
+			if (_e == 4) return instance_find(inicio_p_gamer, 0);
+            if (_e == 5) return instance_find(gamer_p_hosp, 0);
             break;
 
         case gamer:
             if (_e == 1) return instance_find(gamer_p_esc, 0);
-            if (_e == 2) return instance_find(obj_ger, 0);
-            if (_e >= 3) return instance_find(gamer_p_inicio, 0);
+            if (_e == 2 || _e == 4) return instance_find(obj_ger, 0);
+            if (_e >= 3 || _e == 5) return instance_find(gamer_p_inicio, 0);
             break;
 
         case escritorio:

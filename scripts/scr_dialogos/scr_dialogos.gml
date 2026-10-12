@@ -198,7 +198,10 @@ function get_dialogo_data(_id) {
             return {
                 "1": { nome: "Gerente", texto: "Ei, aonde vai? Nem falou comigo sobre sua tarefa!", opcoes: [] }
             };
-
+		    case "fora_da_rota":
+            return {
+                "1": { nome: "", texto: "Você saiu da rota. Siga a avenida até o hospital.", opcoes: [] }
+            };
         case "escritorio_sem_equipar":
             return {
                 "1": { nome: "", texto: "Você ainda não equipou todas as ferramentas. Pegue o scanner, a lupa e o tablet antes de sair.", opcoes: [] }
@@ -227,6 +230,25 @@ function get_dialogo_data(_id) {
             return {
                 "1": { nome: "Gerente", texto: "Ei, aonde vai? Ainda não pegou suas ferramentas e nem falou comigo sobre a missão!", opcoes: [] }
             };
+		        case "gerente_hospital":
+            return {
+                "1": { nome: "Gerente", texto: "Boa, a lanchonete voltou a funcionar! Agora o hospital precisa de ajuda com o estoque de insumos. Siga pela avenida até lá.", opcoes: [] }
+            };
+
+        case "gerente_lembrete_hosp":
+            return {
+                "1": { nome: "Gerente", texto: "A porta do hospital fica na avenida. Não se perca no caminho.", opcoes: [] }
+            };
+
+        case "gerente_nao_missao_hosp":
+            return {
+                "1": { nome: "Gerente", texto: "Ei! Antes de sair, passe aqui e ouça a missão do hospital.", opcoes: [] }
+            };
+
+        case "hospital_bloqueado":
+            return {
+                "1": { nome: "", texto: "O hospital precisa de uma missão nossa. Antes, passe na G.A.M.E.R. e receba a orientação do gerente.", opcoes: [] }
+            };	
         case "npc_dica_lanchonete":
             return {
                 "1": {

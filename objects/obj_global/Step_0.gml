@@ -22,11 +22,13 @@ if (instance_number(obj_problema) == 0) {
         if (room == restaurante && !global.missao_restaurante_feita) {
             global.missao_restaurante_feita = true;
             global.missoes_concluidas += 1;
+			global.etapa = 4;
         } else if (room == Hosp && !global.missao_hospital_feita) {
             global.missao_hospital_feita = true;
             global.missoes_concluidas += 1;
         }
     }
+	cobrar_scanner();
 
     var _res = instance_create_depth(0, 0, -10000, obj_misaof);
     _res.demitido = global.foi_demitido;
@@ -44,6 +46,8 @@ if (tempo_step_acumulado >= game_get_speed(gamespeed_fps)) {
         global.tempo_restante = 0;
         global.jogo_acabou = true;
         global.timer_ativo = false;
+		
+		cobrar_scanner();
 
         var _res2 = instance_create_depth(0, 0, -10000, obj_misaof);
         _res2.demitido = global.foi_demitido;

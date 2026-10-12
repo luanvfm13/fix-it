@@ -217,14 +217,23 @@ function resolve_problem(_problema, _opcao_index) {
     var _moedas_ganhas = _coesao div 10;
     var _tempo_delta = 0;
 
-    if (_coesao >= 90) _tempo_delta = 30;
-    else if (_coesao >= 50) _tempo_delta = 10;
+    if (_coesao >= 50) _tempo_delta = 0;
     else if (_coesao >= 20) _tempo_delta = -10;
     else _tempo_delta = -20;
+	
+	  if (_tempo_delta != 0) {
+      global.tempo_flash_t = 90;
+      global.tempo_flash_txt = (_tempo_delta > 0 ? "+" : "") + string(_tempo_delta) + "s";
+      global.tempo_flash_cor = (_tempo_delta > 0) ? c_lime : c_red;
+  }
 
     if (global.timer_ativo) {
         var _tempo_anterior = global.tempo_restante;
         global.tempo_restante = clamp(global.tempo_restante + _tempo_delta, 0, 600);
+		if (_tempo_delta < 0) {
+        global.tempo_flash_t = 90;
+		global.tempo_flash_txt = string(_tempo_delta) + "s"; 
+    }
         _tempo_delta = global.tempo_restante - _tempo_anterior;
     }
 

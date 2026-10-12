@@ -25,7 +25,7 @@ if (demitido) {
     _cor_titulo = c_lime;
     if (!fim_campanha) {
         _titulo = "MISSÃO CONCLUÍDA!";
-        _epilogo = "Relatório registrado. Volte ao escritório e fale com o gerente para seguir. Missões concluídas: " + string(global.missoes_concluidas) + "/" + string(global.missoes_total) + ".";
+          _epilogo = "Relatório registrado. Volte à G.A.M.E.R. e fale com o gerente para seguir. Missões concluídas: " + string(global.missoes_concluidas) + "/" + string(global.missoes_total) + ".";
     } else if (_media >= 90) {
         _titulo = "FINAL: INOVAÇÃO CONECTADA";
         _epilogo = "A fila da lanchonete andou e o hospital voltou a rastrear seus insumos. As equipes têm processos que funcionam sem apagar incêndio a cada pedido. Wilson quer saber se isso desbloqueia conquista.";
@@ -50,7 +50,13 @@ _y += string_height_ext(_cat.texto, 18, _largura_bloco) + 20;
 draw_text(gui_w / 2, _y, "Coesão média: " + string(_media) + "%");
 _y += 22;
 draw_text(gui_w / 2, _y, "Moedas totais: " + string(global.moedas));
-_y += 30;
+_y += 22;
+if (global.scans_ultimo > 0) {
+	draw_text(gui_w / 2, _y, "Número de vezes que o scanner foi utlizado: " 
+	+ string(global.scans_ultimo) + " (-" + string(global.scans_custo_ultimo) + " moedas)");
+	_y += 22;
+}
+_y += 8
 
 draw_text_ext(gui_w / 2, _y, _epilogo, 18, _largura_bloco);
 _y += string_height_ext(_epilogo, 18, _largura_bloco) + 28;

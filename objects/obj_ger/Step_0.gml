@@ -23,7 +23,7 @@ switch (estado) {
         image_speed = 2;
 
 
-        var _perto_do_jogador = abordando && distance_to_object(obj_prota) < 40;
+        var _perto_do_jogador = abordando && distance_to_object(obj_prota) < 20;
 
         var _alvo = caminho[indice_caminho];
         var _dist = point_distance(x, y, _alvo.x, _alvo.y);
@@ -90,7 +90,11 @@ switch (estado) {
          if (global.missoes_concluidas >= global.missoes_total) dialogo_id = "gerente_final";
         else if (global.etapa == 2) dialogo_id = "gerente_despedida";
         else if (global.etapa == 1) dialogo_id = "gerente_lembrete";
-        else dialogo_id = "gerente_intro";
+        else if (global.etapa == 4) dialogo_id = "gerente_hospital";
+        else if (global.etapa == 5) dialogo_id = "gerente_lembrete_hosp";
+         else if (global.etapa == 3) dialogo_id = "gerente_lembrete";
+		
+		else dialogo_id = "gerente_intro";
 		
 		
 		    if (global.final_dialogo_concluido && global.missoes_concluidas >= global.missoes_total && !global.final_campanha) {
@@ -112,7 +116,7 @@ switch (estado) {
         if (_perto && !global.ui_bloqueando_jogo && !instance_exists(obj_dialogo)) {
             if (keyboard_check_pressed(ord("E"))) {
                 if (global.etapa == 2) global.etapa = 3;
-
+				 if (global.etapa == 4) global.etapa = 5;
                 var _id_dialogo = dialogo_id;
                 var _d = instance_create_layer(x, y, "Instances", obj_dialogo);
                 with (_d) {
