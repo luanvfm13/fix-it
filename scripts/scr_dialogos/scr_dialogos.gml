@@ -111,7 +111,39 @@ function get_dialogo_data(_id) {
                     opcoes: []
                 }
             };
+		        case "gerente_nao_despediu_equipado":
+            return {
+                "1": { nome: "Gerente", texto: "Ei, aonde vai? Nem falou comigo sobre sua tarefa!", opcoes: [] }
+            };
 
+        case "escritorio_sem_equipar":
+            return {
+                "1": { nome: "", texto: "Você ainda não equipou todas as ferramentas. Pegue o scanner, a lupa e o tablet antes de sair.", opcoes: [] }
+            };
+
+        case "lanchonete_bloqueada":
+            return {
+                "1": { nome: "", texto: "Antes de entrar no restaurante, passe na G.A.M.E.R. e receba sua missão com o gerente.", opcoes: [] }
+            };
+			
+		case "gerente_lembrete":
+            return {
+                "1": { nome: "Gerente", texto: "Ainda não equipou as ferramentas? Passe no seu escritório antes de sair.", opcoes: [] }
+            };
+
+        case "gerente_despedida":
+            return {
+                "1": { nome: "Gerente", texto: "Ótimo, você está equipado. Sua primeira missão é na lanchonete, pela saída da avenida.", opcoes: [ { texto: "Continuar", proximo_id: 2 } ] },
+                "2": { nome: "Gerente", texto: "O caixa de lá travou e ninguém sabe por quê. Mostre o que a automação pode fazer por eles. Boa sorte, agente!", opcoes: [] }
+            };
+		 case "gerente_nao_falou":
+            return {
+                "1": { nome: "Gerente", texto: "Não vai falar comigo? Quer perder pontos logo no seu primeiro dia?", opcoes: [] }
+            };
+		case "gerente_nao_despediu":
+            return {
+                "1": { nome: "Gerente", texto: "Ei, aonde vai? Ainda não pegou suas ferramentas e nem falou comigo sobre a missão!", opcoes: [] }
+            };
         case "npc_dica_lanchonete":
             return {
                 "1": {

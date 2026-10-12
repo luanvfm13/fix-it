@@ -8,3 +8,6 @@ if (!global.ui_bloqueando_jogo && distance_to_object(obj_prota) < 20) {
         obj_men.tempo = 10;
     }
 }
+if (global.etapa == 1 && global.tem_scanner && global.tem_lupa && global.tem_tablet) {
+    global.etapa = 2;
+}

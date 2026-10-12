@@ -1,1 +1,0 @@
-global.ui_bloqueando_jogo = false;

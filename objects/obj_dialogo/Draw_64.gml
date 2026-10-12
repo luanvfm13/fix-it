@@ -4,7 +4,7 @@ var gui_w = display_get_gui_width();
 var gui_h = display_get_gui_height();
 
 var caixa_w = gui_w * 0.9;
-var caixa_h = 110;
+var caixa_h = 140;
 var caixa_x = (gui_w - caixa_w) / 2;
 var caixa_y = gui_h - caixa_h - 20;
 
@@ -22,6 +22,21 @@ draw_line_width(caixa_x + caixa_w, caixa_y, caixa_x + caixa_w, caixa_y + caixa_h
 if (dados_dialogo == undefined) exit;
 var fala = dados_dialogo[$ no_atual];
 if (fala == undefined) exit;
+
+if (variable_struct_exists(fala, "nome") && fala.nome != "") {
+    var _nome_h = 26;
+    var _nome_w = string_width(fala.nome) + 20;
+    var _nome_x = caixa_x + 10;
+    var _nome_y = caixa_y - _nome_h;
+
+    draw_set_alpha(0.85);
+    draw_set_color(c_black);
+    draw_rectangle(_nome_x, _nome_y, _nome_x + _nome_w, caixa_y, false);
+    draw_set_alpha(1);
+    draw_set_color(c_yellow);
+    draw_text(_nome_x + 10, _nome_y + 4, fala.nome);
+    draw_set_color(c_white);
+}
 
 draw_set_color(c_white);
 draw_text_ext(caixa_x + 20, caixa_y + 16, texto_exibido, 22, caixa_w - 40);
@@ -47,7 +62,7 @@ if (texto_completo) {
         }
     } else {
         draw_set_color(c_gray);
-        draw_text(caixa_x + 20, caixa_y + caixa_h - 20, "[Espaço/Z] Continuar");
+        draw_text(caixa_x + 20, caixa_y + caixa_h - 36, "[Espaço/Z]: Continuar");
     }
 }
 

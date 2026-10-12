@@ -19,6 +19,5 @@ blink_timer = game_get_speed(gamespeed_fps) * 2;
 balaou = instance_create_layer(x, y - 40, "Instances", obj_dialog);
 balaou.visible = false;
 
-dialogo_id = "gerente_intro";
-
-global.ui_bloqueando_jogo = true;
+dialogo_id = "gerente_lembrete";
+abordando = false;

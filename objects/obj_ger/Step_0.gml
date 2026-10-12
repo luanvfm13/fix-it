@@ -1,34 +1,62 @@
 balaou.x = x;
 balaou.y = y - 40;
 
+
+if (!variable_instance_exists(id, "iniciado")) {
+    iniciado = true;
+    if (global.etapa >= 1) {
+        var _fim = caminho[array_length(caminho) - 1];
+        x = _fim.x;
+        y = _fim.y;
+        estado = "parado";
+        sprite_index = spr_gerente_idle;
+        image_xscale = escala_base;
+    }
+}
+
 switch (estado) {
     case "esperando":
-        if (timer_espera > 0) {
-            timer_espera--;
-            exit;
-        }
-        estado = "andando";
+
         break;
 
     case "andando":
-		image_speed = 2;
+        image_speed = 2;
+
+
+        var _perto_do_jogador = abordando && distance_to_object(obj_prota) < 40;
+
         var _alvo = caminho[indice_caminho];
         var _dist = point_distance(x, y, _alvo.x, _alvo.y);
+        var _fim_caminho = false;
 
         if (_dist <= move_spd) {
             x = _alvo.x;
             y = _alvo.y;
             indice_caminho++;
+            _fim_caminho = (indice_caminho >= array_length(caminho));
+        }
 
-            if (indice_caminho >= array_length(caminho)) {
-                estado = "parado";
-                sprite_index = spr_gerente_idle;
-                image_index = 0;
-                image_xscale = escala_base;
-                global.ui_bloqueando_jogo = false;
+        if (_perto_do_jogador || _fim_caminho) {
+            abordando = false;
+            estado = "parado";
+            sprite_index = spr_gerente_idle;
+            image_index = 0;
+            image_xscale = escala_base;
+            global.ui_bloqueando_jogo = false;
+
+
+            if (global.etapa == 0) {
+                global.etapa = 1;
+                var _rec = instance_create_layer(x, y, "Instances", obj_dialogo);
+                with (_rec) {
+                    setup_dialogo("gerente_intro");
+                }
             }
             exit;
         }
+
+
+        if (_dist <= move_spd) exit;
 
         var _dx = _alvo.x - x;
         var _dy = _alvo.y - y;
@@ -48,7 +76,7 @@ switch (estado) {
         break;
 
     case "parado":
-		image_speed = 0;
+        image_speed = 0;
         if (blink_timer > 0) {
             blink_timer--;
         } else if (image_index == 0) {
@@ -56,14 +84,18 @@ switch (estado) {
             blink_timer = 8;
         } else {
             image_index = 0;
-           blink_timer = game_get_speed(gamespeed_fps) * 8;
+            blink_timer = game_get_speed(gamespeed_fps) * 8;
         }
+
+         dialogo_id = (global.etapa == 2) ? "gerente_despedida" : ((global.etapa == 1) ? "gerente_lembrete" : "gerente_intro");
 
         var _perto = distance_to_object(obj_prota) < 11;
         balaou.visible = _perto && !global.ui_bloqueando_jogo;
 
         if (_perto && !global.ui_bloqueando_jogo && !instance_exists(obj_dialogo)) {
             if (keyboard_check_pressed(ord("E"))) {
+                if (global.etapa == 2) global.etapa = 3;
+
                 var _id_dialogo = dialogo_id;
                 var _d = instance_create_layer(x, y, "Instances", obj_dialogo);
                 with (_d) {

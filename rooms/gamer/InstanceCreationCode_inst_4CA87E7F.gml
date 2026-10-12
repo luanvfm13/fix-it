@@ -1,1 +1,0 @@
-alvo_instancia = gamer_p_esc; 

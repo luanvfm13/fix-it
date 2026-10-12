@@ -29,7 +29,8 @@ function reset_jogo() {
     global.foi_demitido = false;
     global.taxi_visto = false;
     global.spawn_alvo = "";
-
+	global.etapa = 0;
+	global.problemas_resolvidos = [];
     with (obj_global) {
         tempo_step_acumulado = 0;
     }
