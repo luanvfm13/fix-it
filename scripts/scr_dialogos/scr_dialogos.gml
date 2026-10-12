@@ -79,15 +79,98 @@ function get_dialogo_data(_id) {
 	};
 		case "veia":
 		return {
-			"1": {nome: "Senhora", texto : "Como que pode um gerente tão compromissado largar os estabelecimentos um caos assim, vixe.", opcoes: [{texto: "Continuar", proximo_id: 2}]},
-			"2": {nome: "Senhora", texto: "E ainda sobra pros pobres coitados que 'trabaiam' ai. Na minha época era preso.", opcoes: []}
+            "1": {nome: "Dona", texto: "Quer uma história de presidente? Tenho duas na ponta da língua: o primeiro ou o homem que levou a capital pra Brasília?", opcoes: [
+                {texto: "Conta do primeiro", proximo_id: 2},
+                {texto: "Quero saber de Brasília", proximo_id: 3}
+            ]},
+            "2": {nome: "Dona", texto: "Marechal Deodoro da Fonseca foi o primeiro presidente do Brasil, depois da Proclamação da República, em 1889. Começou a República com farda e tudo.", opcoes: [{texto: "E o de Brasília?", proximo_id: 3}]},
+            "3": {nome: "Dona", texto: "Juscelino Kubitschek prometeu cinquenta anos de progresso em cinco. Brasília foi inaugurada em 1960, no meio do cerrado. Aí sim foi mudança de endereço.", opcoes: [{texto: "Me conta mais uma", proximo_id: 4}]},
+            "4": {nome: "Dona", texto: "Tancredo Neves foi eleito em 1985, mas adoeceu antes da posse e morreu. Quem assumiu foi o vice, José Sarney. Política às vezes parece novela, só que ninguém escolhe o final.", opcoes: []}
 		};
+
+        case "maura_inicio":
+        return {
+            "1": {nome: "Maura", texto: "Você é o consultor novo? Sou a Maura. Só um aviso: no almoço a fila dobra a esquina e o gerente finge que não vê.", opcoes: [
+                {texto: "Por onde começo?", proximo_id: 2},
+                {texto: "Vou falar com a equipe", proximo_id: 3}
+            ]},
+            "2": {nome: "Maura", texto: "Pelo caixa. Quando a maquininha engasga, o pedido inteiro para atrás dela.", opcoes: [{texto: "Vou dar uma olhada", proximo_id: 4}]},
+            "3": {nome: "Maura", texto: "Boa. O pessoal sabe qual botão trava, que horas acontece e quem fica esperando.", opcoes: [{texto: "Vou perguntar", proximo_id: 4}]},
+            "4": {nome: "Maura", texto: "Depois me conta se resolveu. Se travar de novo amanhã, conta como meia solução, viu?", opcoes: []}
+        };
+
+        case "atendente_inicio":
+        return {
+            "1": {nome: "Atendente", texto: "Se resolver a maquininha, te devo um café. Hoje já fiz pedido, caixa e suporte técnico pra ela.", opcoes: [
+                {texto: "O que ela faz?", proximo_id: 2},
+                {texto: "E se eu só acelerar?", proximo_id: 3}
+            ]},
+            "2": {nome: "Atendente", texto: "A tela congela, o pedido some e eu tenho que perguntar tudo de novo. Às vezes a cozinha já fez o primeiro.", opcoes: [{texto: "Vou investigar", proximo_id: 4}]},
+            "3": {nome: "Atendente", texto: "Aí eu corro, a maquininha pensa e a fila me vê suar. Não muda muita coisa.", opcoes: [{texto: "Justo", proximo_id: 4}]},
+            "4": {nome: "Atendente", texto: "Se consertar a causa, paro de decorar pedido de cliente. O café fica por minha conta.", opcoes: []}
+        };
+
+        case "dionisia_inicio":
+        return {
+            "1": {nome: "Dionísia", texto: "Pra chegar até aqui contei três buracos e perdi a conta antes da esquina. Meu café então... nem se fala.", opcoes: [{texto: "A rua está tão ruim assim?", proximo_id: 2}]},
+            "2": {nome: "Dionísia", texto: "Ruim? Se chover, tu não sabe a várzea que fica, Deus é mais.", opcoes: []}
+        };
+
+        case "everaldo_inicio":
+        return {
+            "1": {nome: "Everaldo", texto: "Caiu o wi-fi? Culpa do prefeito. Acabou o pão de queijo? Também. Se meu Corinthians perder eu mato esse cavalo ", opcoes: [{texto: "E os buracos da rua?", proximo_id: 2}]},
+            "2": {nome: "Everaldo", texto: "Aí eu culpo com razão! Essa calçada parece fase de plataforma: pula o buraco ou perde uma vida. Se ao menos ele ensinasse o Yuri Alberto a chutar no gol", opcoes: []}
+        };
+
+        case "loirin_inicio":
+        return {
+            "1": {nome: "Loirin", texto: "Toda terça, meio-dia e vinte, a fila chega na porta. O gerente ainda chama de surpresa.", opcoes: [{texto: "Ninguém avisou?", proximo_id: 2}]},
+            "2": {nome: "Loirin", texto: "Avisei. Ele anotou no guardanapo e perdeu o guardanapo.", opcoes: []}
+        };
+
+        case "wilson_inicio":
+        var _curiosidades_jogos = [
+            "Pac-Man se chamava Puck Man no Japão. Mudaram o nome antes de lançar nos EUA porque era fácil transformar o P em outra letra no fliperama.",
+            "Mario apareceu primeiro como Jumpman, no Donkey Kong de 1981. O nome Mario veio depois; o bigode ajudava a enxergar o rosto nos pixels da época.",
+            "Tetris foi criado por Alexey Pajitnov em 1984. O nome mistura 'tetra', por causa das peças de quatro quadrados, com tênis, o esporte favorito do criador.",
+            "O cabo Link do Game Boy ajudou Pokémon a virar conversa de recreio: dava pra trocar criaturas com outra pessoa, em vez de só jogar sozinho."
+        ];
+        return {
+            "1": {nome: "Wilson", texto: _curiosidades_jogos[irandom(array_length(_curiosidades_jogos) - 1)], opcoes: []}
+        };
 
 	case "bronca_caixa_bater":
     return {
         "1": { nome: "", texto: "Bater no caixa só piorou tudo... Agora nem a trava do teclado funciona direito.", opcoes: [ { texto: "Continuar", proximo_id: 2 } ] },
         "2": { nome: "Gerente", texto: "Sério que você bateu no equipamento? Isso não é jeito de resolver nada.", opcoes: [] }
     };
+        case "gerente_final":
+            return {
+                "1": {
+                    nome: "Gerente",
+                    texto: "Acabei de conferir seus relatórios. Lanchonete e hospital concluídos. O pessoal mandou agradecer; o Wilson perguntou se isso dá conquista.",
+                    opcoes: [
+                        { texto: "O mérito é da equipe", proximo_id: 2 },
+                        { texto: "E agora, chefe?", proximo_id: 3 }
+                    ]
+                },
+                "2": {
+                    nome: "Gerente",
+                    texto: "Ótimo! assim que se fala, você conseguiu, fez tudo certo, todo mundo está contente",
+                    opcoes: [ { texto: "Foi trabalho de todo mundo", proximo_id: 4 } ]
+                },
+                "3": {
+                    nome: "Gerente",
+                    texto: "Agora sim, tudo certo, chega, por hoje feche o tablet e vá tomar uma cerveja..",
+                    opcoes: [ { texto: "Justo", proximo_id: 4 } ]
+                },
+                "4": {
+                    nome: "Gerente",
+                    texto: "Bom trabalho, consultor. A porta da G.A.M.E.R fica aberta. Fim de expediente.",
+                    opcoes: []
+                }
+            };
+
         case "gerente_intro":
             return {
                 "1": {
@@ -107,7 +190,7 @@ function get_dialogo_data(_id) {
                 },
                 "4": {
                     nome: "Gerente",
-                    texto: "Antes de ir a seu teste, passe no seu escritório pra equipar o equipamento que você deverá usar. Boa sorte, e cuidado pra não ser demitido logo no primeiro dia.",
+                    texto: "Equipe o scanner e o tablet no escritório. Depois da lanchonete, volte aqui e use a porta azul para visitar o hospital. Quando concluir as duas missões, volte para me contar como foi.",
                     opcoes: []
                 }
             };
@@ -151,7 +234,27 @@ function get_dialogo_data(_id) {
                     texto: "Use a lupa perto de um problema para investigar.",
                     opcoes: []
                 }
+            }
+		case "musga":
+        if (global.musica_ativa) {
+            return {
+                "1": {nome: "Troca-troca", texto: "Haloooooooooooooooooooooo, quer desligar a musica???", opcoes: [
+                    {texto: "Desliga a música", proximo_id: 2, musica_ativa: false},
+                    {texto: "Deixa tocar", proximo_id: 3}
+                ]},
+                "2": {nome: "Troca-troca", texto: "Fechou chefe.", opcoes: []},
+                "3": {nome: "Troca-troca", texto: "Ja que insiste...", opcoes: []}
             };
+        }
+
+        return {
+            "1": {nome: "Troca-troca", texto: "heyyy, quer a musga denovo? ", opcoes: [
+                {texto: "Liga a música", proximo_id: 2, musica_ativa: true},
+                {texto: "Prefiro o silêncio", proximo_id: 3}
+            ]},
+            "2": {nome: "Troca-troca", texto: "belezura", opcoes: []},
+            "3": {nome: "Troca-troca", texto: "taokei.", opcoes: []}
+        };
 
         // MODELO, copia e altera p criar diálogos novos
         case "modelo_exemplo":

@@ -1,4 +1,4 @@
-if (!global.timer_ativo) exit;
+if (!global.timer_ativo || (room != restaurante && room != Hosp)) exit;
 
 var _min = global.tempo_restante div 60;
 var _seg = global.tempo_restante mod 60;

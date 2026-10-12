@@ -87,7 +87,24 @@ switch (estado) {
             blink_timer = game_get_speed(gamespeed_fps) * 8;
         }
 
-         dialogo_id = (global.etapa == 2) ? "gerente_despedida" : ((global.etapa == 1) ? "gerente_lembrete" : "gerente_intro");
+         if (global.missoes_concluidas >= global.missoes_total) dialogo_id = "gerente_final";
+        else if (global.etapa == 2) dialogo_id = "gerente_despedida";
+        else if (global.etapa == 1) dialogo_id = "gerente_lembrete";
+        else dialogo_id = "gerente_intro";
+		
+		
+		    if (global.final_dialogo_concluido && global.missoes_concluidas >= global.missoes_total && !global.final_campanha) {
+            global.final_dialogo_concluido = false;
+            global.final_campanha = true;
+            global.jogo_vencido = true;
+            global.jogo_acabou = true;
+            global.timer_ativo = false;
+            var _final = instance_create_depth(0, 0, -10000, obj_misaof);
+            _final.demitido = false;
+            _final.venceu = true;
+            _final.fim_campanha = true;
+            exit;
+        }
 
         var _perto = distance_to_object(obj_prota) < 11;
         balaou.visible = _perto && !global.ui_bloqueando_jogo;

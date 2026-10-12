@@ -2,13 +2,26 @@
 if (player == noone) exit;
 
 if (keyboard_check_pressed(ord("R")) && scanner_cooldown <= 0 && !global.ui_bloqueando_jogo) {
-    scanner_active = true;
-    scan_timer = scan_duration;
-    scanner_cooldown = scanner_cooldown_max;
+    if (!player.tem_scanner) {
+        if (instance_exists(obj_men)) {
+            obj_men.text = "Scanner não equipado.";
+            obj_men.tempo = 90;
+        }
+    } else if (global.moedas < scanner_cost) {
+        if (instance_exists(obj_men)) {
+            obj_men.text = "Scanner exige 1 moeda.";
+            obj_men.tempo = 90;
+        }
+    } else {
+        global.moedas -= scanner_cost;
+        scanner_active = true;
+        scan_timer = scan_duration;
+        scanner_cooldown = scanner_cooldown_max;
 
-    if (instance_exists(obj_men)) {
-        obj_men.text = "Varrendo área...";
-        obj_men.tempo = scan_duration;
+        if (instance_exists(obj_men)) {
+            obj_men.text = "Varrendo área... (-" + string(scanner_cost) + ")";
+            obj_men.tempo = scan_duration;
+        }
     }
 }
 

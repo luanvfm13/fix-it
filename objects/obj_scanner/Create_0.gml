@@ -1,6 +1,7 @@
 
 scanner_active = false;
 scanner_range = 150;
+scanner_cost = 1;
 scanner_cooldown = 0;
 scanner_cooldown_max = 120;
 scan_duration = 180;

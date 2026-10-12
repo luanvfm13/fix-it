@@ -51,13 +51,20 @@ if (texto_completo) {
         }
 
         if (keyboard_check_pressed(vk_space) || keyboard_check_pressed(ord("Z"))) {
-            no_atual = string(fala.opcoes[opcao_selecionada].proximo_id);
+            var _opcao = fala.opcoes[opcao_selecionada];
+            if (variable_struct_exists(_opcao, "musica_ativa")) {
+                global.musica_ativa = _opcao.musica_ativa;
+            }
+            no_atual = string(_opcao.proximo_id);
             indice_caractere = 0;
             ultimo_caractere_som = 0;
             opcao_selecionada = 0;
         }
     } else {
         if (keyboard_check_pressed(vk_space) || keyboard_check_pressed(ord("Z"))) {
+            if (dialogo_id == "gerente_final") {
+                global.final_dialogo_concluido = true;
+            }
             instance_destroy();
         }
     }
