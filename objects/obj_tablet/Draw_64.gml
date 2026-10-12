@@ -76,8 +76,15 @@ if (estado == "escolhendo") {
     draw_text(_tela_x + 10, _y_cursor, "Moedas ganhas: +" + string(resultado.moedas_ganhas));
     _y_cursor += 20;
     draw_text(_tela_x + 10, _y_cursor, "Total de moedas: " + string(global.moedas));
+    _y_cursor += 20;
+
+    var _cor_tempo = (resultado.tempo_delta >= 0) ? c_lime : c_red;
+    var _sinal_tempo = (resultado.tempo_delta > 0) ? "+" : "";
+    draw_set_color(_cor_tempo);
+    draw_text(_tela_x + 10, _y_cursor, "Tempo: " + _sinal_tempo + string(resultado.tempo_delta) + " s");
     _y_cursor += 30;
 
+    draw_set_color(c_white);
     draw_text_ext(_tela_x + 10, _y_cursor, resultado.explicacao, 18, _largura_texto);
 
     draw_set_color(c_gray);

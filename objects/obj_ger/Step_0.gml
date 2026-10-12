@@ -6,10 +6,23 @@ switch (estado) {
         if (timer_espera > 0) {
             timer_espera--;
             exit;
-        }
-        estado = "andando";
-        break;
+        balaou.x = x;
+        balaou.y = y - 40;
 
+        if (global.final_dialogo_concluido && global.missoes_concluidas >= global.missoes_total && !global.final_campanha) {
+            global.final_dialogo_concluido = false;
+            global.final_campanha = true;
+            global.jogo_vencido = true;
+            global.jogo_acabou = true;
+            global.timer_ativo = false;
+
+            var _final = instance_create_depth(0, 0, -10000, obj_misaof);
+            _final.demitido = false;
+            _final.venceu = true;
+            _final.fim_campanha = true;
+            exit;
+        }
+        }
     case "andando":
 		image_speed = 2;
         var _alvo = caminho[indice_caminho];

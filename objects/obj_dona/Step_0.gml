@@ -1,5 +1,7 @@
 
-var _perto = distance_to_object(obj_prota) < 11;
+balaou.x = x + 10;
+balaou.y = y - 40;
+var _perto = distance_to_object(obj_prota) < 20;
 
 balaou.visible = _perto && !global.ui_bloqueando_jogo;
 

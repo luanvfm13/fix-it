@@ -1,7 +1,15 @@
 if (global.ui_bloqueando_jogo) exit;
-var hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-var ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+var _direita = keyboard_check(ord("D")) || keyboard_check(vk_right);
+var _esquerda = keyboard_check(ord("A")) || keyboard_check(vk_left);
+var _baixo = keyboard_check(ord("S")) || keyboard_check(vk_down);
+var _cima = keyboard_check(ord("W")) || keyboard_check(vk_up);
+var hor = _direita - _esquerda;
+var ver = _baixo - _cima;
 
+if (hor != 0 && ver != 0) {
+    hor *= 0.70710678;
+    ver *= 0.70710678;
+}
 
 var vel_fin = move_spd
 if(keyboard_check(vk_shift))

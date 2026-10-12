@@ -22,6 +22,13 @@ function reset_jogo() {
     global.timer_ativo = false;
     global.jogo_acabou = false;
     global.jogo_vencido = false;
+    global.missoes_total = 2;
+    global.missoes_concluidas = 0;
+    global.missao_restaurante_feita = false;
+    global.missao_hospital_feita = false;
+    global.missao_hospital_iniciada = false;
+    global.final_dialogo_concluido = false;
+    global.final_campanha = false;
     global.tem_scanner = false;
     global.tem_lupa = false;
     global.tem_tablet = false;
