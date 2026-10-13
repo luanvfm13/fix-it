@@ -150,6 +150,7 @@
     {"id":{"name":"spr_tablet","path":"sprites/spr_tablet/spr_tablet.yy",},},
     {"id":{"name":"spr_tilesetinc","path":"sprites/spr_tilesetinc/spr_tilesetinc.yy",},},
     {"id":{"name":"spr_titulo","path":"sprites/spr_titulo/spr_titulo.yy",},},
+    {"id":{"name":"spr_logo_fixit","path":"sprites/spr_logo_fixit/spr_logo_fixit.yy",},},
     {"id":{"name":"spr_TOKEN","path":"sprites/spr_TOKEN/spr_TOKEN.yy",},},
     {"id":{"name":"spr_trocamusga","path":"sprites/spr_trocamusga/spr_trocamusga.yy",},},
     {"id":{"name":"spr_wilson","path":"sprites/spr_wilson/spr_wilson.yy",},},
