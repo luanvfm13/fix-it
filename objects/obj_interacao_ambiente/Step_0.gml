@@ -1,4 +1,4 @@
-if (room != escritorio || dialogo_id == "" || global.ui_bloqueando_jogo || !instance_exists(obj_prota)) exit;
+if ((room != escritorio && room != gamer) || dialogo_id == "" || global.ui_bloqueando_jogo || !instance_exists(obj_prota)) exit;
 
 var _player = instance_find(obj_prota, 0);
 if (point_distance(x, y, _player.x, _player.y) >= distancia_interacao) exit;

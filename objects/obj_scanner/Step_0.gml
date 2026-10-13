@@ -1,28 +1,50 @@
 if (global.tempo_flash_t > 0) global.tempo_flash_t--;
 if (player == noone) exit;
 
+if (!variable_instance_exists(player, "tem_scanner")) {
+    show_debug_message("obj_prota sem 'tem_scanner' mds bug é chato");
+    exit;
+}
+
+
 if (keyboard_check_pressed(ord("R")) && scanner_cooldown <= 0 && !global.ui_bloqueando_jogo) {
+   
     if (!player.tem_scanner) {
         if (instance_exists(obj_men)) {
             obj_men.text = "Scanner não equipado.";
             obj_men.tempo = 90;
         }
-    } else if (global.tempo_restante <= scan_custo_tempo) {
+    } 
+  
+    else if (global.tempo_restante <= scan_custo_tempo) {
         if (instance_exists(obj_men)) {
             obj_men.text = "Tempo insuficiente para varrer.";
             obj_men.tempo = 90;
         }
-    } else {
+    } 
+    else if (global.moedas < scanner_cost) {
+        if (instance_exists(obj_men)) {
+            obj_men.text = "Scanner exige " + string(scanner_cost) + " moeda(s).";
+            obj_men.tempo = 90;
+        }
+    } 
+  
+    else {
+
         global.tempo_restante -= scan_custo_tempo;
+        global.moedas -= scanner_cost;
+
         global.scans_usados += 1;
-		global.tempo_flash_t = 90;
+        global.tempo_flash_t = 90;
         global.tempo_flash_txt = "-" + string(scan_custo_tempo) + "s";
+
+        
         scanner_active = true;
         scan_timer = scan_duration;
         scanner_cooldown = scanner_cooldown_max;
 
         if (instance_exists(obj_men)) {
-            obj_men.text = "Varrendo área... (-" + string(scan_custo_tempo) + " s)";
+            obj_men.text = "Varrendo área... (-" + string(scan_custo_tempo) + "s / -" + string(scanner_cost) + " moedas)";
             obj_men.tempo = scan_duration;
         }
     }
@@ -37,9 +59,7 @@ if (scanner_active) {
     if (scan_timer <= 0) {
         scanner_active = false;
     }
-}
-
-if (scanner_active) {
+    
     scan_pulse += 1;
     if (scan_pulse > scan_pulse_max) {
         scan_pulse = 0;
@@ -48,12 +68,15 @@ if (scanner_active) {
 
 ds_list_clear(problems_detected);
 
-with (obj_problema) {
-    var _dist = distance_to_object(other.player);
-    if (_dist <= other.scanner_range) {
-        ds_list_add(other.problems_detected, id);
+if (instance_exists(player)) {
+    with (obj_problema) {
+        var _dist = distance_to_object(other.player);
+        if (_dist <= other.scanner_range) {
+            ds_list_add(other.problems_detected, id);
+        }
     }
 }
+
 
 if (scanner_active) {
     ds_list_clear(highlighted_problems);
@@ -76,9 +99,6 @@ if (scanner_active) {
     ds_list_clear(highlighted_problems);
 }
 
-player.iGotThis = (ds_list_size(problems_detected) > 0);
-if (!variable_instance_exists(player, "tem_scanner")) {
-    show_debug_message("obj_prota sem 'tem_scanner' mds bug é chato");
-    exit;
+if (instance_exists(player)) {
+    player.iGotThis = (ds_list_size(problems_detected) > 0);
 }
-if (!player.tem_scanner) exit;

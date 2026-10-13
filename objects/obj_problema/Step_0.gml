@@ -22,5 +22,8 @@ if (!variable_instance_exists(id, "checado")) {
 
 if (is_solved) {
     if (!_ja) array_push(global.problemas_resolvidos, _key);
+    if (room == restaurante && problem_id == "Caixa") {
+        instance_create_layer(x, y, "Instances", obj_toten);
+    }
     instance_destroy();
 }

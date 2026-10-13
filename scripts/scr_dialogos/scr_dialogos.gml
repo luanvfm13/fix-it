@@ -171,6 +171,11 @@ function get_dialogo_data(_id) {
                 }
             };
 
+        case "toten":
+            return {
+                "1": { nome: "toten", texto: "Este é um toten de atendimento automático, que foda", opcoes: [] }
+            };
+
         case "gerente_intro":
             return {
                 "1": {

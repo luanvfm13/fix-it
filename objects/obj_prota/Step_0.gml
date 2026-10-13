@@ -25,7 +25,41 @@ var vel_fin = move_spd;
 if (keyboard_check(vk_shift)) {
     vel_fin = move_spd * 2;
 }
-move_and_collide(hor * vel_fin, ver * vel_fin, tilemap, undefined, undefined, undefined);
+
+var _dx = hor * vel_fin;
+var _dy = ver * vel_fin;
+var _x_inicial = x;
+var _y_inicial = y;
+move_and_collide(_dx, _dy, tilemap, undefined, undefined, undefined);
+
+var _colidiu_npc = false;
+for (var _i = 0; _i < array_length(npc_colisao_objetos); _i++) {
+    if (place_meeting(x, y, npc_colisao_objetos[_i])) {
+        _colidiu_npc = true;
+        break;
+    }
+}
+
+if (_colidiu_npc) {
+    x = _x_inicial;
+    y = _y_inicial;
+
+    move_and_collide(_dx, 0, tilemap, undefined, undefined, undefined);
+    for (var _i = 0; _i < array_length(npc_colisao_objetos); _i++) {
+        if (place_meeting(x, y, npc_colisao_objetos[_i])) {
+            x = _x_inicial;
+            break;
+        }
+    }
+
+    move_and_collide(0, _dy, tilemap, undefined, undefined, undefined);
+    for (var _i = 0; _i < array_length(npc_colisao_objetos); _i++) {
+        if (place_meeting(x, y, npc_colisao_objetos[_i])) {
+            y = _y_inicial;
+            break;
+        }
+    }
+}
 
 if (hor != 0 || ver != 0) {
     if (ver > 0)      sprite_index = spr_prota_fren;
