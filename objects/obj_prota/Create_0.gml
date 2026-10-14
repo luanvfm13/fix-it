@@ -6,7 +6,7 @@ move_spd = move_spd_base * (_escala / escala_ref);
 
 var _collision_layer = (room == restaurante) ? "a" : "tile_col";
 tilemap = layer_tilemap_get_id(_collision_layer);
-npc_colisao_objetos = [obj_npc, obj_npc1, obj_ger, obj_dona, obj_maura];
+npc_colisao_objetos = [obj_npc, obj_npc1, obj_ger, obj_dona, obj_maura, obj_toten];
 if (room == escritorio) {
 	layer_set_visible(layer_get_id(_collision_layer), false);
 }

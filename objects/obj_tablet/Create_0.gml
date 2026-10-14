@@ -1,6 +1,12 @@
 problema_alvo = noone;
 opcao_selecionada = 0;
-estado = "escolhendo"; // escolhendo | resultado, vai usar esses 2 ai
+estado = "diagnosticando";
 resultado = undefined;
+escolha_pendente = -1;
+fluxo_etapa = 0;
+fluxo_escolhido = array_create(4, 1);
+diagnostico_selecionado = 0;
+diagnostico_correto = false;
+ordem_diagnosticos = criar_ordem_embaralhada(3);
 global.ui_bloqueando_jogo = true;
 ordem_opcoes = [];

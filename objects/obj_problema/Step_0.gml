@@ -22,7 +22,7 @@ if (!variable_instance_exists(id, "checado")) {
 
 if (is_solved) {
     if (!_ja) array_push(global.problemas_resolvidos, _key);
-    if (room == restaurante && problem_id == "Caixa") {
+    if (room == restaurante && problem_id == "Caixa" && coesao_resolucao >= 80) {
         instance_create_layer(x, y, "Instances", obj_toten);
     }
     instance_destroy();

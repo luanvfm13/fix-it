@@ -62,7 +62,9 @@ if (texto_completo) {
         }
     } else {
         if (keyboard_check_pressed(vk_space) || keyboard_check_pressed(ord("Z"))) {
-            if (dialogo_id == "gerente_final") {
+            if (dialogo_id == "gerente_final"
+             || dialogo_id == "gerente_final_parcial"
+             || dialogo_id == "gerente_final_baixo") {
                 global.final_dialogo_concluido = true;
             }
             instance_destroy();

@@ -1,6 +1,8 @@
 if (!scanner_active) exit;
 if (player == noone) exit;
 if (global.ui_bloqueando_jogo) exit;
+if (!variable_instance_exists(id, "highlighted_problems")
+ || !ds_exists(highlighted_problems, ds_type_list)) exit;
 
 draw_set_font(fnt_undertale);
 

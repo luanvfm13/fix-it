@@ -11,6 +11,9 @@ function alvo_da_etapa() {
             break;
 
         case gamer:
+            if (global.missoes_concluidas >= global.missoes_total && !global.final_campanha) {
+                return instance_find(obj_ger, 0);
+            }
             if (_e == 1) return instance_find(gamer_p_esc, 0);
             if (_e == 2 || _e == 4) return instance_find(obj_ger, 0);
             if (_e >= 3 || _e == 5) return instance_find(gamer_p_inicio, 0);

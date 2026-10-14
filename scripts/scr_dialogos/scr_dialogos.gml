@@ -171,9 +171,21 @@ function get_dialogo_data(_id) {
                 }
             };
 
+        case "gerente_final_parcial":
+            return {
+                "1": { nome: "Gerente", texto: "As duas missoes foram concluidas. Seus relatorios mostram boas melhorias, mas alguns processos ainda dependem de conferencias manuais.", opcoes: [ { texto: "O que posso melhorar?", proximo_id: 2 } ] },
+                "2": { nome: "Gerente", texto: "Na proxima, acompanhe os indicadores juntos. Integrar etapas ajuda, mas treinamento e validacao tambem contam.", opcoes: [] }
+            };
+
+        case "gerente_final_baixo":
+            return {
+                "1": { nome: "Gerente", texto: "Voce concluiu as duas missoes, mas os relatorios ainda mostram filas e falhas importantes.", opcoes: [ { texto: "Entendi", proximo_id: 2 } ] },
+                "2": { nome: "Gerente", texto: "Reveja as pistas antes de escolher. Uma solucao precisa melhorar o processo sem deixar de lado confiabilidade e equipe.", opcoes: [] }
+            };
+
         case "toten":
             return {
-                "1": { nome: "toten", texto: "Este é um toten de atendimento automático, que foda", opcoes: [] }
+                "1": { nome: "Totem", texto: "Sou o totem de autoatendimento. Os pedidos seguem direto para a cozinha e o estoque, sem depender do caixa. Assim a fila anda mais rápido.", opcoes: [] }
             };
 
         case "gerente_intro":

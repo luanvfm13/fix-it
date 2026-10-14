@@ -87,7 +87,14 @@ switch (estado) {
             blink_timer = game_get_speed(gamespeed_fps) * 8;
         }
 
-         if (global.missoes_concluidas >= global.missoes_total) dialogo_id = "gerente_final";
+        if (global.missoes_concluidas >= global.missoes_total) {
+            var _media_final = (global.coesao_count > 0)
+                ? global.coesao_total / global.coesao_count
+                : 0;
+            if (_media_final >= 90) dialogo_id = "gerente_final";
+            else if (_media_final >= 60) dialogo_id = "gerente_final_parcial";
+            else dialogo_id = "gerente_final_baixo";
+        }
         else if (global.etapa == 2) dialogo_id = "gerente_despedida";
         else if (global.etapa == 1) dialogo_id = "gerente_lembrete";
         else if (global.etapa == 4) dialogo_id = "gerente_hospital";

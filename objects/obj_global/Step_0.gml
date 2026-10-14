@@ -1,13 +1,29 @@
 var _missao_ativa = (room == restaurante || room == Hosp);
 if (!_missao_ativa) {
     global.timer_ativo = false;
+    global.sala_missao_atual = noone;
     exit;
 }
-
 
 if ((room == restaurante && global.missao_restaurante_feita) || (room == Hosp && global.missao_hospital_feita)) {
     global.timer_ativo = false;
     exit;
+}
+
+if (global.sala_missao_atual != room) {
+    global.sala_missao_atual = room;
+    global.timer_ativo = true;
+    global.tempo_restante = 240;
+    tempo_step_acumulado = 0;
+    global.jogo_acabou = false;
+    global.falha_gerada_missao = false;
+    global.evento_operacional = "";
+    global.relatorios_missao = [];
+    global.metricas_missao_antes = {
+        eficiencia: global.ind_eficiencia,
+        confiabilidade: global.ind_confiabilidade,
+        integracao: global.ind_integracao
+    };
 }
 
 if (!global.timer_ativo || global.jogo_acabou) exit;

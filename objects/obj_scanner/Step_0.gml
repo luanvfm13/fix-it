@@ -1,5 +1,11 @@
 if (global.tempo_flash_t > 0) global.tempo_flash_t--;
+if (!instance_exists(player)) player = instance_find(obj_prota, 0);
 if (player == noone) exit;
+
+if (!variable_instance_exists(id, "problems_detected")
+ || !ds_exists(problems_detected, ds_type_list)
+ || !variable_instance_exists(id, "highlighted_problems")
+ || !ds_exists(highlighted_problems, ds_type_list)) exit;
 
 if (!variable_instance_exists(player, "tem_scanner")) {
     show_debug_message("obj_prota sem 'tem_scanner' mds bug é chato");
@@ -22,17 +28,9 @@ if (keyboard_check_pressed(ord("R")) && scanner_cooldown <= 0 && !global.ui_bloq
             obj_men.tempo = 90;
         }
     } 
-    else if (global.moedas < scanner_cost) {
-        if (instance_exists(obj_men)) {
-            obj_men.text = "Scanner exige " + string(scanner_cost) + " moeda(s).";
-            obj_men.tempo = 90;
-        }
-    } 
-  
     else {
 
         global.tempo_restante -= scan_custo_tempo;
-        global.moedas -= scanner_cost;
 
         global.scans_usados += 1;
         global.tempo_flash_t = 90;
@@ -44,7 +42,7 @@ if (keyboard_check_pressed(ord("R")) && scanner_cooldown <= 0 && !global.ui_bloq
         scanner_cooldown = scanner_cooldown_max;
 
         if (instance_exists(obj_men)) {
-            obj_men.text = "Varrendo área... (-" + string(scan_custo_tempo) + "s / -" + string(scanner_cost) + " moedas)";
+            obj_men.text = "Varrendo área... (-" + string(scan_custo_tempo) + "s)";
             obj_men.tempo = scan_duration;
         }
     }
@@ -86,6 +84,7 @@ if (scanner_active) {
         ds_list_add(highlighted_problems, _prob);
         if (instance_exists(_prob)) {
             _prob.is_highlighted = true;
+            registrar_evidencia(_prob.problem_id, "scanner");
         }
     }
 } else {

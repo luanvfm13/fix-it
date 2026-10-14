@@ -14,9 +14,26 @@ function fade_to_room(_room) {
 }
 
 function reset_jogo() {
-    global.moedas = 0;
+    global.moedas = 3;
     global.coesao_total = 0;
     global.coesao_count = 0;
+    global.orcamento = 80;
+    global.divida_tecnica = 0;
+    global.ind_eficiencia = 35;
+    global.ind_confiabilidade = 40;
+    global.ind_integracao = 20;
+    global.pericia_integracao = false;
+    global.pericia_operacao = false;
+    global.falha_gerada_missao = false;
+    global.sala_missao_atual = noone;
+    global.evento_operacional = "";
+    global.relatorios_missao = [];
+    global.historico_eventos = [];
+    global.metricas_missao_antes = {
+        eficiencia: global.ind_eficiencia,
+        confiabilidade: global.ind_confiabilidade,
+        integracao: global.ind_integracao
+    };
     global.ui_bloqueando_jogo = false;
     global.tempo_restante = 240;
     global.timer_ativo = false;
@@ -38,6 +55,7 @@ function reset_jogo() {
     global.spawn_alvo = "";
 	global.etapa = 0;
 	global.problemas_resolvidos = [];
+    global.evidencias_coletadas = [];
 	global.scans_usados = 0;
     global.scans_ultimo = 0;
     global.scans_custo_ultimo = 0;
@@ -50,7 +68,6 @@ function reset_jogo() {
 }
 function cobrar_scanner() {
     global.scans_ultimo = global.scans_usados;
-    global.scans_custo_ultimo = min(global.moedas, global.scans_usados);
-    global.moedas -= global.scans_custo_ultimo;
+    global.scans_custo_ultimo = 0;
     global.scans_usados = 0;
 }

@@ -51,10 +51,22 @@ draw_text(gui_w / 2, _y, "Coesão média: " + string(_media) + "%");
 _y += 22;
 draw_text(gui_w / 2, _y, "Moedas totais: " + string(global.moedas));
 _y += 22;
+draw_text(gui_w / 2, _y, "Eficiência: " + string(global.metricas_missao_antes.eficiencia) + "% -> " + string(global.ind_eficiencia) + "%");
+_y += 20;
+draw_text(gui_w / 2, _y, "Confiabilidade: " + string(global.metricas_missao_antes.confiabilidade) + "% -> " + string(global.ind_confiabilidade) + "%");
+_y += 20;
+draw_text(gui_w / 2, _y, "Integração: " + string(global.metricas_missao_antes.integracao) + "% -> " + string(global.ind_integracao) + "%");
+_y += 20;
+draw_text(gui_w / 2, _y, "Orçamento da campanha: " + string(global.orcamento) + " | Dívida técnica: " + string(global.divida_tecnica));
+_y += 22;
 if (global.scans_ultimo > 0) {
-	draw_text(gui_w / 2, _y, "Número de vezes que o scanner foi utlizado: " 
-	+ string(global.scans_ultimo) + " (-" + string(global.scans_custo_ultimo) + " moedas)");
+    draw_text(gui_w / 2, _y, "Número de vezes que o scanner foi utilizado: "
+    + string(global.scans_ultimo) + " (" + string(global.scans_ultimo * 12) + " s usados)");
 	_y += 22;
+}
+if (array_length(global.historico_eventos) > 0) {
+    draw_text(gui_w / 2, _y, "Falhas inesperadas na campanha: " + string(array_length(global.historico_eventos)));
+    _y += 20;
 }
 _y += 8
 

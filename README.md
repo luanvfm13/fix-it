@@ -26,8 +26,13 @@ O foco é aplicar lógica de programação, estruturas de dados e game design, c
 * **Táxi de abertura:** O carro desce a avenida, deixa o protagonista e vai embora. A cutscene acontece uma vez por jogo.
 * **Gerente:** Aborda o jogador ao chegar à G.A.M.E.R, conduz a recepção, dá a despedida e a missão do hospital.
 * **Lupa:** Interação proximal com problemas.
-* **Scanner:** Varredura com radar animado. Cada uso desconta 12 s do relógio. As moedas são cobradas no fim da missão.
-* **Diagnóstico (tablet):** Múltipla escolha com 4 opções por problema. Cada escolha gera coesão, moedas e, se for ruim, desconto de tempo.
+* **Investigação por evidências:** O scanner revela o sintoma e a lupa registra uma observação. O tablet só abre o diagnóstico depois da varredura e apresenta as duas pistas.
+* **Scanner:** Varredura com radar animado. Cada uso desconta 12 s do relógio; não custa moedas.
+* **Diagnóstico e fluxo (tablet):** Com as pistas, o jogador escolhe uma hipótese antes da solução e configura entrada, processamento, validação e saída. Um diagnóstico incompatível reduz a coesão.
+* **Simulação operacional:** Restaurante compara fila, pedidos e retrabalho; hospital compara tempo de busca, itens localizados e divergências de estoque.
+* **Campanha mensurável:** Eficiência, confiabilidade, integração, orçamento e dívida técnica persistem entre as missões. Treinamento da equipe afeta a confiabilidade; escolhas frágeis podem gerar uma falha extra para investigar.
+* **Especializações:** Bom desempenho desbloqueia bônus de integração e de custo para as próximas intervenções.
+* **Tempo total:** O limite de 4 minutos é compartilhado entre restaurante e hospital; sair da missão pausa o relógio, mas não o reinicia.
 * **Spawn por porta:** O protagonista nasce perto da porta de onde veio.
 * **Rota da avenida:** A linha guia do caminho até o hospital, com aviso quando o jogador se afasta.
 * **Sistema de Dados Centralizado:** Problemas em `scr_problemas.gml`, diálogos em `scr_dialogos.gml`.
@@ -38,7 +43,7 @@ O foco é aplicar lógica de programação, estruturas de dados e game design, c
 
 Cada solução escolhida recebe uma pontuação de 0% a 100% de **Coesão de Automação**:
 
-* **100% (Verde):** Solução integrada, sistemas comunicam-se, eficiência máxima.
+* **100% (Verde):** Solução integrada com as quatro etapas do fluxo configuradas para integração total.
 * **50%:** Solução parcial, melhoria notável mas incompleta.
 * **10% – 30%:** Gambiarra, melhoria mínima, criação de débito técnico.
 * **0%:** Sem efeito ou piora a situação.
@@ -95,11 +100,17 @@ Depois das duas missões, o gerente dá a fala final e a campanha termina.
 | **Mover** | WASD ou Setas |
 | **Correr** | Shift |
 | **Interagir (Lupa, NPC, porta, gerente, equipamento)** | E |
-| **Ativar Scanner** | R |
-| **Navegar em diálogos e menus** | ↑ / ↓ (ou W / S) |
+* **Ativar Scanner** | R |
+* **Escolher diagnóstico/solução** | ↑ / ↓ |
+* **Navegar em diálogos** | W / S |
 | **Avançar diálogo** | Espaço / Z |
-| **Confirmar** | E ou Enter |
-| **Cancelar / fechar painel** | X ou Esc |
+* **Confirmar diagnóstico/solução** | E ou Enter |
+| **Editar etapa do fluxo** | ← / →; E ou Enter confirma cada etapa |
+| **Cancelar / voltar** | X ou Esc |
+
+## Avaliação de aprendizagem
+
+O jogo registra escolhas e indicadores para apoiar testes com participantes. Esses dados, por si só, não demonstram melhora de aprendizagem; qualquer conclusão deve vir de uma avaliação apropriada e ser relatada com transparência.
 
 ---
 
