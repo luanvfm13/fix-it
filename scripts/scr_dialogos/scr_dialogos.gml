@@ -58,8 +58,26 @@ function get_dialogo_data(_id) {
     return {
         "1": { nome: "Você", texto: "Um gaveteiro de arquivos. Os documentos estão separados por assunto e prontos para consulta.", opcoes: [] }
     };
-
-        case "escritorio_armario":
+		
+		case "guia_gamer":
+    return { "1": { nome: "", texto: "A G.A.M.E.R fica na recepção do prédio. Entre pela porta e fale com o gerente.", opcoes: [] } };
+		
+		case "guia_escritorio":
+    return { "1": { nome: "", texto: "Pegue as ferramentas no escritório. Sem elas, não dá para começar o trabalho.", opcoes: [] } };
+		
+		case "guia_gerente":
+    return { "1": { nome: "", texto: "O gerente ainda quer falar com você antes da próxima missão.", opcoes: [] } };
+		
+		case "guia_lanchonete":
+    return { "1": { nome: "", texto: "A lanchonete fica pela saída da avenida. Siga para lá quando estiver pronto.", opcoes: [] } };
+		
+		case "guia_gerente_hosp":
+    return { "1": { nome: "", texto: "Antes do hospital, passe pelo gerente e ouça a missão.", opcoes: [] } };
+		
+		case "guia_hospital":
+    return { "1": { nome: "", texto: "O hospital fica na avenida. A rota no chão mostra o caminho.", opcoes: [] } };
+        
+		case "escritorio_armario":
     return {
         "1": { nome: "Você", texto: "Um armário de armazenamento. Melhor deixar tudo organizado antes de sair para o próximo atendimento.", opcoes: [] }
     };

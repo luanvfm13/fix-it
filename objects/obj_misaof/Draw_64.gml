@@ -20,7 +20,12 @@ var _epilogo = "O cronômetro zerou antes de resolver tudo. A equipe ainda preci
 
 if (demitido) {
     _titulo = "FIM DE JOGO: DEMITIDO";
+	if (global.motivo_demissao == "risco") {
     _epilogo = "Uma decisão colocou os clientes em risco e a G.A.M.E.R encerrou seu contrato. O relatório ficou; dá para voltar e fazer diferente.";
+	}
+	 if (global.motivo_demissao == "saldo") {
+        _epilogo = "O caixa da G.A.M.E.R fechou no vermelho. As varreduras custam moedas e o seu desempenho não cobriu o uso do scanner. Seu contrato foi encerrado.";
+    } 
 } else if (venceu) {
     _cor_titulo = c_lime;
     if (!fim_campanha) {
@@ -60,9 +65,9 @@ _y += 20;
 draw_text(gui_w / 2, _y, "Orçamento da campanha: " + string(global.orcamento) + " | Dívida técnica: " + string(global.divida_tecnica));
 _y += 22;
 if (global.scans_ultimo > 0) {
-    draw_text(gui_w / 2, _y, "Número de vezes que o scanner foi utilizado: "
-    + string(global.scans_ultimo) + " (" + string(global.scans_ultimo * 12) + " s usados)");
-	_y += 22;
+    draw_text(gui_w / 2, _y, "Varreduras (última missão): " + string(global.scans_ultimo)
+        + " | Custo: " + string(global.scans_custo_ultimo) + " moedas");
+    _y += 22;
 }
 if (array_length(global.historico_eventos) > 0) {
     draw_text(gui_w / 2, _y, "Falhas inesperadas na campanha: " + string(array_length(global.historico_eventos)));

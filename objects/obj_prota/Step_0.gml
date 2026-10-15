@@ -1,4 +1,24 @@
-
+var _sobreposto = false;
+for (var _i = 0; _i < array_length(npc_colisao_objetos); _i++) {
+    if (place_meeting(x, y, npc_colisao_objetos[_i])) { _sobreposto = true; break; }
+}
+if (_sobreposto) {
+    var _ox = x;
+    var _oy = y;
+    var _achou = false;
+    for (var _r = 2; _r <= 48 && !_achou; _r += 2) {
+        for (var _a = 0; _a < 360 && !_achou; _a += 45) {
+            x = _ox + lengthdir_x(_r, _a);
+            y = _oy + lengthdir_y(_r, _a);
+            var _livre = true;
+            for (var _j = 0; _j < array_length(npc_colisao_objetos); _j++) {
+                if (place_meeting(x, y, npc_colisao_objetos[_j])) { _livre = false; break; }
+            }
+            if (_livre && tile_get_index(tilemap_get_at_pixel(tilemap, x, y)) == 0) _achou = true;
+        }
+    }
+    if (!_achou) { x = _ox; y = _oy; }
+}
 if (global.ui_bloqueando_jogo) {
     if (sprite_index == spr_prota_dir)       sprite_index = spr_prota_dir_idle;
     else if (sprite_index == spr_prota_esq)  sprite_index = spr_prota_esq_idle;

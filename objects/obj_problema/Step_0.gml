@@ -14,6 +14,9 @@ for (var i = 0; i < array_length(global.problemas_resolvidos); i++) {
 if (!variable_instance_exists(id, "checado")) {
     checado = true;
     if (_ja) {
+        if (room == restaurante && problem_id == "Caixa" && global.totem_liberado && !instance_exists(obj_toten)) {
+            instance_create_layer(x, y, "Instances", obj_toten);
+        }
         instance_destroy();
         exit;
     }
@@ -23,7 +26,8 @@ if (!variable_instance_exists(id, "checado")) {
 if (is_solved) {
     if (!_ja) array_push(global.problemas_resolvidos, _key);
     if (room == restaurante && problem_id == "Caixa" && coesao_resolucao >= 80) {
-        instance_create_layer(x, y, "Instances", obj_toten);
+        global.totem_liberado = true;
+		instance_create_layer(x, y, "Instances", obj_toten);
     }
     instance_destroy();
 }

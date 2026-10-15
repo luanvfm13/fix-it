@@ -9,7 +9,10 @@ if (fala == undefined) {
 }
 
 if (keyboard_check_pressed(vk_escape)) {
-    instance_destroy();
+	if (dialogo_id == "gerente_final" || dialogo_id == "gerente_final_parcial" || dialogo_id == "gerente_final_baixo") {
+		global.final_dialogo_concluido = true;
+	}
+	instance_destroy();
     exit;
 }
 

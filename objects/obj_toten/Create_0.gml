@@ -1,7 +1,7 @@
 dialogo_id = "toten";
 
 var _jogador = instance_find(obj_prota, 0);
-if (_jogador != noone && place_meeting(_jogador.x, _jogador.y, id)) {
+if (_jogador != noone && place_meeting(x, y, _jogador)) {
 	spawn_posicao_valida = false;
 	var _destino_x = x + 240;
 	var _destino_y = y - 32;
@@ -52,7 +52,7 @@ if (_jogador != noone && place_meeting(_jogador.x, _jogador.y, id)) {
 	}
 
 	if (!spawn_posicao_valida) {
-		instance_destroy();
+		solid = false;
 		exit;
 	}
 }
@@ -60,7 +60,8 @@ if (_jogador != noone && place_meeting(_jogador.x, _jogador.y, id)) {
 balaou = instance_create_layer(x + 10, y - 40, "Instances", obj_dialog);
 balaou.visible = false;
 
-if (!instance_exists(obj_dialogo)) {
+if (!global.totem_falou && !instance_exists(obj_dialogo)) {
+	global.totem_falou = true;
 	var _fala = instance_create_layer(x, y, "Instances", obj_dialogo);
 	with (_fala) setup_dialogo("toten");
 }

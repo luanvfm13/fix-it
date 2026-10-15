@@ -56,7 +56,7 @@ switch (estado) {
     case "despedida":
 
         if (!instance_exists(obj_dialogo) && instance_exists(obj_prota)
-            && point_distance(x, y, obj_prota.x, obj_prota.y) > 120) {
+            && point_distance(x, y, obj_prota.x, obj_prota.y) > 60) {
 
             var _ida = caminho;
             var _volta = [];

@@ -515,6 +515,7 @@ function resolve_problem(_problema, _indice_opcao, _etapas_fluxo, _diagnostico_c
 
     if (variable_struct_exists(_opcao, "demite") && _opcao.demite) {
         global.foi_demitido = true;
+		global.motivo_demissao = "risco";
     }
 
     if (_problema.problem_id != "falha_conexao" && _confiabilidade < 35 && !global.falha_gerada_missao) {
@@ -527,9 +528,14 @@ function resolve_problem(_problema, _indice_opcao, _etapas_fluxo, _diagnostico_c
         });
         var _falha = instance_create_depth(_problema.x + 32, _problema.y, _problema.depth, obj_problema);
         with (_falha) setup_problem("falha_conexao");
+		global.falha_pendente = true;
+        global.falha_room = room;
+        global.falha_x = _problema.x + 32;
+        global.falha_y = _problema.y;
     }
 
-    if (array_length(global.relatorios_missao) == 0) {
+    if (!global.metricas_antes_definidas) {
+        global.metricas_antes_definidas = true;
         global.metricas_missao_antes = {
             eficiencia: _eficiencia_antes,
             confiabilidade: _confiabilidade_antes,

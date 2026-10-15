@@ -1,7 +1,12 @@
+guia_verificar();
+
 var _missao_ativa = (room == restaurante || room == Hosp);
 if (!_missao_ativa) {
+    if (global.sala_missao_atual != noone) {
+        missao_salvar_estado();
+        global.sala_missao_atual = noone;
+    }
     global.timer_ativo = false;
-    global.sala_missao_atual = noone;
     exit;
 }
 
@@ -13,17 +18,22 @@ if ((room == restaurante && global.missao_restaurante_feita) || (room == Hosp &&
 if (global.sala_missao_atual != room) {
     global.sala_missao_atual = room;
     global.timer_ativo = true;
-    global.tempo_restante = 240;
+    global.tempo_restante = (room == restaurante) ? global.tempo_restaurante : global.tempo_hospital;
     tempo_step_acumulado = 0;
     global.jogo_acabou = false;
-    global.falha_gerada_missao = false;
-    global.evento_operacional = "";
-    global.relatorios_missao = [];
-    global.metricas_missao_antes = {
-        eficiencia: global.ind_eficiencia,
-        confiabilidade: global.ind_confiabilidade,
-        integracao: global.ind_integracao
-    };
+
+    var _primeira = (room == restaurante) ? !global.missao_restaurante_iniciada : !global.missao_hospital_iniciada;
+    if (_primeira) {
+        if (room == restaurante) global.missao_restaurante_iniciada = true;
+        else global.missao_hospital_iniciada = true;
+        global.falha_gerada_missao = false;
+        global.evento_operacional = "";
+    }
+
+    if (global.falha_pendente && global.falha_room == room) {
+        var _falha = instance_create_layer(global.falha_x, global.falha_y, "Instances", obj_problema);
+        with (_falha) setup_problem("falha_conexao");
+    }
 }
 
 if (!global.timer_ativo || global.jogo_acabou) exit;
@@ -34,17 +44,18 @@ if (instance_number(obj_problema) == 0) {
     global.jogo_acabou = true;
     global.timer_ativo = false;
 
+    cobrar_scanner(room);
+
     if (!global.foi_demitido) {
-        if (room == restaurante && !global.missao_restaurante_feita) {
+        if (room == restaurante) {
             global.missao_restaurante_feita = true;
             global.missoes_concluidas += 1;
-			global.etapa = 4;
-        } else if (room == Hosp && !global.missao_hospital_feita) {
+            global.etapa = 4;
+        } else {
             global.missao_hospital_feita = true;
             global.missoes_concluidas += 1;
         }
     }
-	cobrar_scanner();
 
     var _res = instance_create_depth(0, 0, -10000, obj_misaof);
     _res.demitido = global.foi_demitido;
@@ -62,8 +73,8 @@ if (tempo_step_acumulado >= game_get_speed(gamespeed_fps)) {
         global.tempo_restante = 0;
         global.jogo_acabou = true;
         global.timer_ativo = false;
-		
-		cobrar_scanner();
+
+        cobrar_scanner(room);
 
         var _res2 = instance_create_depth(0, 0, -10000, obj_misaof);
         _res2.demitido = global.foi_demitido;
