@@ -3,7 +3,7 @@ if (variable_global_exists("taxi_visto") && global.taxi_visto) {
     exit;
 }
 sprite_index = spr_carro_fre;
-move_spd = 1.2;
+move_spd = 2;
 
 
 caminho = [

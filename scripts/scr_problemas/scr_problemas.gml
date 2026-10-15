@@ -532,6 +532,16 @@ function resolve_problem(_problema, _indice_opcao, _etapas_fluxo, _diagnostico_c
         global.falha_room = room;
         global.falha_x = _problema.x + 32;
         global.falha_y = _problema.y;
+		if (global.timer_ativo) global.tempo_restante += 30;
+        global.tempo_flash_t = 90;
+        global.tempo_flash_txt = "+30s";
+        global.tempo_flash_cor = c_lime;
+        if (instance_exists(obj_men)) {
+            with (obj_men) {
+                text = "Queda de conexão: registros duplicados. Investigue o novo problema. (+30s)";
+                tempo = 480; 
+            }
+        }
     }
 
     if (!global.metricas_antes_definidas) {

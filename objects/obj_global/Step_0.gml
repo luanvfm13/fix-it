@@ -1,3 +1,18 @@
+if (keyboard_check_pressed(vk_escape)
+    && (room == restaurante || room == Hosp || room == inicio || room == gamer || room == escritorio)
+    && !instance_exists(obj_pausa)
+    && !instance_exists(obj_dialogo)
+    && !instance_exists(obj_tablet)
+    && !instance_exists(obj_hub)
+    && !instance_exists(obj_painel)
+    && !instance_exists(obj_misaof)
+    && (obj_uber.ida_completa)
+    && (!instance_exists(obj_fade) || obj_fade.estado == "parado")) {
+    instance_create_depth(0, 0, -1000, obj_pausa);
+}
+
+
+
 guia_verificar();
 
 var _missao_ativa = (room == restaurante || room == Hosp);
@@ -82,3 +97,5 @@ if (tempo_step_acumulado >= game_get_speed(gamespeed_fps)) {
         _res2.fim_campanha = false;
     }
 }
+
+
