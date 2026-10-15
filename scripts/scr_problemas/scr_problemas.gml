@@ -547,6 +547,7 @@ function resolve_problem(_problema, _indice_opcao, _etapas_fluxo, _diagnostico_c
 
     return {
         nome_problema: _problema.problem_data.nome,
+        solucao: _opcao.texto,
         coesao: _coesao,
         coesao_resposta: _coesao_solucao,
         diagnostico_correto: _diagnostico_correto,

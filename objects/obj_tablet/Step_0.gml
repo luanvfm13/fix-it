@@ -18,6 +18,8 @@ switch (estado) {
         if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(ord("E"))) {
             var _diagnostico = get_diagnostico_data(problema_alvo.problem_id);
             diagnostico_correto = (ordem_diagnosticos[diagnostico_selecionado] == _diagnostico.indice_correto);
+            ordem_opcoes = criar_ordem_embaralhada(array_length(problema_alvo.problem_data.opcoes));
+            opcao_selecionada = 0;
             estado = "escolhendo";
         }
         break;
