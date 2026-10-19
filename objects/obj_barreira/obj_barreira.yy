@@ -1,11 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"gamer_p_hosp",
+  "%Name":"obj_barreira",
   "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"gamer_p_hosp",
+  "name":"obj_barreira",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -30,9 +31,9 @@
   "resourceVersion":"2.0",
   "solid":true,
   "spriteId":{
-    "name":"spr_porta",
-    "path":"sprites/spr_porta/spr_porta.yy",
+    "name":"spr_colision",
+    "path":"sprites/spr_colision/spr_colision.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

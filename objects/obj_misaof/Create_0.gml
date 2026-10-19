@@ -1,5 +1,9 @@
-venceu = false; // (true = vitória false = game over)
-demitido = false;
-fim_campanha = false;
-tempo_final = 0;
+ui_lock_antes = global.ui_bloqueando_jogo;
 global.ui_bloqueando_jogo = true;
+fase = "dialogo";
+iniciado = false;
+spr_fim = -1;
+dialogo_id = "";
+saindo = false;
+espera = 30; 
+img_override = "";

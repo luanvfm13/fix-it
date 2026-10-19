@@ -1,6 +1,6 @@
 if (!global.ui_bloqueando_jogo && distance_to_object(obj_prota) < 11) {
     if (keyboard_check_pressed(ord("E"))) {
-        if (global.etapa < 3) {
+      if (global.etapa < 3 || global.etapa >= 4 || global.fim_pendente != "" || global.missao_restaurante_feita) {
             var _d = instance_create_layer(x, y, "Instances", obj_dialogo);
             with (_d) setup_dialogo("lanchonete_bloqueada");
         } else {

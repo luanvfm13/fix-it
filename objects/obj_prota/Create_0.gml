@@ -7,6 +7,7 @@ move_spd = move_spd_base * (_escala / escala_ref);
 var _collision_layer = (room == restaurante) ? "a" : "tile_col";
 tilemap = layer_tilemap_get_id(_collision_layer);
 npc_colisao_objetos = [obj_npc, obj_npc1, obj_ger, obj_dona, obj_maura, obj_toten];
+barreira_hit = false;
 if (room == escritorio) {
 	layer_set_visible(layer_get_id(_collision_layer), false);
 }
@@ -20,3 +21,4 @@ tem_scanner = variable_global_exists("tem_scanner") ? global.tem_scanner : false
 tem_lupa    = variable_global_exists("tem_lupa")    ? global.tem_lupa    : false;
 tem_tablet  = variable_global_exists("tem_tablet")  ? global.tem_tablet  : false;
 
+barreira_ultimo_aviso = -10000;

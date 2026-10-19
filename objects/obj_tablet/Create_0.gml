@@ -1,3 +1,5 @@
+snap_id = "";
+snap_nome = "";
 problema_alvo = noone;
 opcao_selecionada = 0;
 estado = "diagnosticando";

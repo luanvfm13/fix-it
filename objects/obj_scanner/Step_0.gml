@@ -87,6 +87,15 @@ if (scanner_active) {
             registrar_evidencia(_prob.problem_id, "scanner");
         }
     }
+	if (ds_list_size(highlighted_problems) > 0 && instance_exists(obj_men)) {
+    var _pr = highlighted_problems[| 0];
+    if (instance_exists(_pr) && variable_instance_exists(_pr, "problem_data")) {
+        with (obj_men) {
+            text = "Detectado: " + _pr.problem_data.nome;
+            tempo = 10;
+        }
+    }
+}
 } else {
     var _size = ds_list_size(highlighted_problems);
     for (var i = 0; i < _size; i++) {

@@ -1,1 +1,0 @@
-setup_problem("rastreio_soro");

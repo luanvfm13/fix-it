@@ -57,18 +57,6 @@ for (var i = 0; i < ds_list_size(highlighted_problems); i++) {
     draw_line_width(_x1, _y2, _x1 + _t, _y2, 2); draw_line_width(_x1, _y2, _x1, _y2 - _t, 2);
     draw_line_width(_x2, _y2, _x2 - _t, _y2, 2); draw_line_width(_x2, _y2, _x2, _y2 - _t, 2);
 
-    var _label = variable_instance_exists(_prob, "problem_data") ? _prob.problem_data.nome : "!";
-    var _lw = string_width(_label) + 10;
-    var _lh = string_height(_label) + 4;
-    var _lx = _prob.x - _lw / 2;
-    var _ly = _y1 - _lh - 4;
-
-    draw_set_alpha(0.75);
-    draw_set_color(c_black);
-    draw_rectangle(_lx, _ly, _lx + _lw, _ly + _lh, false);
-    draw_set_alpha(1);
-    draw_set_color(c_white);
-    draw_text(_lx + 5, _ly + 2, _label);
 }
 
 draw_set_alpha(1);

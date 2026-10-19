@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_rota",
+  "%Name":"scr_seta",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_rota",
+  "name":"scr_seta",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

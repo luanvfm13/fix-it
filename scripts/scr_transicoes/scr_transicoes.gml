@@ -42,6 +42,7 @@ function cobrar_scanner(_missao) {
 }
 
 function reset_jogo() {
+	global.fim_pendente = "";
     global.moedas = 3;
     global.coesao_total = 0;
     global.coesao_count = 0;
@@ -58,7 +59,7 @@ function reset_jogo() {
     global.falha_room = noone;
     global.falha_x = 0;
     global.falha_y = 0;
-
+	
     global.sala_missao_atual = noone;
     global.evento_operacional = "";
     global.relatorios_missao = [];

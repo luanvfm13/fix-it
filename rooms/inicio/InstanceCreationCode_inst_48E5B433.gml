@@ -1,0 +1,1 @@
+etapa_min = 0; etapa_max = 0;

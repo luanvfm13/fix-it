@@ -71,12 +71,6 @@ function get_dialogo_data(_id) {
 		case "guia_lanchonete":
     return { "1": { nome: "", texto: "A lanchonete fica pela saída da avenida. Siga para lá quando estiver pronto.", opcoes: [] } };
 		
-		case "guia_gerente_hosp":
-    return { "1": { nome: "", texto: "Antes do hospital, passe pelo gerente e ouça a missão.", opcoes: [] } };
-		
-		case "guia_hospital":
-    return { "1": { nome: "", texto: "O hospital fica na avenida. A rota no chão mostra o caminho.", opcoes: [] } };
-        
 		case "escritorio_armario":
     return {
         "1": { nome: "Você", texto: "Um armário de armazenamento. Melhor deixar tudo organizado antes de sair para o próximo atendimento.", opcoes: [] }
@@ -162,44 +156,44 @@ function get_dialogo_data(_id) {
         "1": { nome: "", texto: "Bater no caixa só piorou tudo... Agora nem a trava do teclado funciona direito.", opcoes: [ { texto: "Continuar", proximo_id: 2 } ] },
         "2": { nome: "Gerente", texto: "Sério que você bateu no equipamento? Isso não é jeito de resolver nada.", opcoes: [] }
     };
-        case "gerente_final":
-            return {
-                "1": {
-                    nome: "Gerente",
-                    texto: "Acabei de conferir seus relatórios. Lanchonete e hospital concluídos. O pessoal mandou agradecer; o Wilson perguntou se isso dá conquista.",
-                    opcoes: [
-                        { texto: "O mérito é da equipe", proximo_id: 2 },
-                        { texto: "E agora, chefe?", proximo_id: 3 }
-                    ]
-                },
-                "2": {
-                    nome: "Gerente",
-                    texto: "Ótimo! assim que se fala, você conseguiu, fez tudo certo, todo mundo está contente",
-                    opcoes: [ { texto: "Foi trabalho de todo mundo", proximo_id: 4 } ]
-                },
-                "3": {
-                    nome: "Gerente",
-                    texto: "Agora sim, tudo certo, chega, por hoje feche o tablet e vá tomar uma cerveja..",
-                    opcoes: [ { texto: "Justo", proximo_id: 4 } ]
-                },
-                "4": {
-                    nome: "Gerente",
-                    texto: "Bom trabalho, consultor. A porta da G.A.M.E.R fica aberta. Fim de expediente.",
-                    opcoes: []
-                }
-            };
+       case "gerente_final":
+    return {
+        "1": {
+            nome: "Gerente",
+            texto: "Acabei de conferir seu relatório. A lanchonete voltou a funcionar e a fila andou. O pessoal mandou agradecer.",
+            opcoes: [
+                { texto: "O mérito é da equipe", proximo_id: 2 },
+                { texto: "E agora, chefe?", proximo_id: 3 }
+            ]
+        },
+        "2": {
+            nome: "Gerente",
+            texto: "Ótimo! Era isso que a G.A.M.E.R. queria mostrar: equipe e processo funcionando juntos.",
+            opcoes: [ { texto: "Foi trabalho de todo mundo", proximo_id: 4 } ]
+        },
+        "3": {
+            nome: "Gerente",
+            texto: "Agora sim. Por hoje, feche o tablet e vá tomar um café.",
+            opcoes: [ { texto: "Justo", proximo_id: 4 } ]
+        },
+        "4": {
+            nome: "Gerente",
+            texto: "Bom trabalho, consultor. A porta da G.A.M.E.R. fica aberta. Fim de expediente.",
+            opcoes: []
+        }
+    };
 
-        case "gerente_final_parcial":
-            return {
-                "1": { nome: "Gerente", texto: "As duas missoes foram concluidas. Seus relatorios mostram boas melhorias, mas alguns processos ainda dependem de conferencias manuais.", opcoes: [ { texto: "O que posso melhorar?", proximo_id: 2 } ] },
-                "2": { nome: "Gerente", texto: "Na proxima, acompanhe os indicadores juntos. Integrar etapas ajuda, mas treinamento e validacao tambem contam.", opcoes: [] }
-            };
+case "gerente_final_parcial":
+    return {
+        "1": { nome: "Gerente", texto: "Sua missão foi concluída. Seus relatórios mostram boas melhorias, mas alguns processos ainda dependem de conferências manuais.", opcoes: [ { texto: "O que posso melhorar?", proximo_id: 2 } ] },
+        "2": { nome: "Gerente", texto: "Na próxima, acompanhe os indicadores junto com a equipe. Integrar etapas ajuda, mas treinamento e validação também contam.", opcoes: [] }
+    };
 
-        case "gerente_final_baixo":
-            return {
-                "1": { nome: "Gerente", texto: "Voce concluiu as duas missoes, mas os relatorios ainda mostram filas e falhas importantes.", opcoes: [ { texto: "Entendi", proximo_id: 2 } ] },
-                "2": { nome: "Gerente", texto: "Reveja as pistas antes de escolher. Uma solucao precisa melhorar o processo sem deixar de lado confiabilidade e equipe.", opcoes: [] }
-            };
+case "gerente_final_baixo":
+    return {
+        "1": { nome: "Gerente", texto: "Você concluiu a missão, mas os relatórios ainda mostram filas e falhas importantes.", opcoes: [ { texto: "Entendi", proximo_id: 2 } ] },
+        "2": { nome: "Gerente", texto: "Reveja as pistas antes de escolher. Uma solução precisa melhorar o processo sem deixar de lado confiabilidade e equipe.", opcoes: [] }
+    };
 
         case "toten":
             return {
@@ -225,7 +219,7 @@ function get_dialogo_data(_id) {
                 },
                 "4": {
                     nome: "Gerente",
-                    texto: "Equipe o scanner e o tablet no escritório. Depois da lanchonete, volte aqui e use a porta azul para visitar o hospital. Quando concluir as duas missões, volte para me contar como foi.",
+                    texto: "Equipe a lupa, scanner e o tablet no escritório. Depois da lanchonete, volte aqui e fale comigo para receber o resultado.",
                     opcoes: []
                 }
             };
@@ -429,6 +423,7 @@ function get_dialogo_data(_id) {
             "3": {nome: "Gerente Joinha", texto: "E aquela atendente meio desajeitada... Disse que tava arrumando e sumiu o pão. Preciso verificar o que sobrou.", opcoes: [] },
             "4": {nome: "Gerente Joinha", texto: "Fica esperto com o estoque. Nada some sem motivo. Se precisar de mais alguma coisa, é só chamar.", opcoes: [] }
         };
+		
         case "gerente_palmas_inicio":
         return {
             "1": {nome: "Gerente Palmas", texto: "E aí, consultor! Tava olhando pro freezer e vi que tava na porcentagem crítica. Mais uma vez! Geladeira velha mesmo, tem que renova ou ta na hora de desistir.", opcoes: [{texto: "Freezer crítico", proximo_id: 2}, {texto: "Tava olhando", proximo_id: 3}] },
@@ -490,6 +485,13 @@ function get_dialogo_data(_id) {
             "2": {nome: "", texto: "E ai, consultor? Tava observando o movimento. Tem cliente chegando, fila andando, o de sempre. Nada de estranho acontecendo.", opcoes: [] },
             "3": {nome: "", texto: "Se precisar de mais alguma coisa, é só chamar. Cuidado com as esquinas.", opcoes: [] }
         };
+		case "fim_tempo":
+    return { "1": { nome: "Gerente", texto: "O tempo acabou antes de você fechar o caso. A lanchonete continua parada. Tente de novo com calma.", opcoes: [] } };
+case "fim_demitido_saldo":
+    return { "1": { nome: "Gerente", texto: "Você gastou mais em varreduras do que o orçamento aguentava. Não dá para continuar assim.", opcoes: [] } };
+case "fim_demitido_risco":
+    return { "1": { nome: "Gerente", texto: "Você colocou clientes em risco com uma decisão perigosa. Isso não é aceitável para a G.A.M.E.R.", opcoes: [] } };
+		
         // MODELO, copia e altera p criar diálogos novos
         case "modelo_exemplo":
             return {

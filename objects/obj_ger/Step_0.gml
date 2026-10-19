@@ -87,7 +87,10 @@ switch (estado) {
             blink_timer = game_get_speed(gamespeed_fps) * 8;
         }
 
-        if (global.missoes_concluidas >= global.missoes_total) {
+        if (global.fim_pendente != "") {
+            dialogo_id = global.fim_pendente;
+        }
+        else if (global.missoes_concluidas >= global.missoes_total) {
             var _media_final = (global.coesao_count > 0)
                 ? global.coesao_total / global.coesao_count
                 : 0;
@@ -100,7 +103,16 @@ switch (estado) {
          else if (global.etapa == 3) dialogo_id = "gerente_lembrete";
 		
 		else dialogo_id = "gerente_intro";
-		
+			        if (global.final_dialogo_concluido && global.fim_pendente != "") {
+					var _fimp = instance_create_depth(0, 0, -10000, obj_misaof);
+					_fimp.img_override = global.fim_pendente;
+					_fimp.fim_campanha = false;
+					_fimp.demitido = false;
+					 _fimp.venceu = false;
+					 global.fim_pendente = "";
+					 global.final_dialogo_concluido = false;
+            exit;
+        }
 		
 		    if (global.final_dialogo_concluido && global.missoes_concluidas >= global.missoes_total && !global.final_campanha) {
             global.final_dialogo_concluido = false;

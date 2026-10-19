@@ -29,7 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_porta",
+    "path":"sprites/spr_porta/spr_porta.yy",
+  },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

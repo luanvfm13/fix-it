@@ -121,38 +121,6 @@ case "lentidao_cozinha":
                sprite_resultado: noone, dialogo_bronca: "", demite: false }
         ]
     };
-
-case "faltaSoro":
-        return {
-                nome: "Falta de soro em uma ala",
-                empresa: "Hospital",
-                opcoes: [
-                        { texto: "Conferir o estoque por ala e registrar cada remanejamento", coesao: 100,
-                            explicacao: "A equipe consulta o mesmo registro e sabe o que esta disponivel em cada ala, sem depender de informacoes fragmentadas.", sprite_resultado: noone, dialogo_bronca: "", demite: false, acao_especial: "" },
-                        { texto: "Contar as caixas numa planilha no fim do turno", coesao: 60,
-                            explicacao: "Ajuda a enxergar o estoque, mas a informação chega tarde e depende de atualização manual.", sprite_resultado: noone, dialogo_bronca: "", demite: false, acao_especial: "" },
-                        { texto: "Dividir o estoque igualmente entre todas as alas", coesao: 30,
-                            explicacao: "Parece justo, mas ignora diferenças de demanda e prescrições entre as equipes.", sprite_resultado: noone, dialogo_bronca: "", demite: false, acao_especial: "" },
-                        { texto: "Esperar o próximo pedido do fornecedor sem avisar as equipes", coesao: 10,
-                            explicacao: "A falta continua invisível e cada ala só descobre quando precisa do material.", sprite_resultado: noone, dialogo_bronca: "", demite: false, acao_especial: "" }
-                ]
-        };
-
-case "rastreio_soro":
-        return {
-                nome: "Lotes e validade sem rastreamento",
-                empresa: "Hospital",
-                opcoes: [
-                        { texto: "Registrar lote, validade, consumo e ala num sistema compartilhado com alertas", coesao: 100,
-                            explicacao: "As equipes veem o mesmo estoque, encontram primeiro os lotes que vencem e repõem antes da ruptura.", sprite_resultado: noone, dialogo_bronca: "", demite: false, acao_especial: "" },
-                        { texto: "Etiquetar as caixas e conferir tudo manualmente uma vez por semana", coesao: 60,
-                            explicacao: "Melhora a identificação, mas o intervalo entre conferências ainda esconde mudanças urgentes.", sprite_resultado: noone, dialogo_bronca: "", demite: false, acao_especial: "" },
-                        { texto: "Comprar mais caixas para garantir que nunca falte", coesao: 30,
-                            explicacao: "Aumenta o volume sem melhorar o controle e pode deixar material parado até vencer.", sprite_resultado: noone, dialogo_bronca: "", demite: false, acao_especial: "" },
-                        { texto: "Só atualizar o estoque quando uma caixa acabar", coesao: 10,
-                            explicacao: "O alerta chega tarde demais: a equipe só descobre o problema na hora de usar o material.", sprite_resultado: noone, dialogo_bronca: "", demite: false, acao_especial: "" }
-                ]
-        };
     }
 
     show_debug_message("AVISO: problem_id '" + string(_id) + "' não existe em scr_problemas");

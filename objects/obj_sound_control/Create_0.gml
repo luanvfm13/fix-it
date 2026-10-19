@@ -1,3 +1,4 @@
+sound_reiniciar = false;
 persistent = true;
 
 if (!variable_global_exists("musica_ativa")) {

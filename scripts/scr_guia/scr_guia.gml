@@ -13,7 +13,7 @@ function guia_config(_etapa) {
 function guia_verificar() {
     var _fps = game_get_speed(gamespeed_fps);
 
-    if (room == Menu || room == restaurante || room == Hosp || !instance_exists(obj_prota)) {
+       if (room == Menu || room == restaurante || !instance_exists(obj_prota)) {
         global.guia_tempo_fora = 0;
         return;
     }

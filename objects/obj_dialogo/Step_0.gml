@@ -9,10 +9,15 @@ if (fala == undefined) {
 }
 
 if (keyboard_check_pressed(vk_escape)) {
-	if (dialogo_id == "gerente_final" || dialogo_id == "gerente_final_parcial" || dialogo_id == "gerente_final_baixo") {
-		global.final_dialogo_concluido = true;
-	}
-	instance_destroy();
+    if (dialogo_id == "gerente_final"
+     || dialogo_id == "gerente_final_parcial"
+     || dialogo_id == "gerente_final_baixo"
+     || dialogo_id == "fim_tempo"
+     || dialogo_id == "fim_demitido_saldo"
+     || dialogo_id == "fim_demitido_risco") {
+        global.final_dialogo_concluido = true;
+    }
+    instance_destroy();
     exit;
 }
 
@@ -67,7 +72,10 @@ if (texto_completo) {
         if (keyboard_check_pressed(vk_space) || keyboard_check_pressed(ord("Z"))) {
             if (dialogo_id == "gerente_final"
              || dialogo_id == "gerente_final_parcial"
-             || dialogo_id == "gerente_final_baixo") {
+             || dialogo_id == "gerente_final_baixo"
+             || dialogo_id == "fim_tempo"
+             || dialogo_id == "fim_demitido_saldo"
+             || dialogo_id == "fim_demitido_risco") {
                 global.final_dialogo_concluido = true;
             }
             instance_destroy();

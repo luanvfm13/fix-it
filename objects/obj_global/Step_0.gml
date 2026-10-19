@@ -1,3 +1,4 @@
+
 if (keyboard_check_pressed(vk_escape)
     && (room == restaurante || room == inicio || room == gamer || room == escritorio)
     && !instance_exists(obj_pausa)
@@ -13,7 +14,6 @@ if (keyboard_check_pressed(vk_escape)
 
 
 
-guia_verificar();
 
 var _missao_ativa = (room == restaurante);
 if (!_missao_ativa) {
@@ -60,18 +60,22 @@ if (instance_number(obj_problema) == 0) {
 
     cobrar_scanner(room);
 
-    if (!global.foi_demitido) {
-        if (room == restaurante) {
-            global.missao_restaurante_feita = true;
-            global.missoes_concluidas += 1;
-            global.etapa = 4;
-        }
+    if (global.foi_demitido) {
+        global.fim_pendente = (global.motivo_demissao == "saldo") ? "fim_demitido_saldo" : "fim_demitido_risco";
+    } else {
+        global.missao_restaurante_feita = true;
+        global.missoes_concluidas += 1;
+        global.etapa = 4;
     }
 
-    var _res = instance_create_depth(0, 0, -10000, obj_misaof);
-    _res.demitido = global.foi_demitido;
-    _res.venceu = true;
-    _res.fim_campanha = false;
+    if (instance_exists(obj_men)) {
+        with (obj_men) {
+            text = (global.foi_demitido)
+                ? "Volte à G.A.M.E.R. e fale com o gerente."
+                : "Missão concluída. Volte à G.A.M.E.R. e fale com o gerente.";
+            tempo = 300;
+        }
+    }
     exit;
 }
 
@@ -87,9 +91,15 @@ if (tempo_step_acumulado >= game_get_speed(gamespeed_fps)) {
 
         cobrar_scanner(room);
 
-        var _res2 = instance_create_depth(0, 0, -10000, obj_misaof);
-        _res2.demitido = global.foi_demitido;
-        _res2.venceu = false;
-        _res2.fim_campanha = false;
+        global.fim_pendente = global.foi_demitido
+            ? ((global.motivo_demissao == "saldo") ? "fim_demitido_saldo" : "fim_demitido_risco")
+            : "fim_tempo";
+
+        if (instance_exists(obj_men)) {
+            with (obj_men) {
+                text = "Volte à G.A.M.E.R. e fale com o gerente.";
+                tempo = 300;
+            }
+        }
     }
 }

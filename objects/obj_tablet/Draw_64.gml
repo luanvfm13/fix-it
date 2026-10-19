@@ -1,3 +1,15 @@
+
+var cor_fundo    = make_color_rgb(10, 20, 24);
+var cor_painel   = make_color_rgb(16, 32, 37);
+var cor_borda    = make_color_rgb(44, 88, 96);
+var cor_texto    = make_color_rgb(230, 238, 238);
+var cor_suave    = make_color_rgb(140, 165, 168);
+var cor_destaque = make_color_rgb(242, 201, 76);
+var cor_bom      = make_color_rgb(123, 196, 127);
+var cor_ruim     = make_color_rgb(224, 122, 95);
+var _pal = { fundo: cor_fundo, destaque: cor_destaque, borda: cor_borda, suave: cor_suave };
+
+
 var gui_w = display_get_gui_width();
 var gui_h = display_get_gui_height();
 var escala = min((gui_w * 0.9) / sprite_get_width(spr_tablet), (gui_h * 0.9) / sprite_get_height(spr_tablet));
@@ -5,353 +17,237 @@ var tablet_w = sprite_get_width(spr_tablet) * escala;
 var tablet_h = sprite_get_height(spr_tablet) * escala;
 var tablet_x = (gui_w - tablet_w) / 2;
 var tablet_y = (gui_h - tablet_h) / 2;
-
 draw_sprite_ext(spr_tablet, 0, tablet_x, tablet_y, escala, escala, 0, c_white, 1);
 
 var tela_x = tablet_x + tablet_w * 0.08;
 var tela_y = tablet_y + tablet_h * 0.10;
 var tela_w = tablet_w * 0.84;
 var tela_h = tablet_h * 0.80;
-var cor_fundo = make_color_rgb(7, 15, 19);
-var cor_painel = make_color_rgb(12, 24, 28);
-var cor_borda = make_color_rgb(36, 96, 102);
-var cor_texto = make_color_rgb(224, 236, 235);
-var cor_suave = make_color_rgb(139, 164, 164);
 
-draw_set_alpha(0.94);
-draw_set_color(cor_fundo);
-draw_rectangle(tela_x, tela_y, tela_x + tela_w, tela_y + tela_h, true);
-draw_set_alpha(1);
-draw_set_color(cor_borda);
-draw_rectangle(tela_x, tela_y, tela_x + tela_w, tela_y + tela_h, false);
 draw_set_font(fnt_undertale);
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 
-var nome_missao = (room == Hosp) ? "HOSPITAL" : "LANCHONETE";
-var texto_tempo = string(global.tempo_restante div 60) + ":";
-var segundos = global.tempo_restante mod 60;
-if (segundos < 10) texto_tempo += "0";
-texto_tempo += string(segundos);
-
-var etapa_tela = 0;
-var titulo_estado = "DIAGNOSTICO";
-switch (estado) {
-    case "diagnosticando":
-        etapa_tela = 0;
-        titulo_estado = "INVESTIGACAO E DIAGNOSTICO";
-        break;
-    case "escolhendo":
-        etapa_tela = 1;
-        titulo_estado = "ESCOLHA DA SOLUCAO";
-        break;
-    case "fluxo":
-        etapa_tela = 2;
-        titulo_estado = "PROJETO DA AUTOMACAO";
-        break;
-    case "resultado":
-        etapa_tela = 3;
-        titulo_estado = "RESULTADO DA SIMULACAO";
-        break;
-}
-
-draw_set_color(c_aqua);
-draw_text(tela_x + 14, tela_y + 8, "FIX-IT  /  PAINEL DE DIAGNOSTICO");
-draw_set_color(cor_texto);
-draw_text(tela_x + 14, tela_y + 29, nome_missao + "  -  " + titulo_estado);
-draw_set_color(global.tempo_restante <= 30 ? c_red : c_yellow);
-draw_text(tela_x + tela_w - 94, tela_y + 10, texto_tempo);
-
-var largura_etapa = (tela_w - 28 - 18) / 4;
-var nomes_etapas = ["DIAGNOSTICO", "SOLUCAO", "AUTOMACAO", "RESULTADOS"];
-for (var i = 0; i < array_length(nomes_etapas); i++) {
-    var etapa_x = tela_x + 14 + i * (largura_etapa + 6);
-    var cor_etapa = (i < etapa_tela) ? c_lime : ((i == etapa_tela) ? c_aqua : cor_suave);
-    draw_set_alpha((i == etapa_tela) ? 0.24 : 0.10);
-    draw_set_color(cor_etapa);
-    draw_rectangle(etapa_x, tela_y + 54, etapa_x + largura_etapa, tela_y + 78, true);
-    draw_set_alpha(1);
-    draw_set_color(cor_etapa);
-    draw_rectangle(etapa_x, tela_y + 54, etapa_x + largura_etapa, tela_y + 78, false);
-    draw_text(etapa_x + 8, tela_y + 59, nomes_etapas[i]);
-}
-
-var media_coesao = (global.coesao_count > 0)
-    ? round(global.coesao_total / global.coesao_count)
-    : 0;
-var largura_indicador = (tela_w - 40) / 3;
-var y_indicadores = tela_y + 88;
-var nomes_indicadores = ["EFICIENCIA", "CONFIABILIDADE", "INTEGRACAO"];
-var valores_indicadores = [global.ind_eficiencia, global.ind_confiabilidade, global.ind_integracao];
-
-for (var i = 0; i < array_length(nomes_indicadores); i++) {
-    var indicador_x = tela_x + 14 + i * (largura_indicador + 6);
-    draw_set_color(cor_suave);
-    draw_text(indicador_x, y_indicadores, nomes_indicadores[i]);
-    draw_set_color(cor_texto);
-    draw_text(indicador_x + largura_indicador - 42, y_indicadores, string(valores_indicadores[i]) + "%");
-    draw_set_alpha(0.28);
-    draw_set_color(cor_borda);
-    draw_rectangle(indicador_x, y_indicadores + 19, indicador_x + largura_indicador - 10, y_indicadores + 25, true);
-    draw_set_alpha(1);
-    draw_set_color((valores_indicadores[i] >= 60) ? c_lime : c_aqua);
-    draw_rectangle(indicador_x, y_indicadores + 19,
-        indicador_x + (largura_indicador - 10) * clamp(valores_indicadores[i] / 100, 0, 1),
-        y_indicadores + 25, true);
-}
-
-var y_resumo = tela_y + 119;
-draw_set_color(cor_texto);
-draw_text(tela_x + 14, y_resumo, "ORCAMENTO  " + string(global.orcamento));
-draw_text(tela_x + 190, y_resumo, "DIVIDA  " + string(global.divida_tecnica));
-draw_text(tela_x + 330, y_resumo, "COESAO MEDIA  " + string(media_coesao) + "%");
-draw_set_color(cor_borda);
-draw_line(tela_x + 12, tela_y + 145, tela_x + tela_w - 12, tela_y + 145);
-
-var corpo_x = tela_x + 14;
-var corpo_y = tela_y + 157;
-var corpo_fim_y = tela_y + tela_h - 34;
-var coluna_evidencias_w = tela_w * 0.29;
-var coluna_conteudo_x = corpo_x + coluna_evidencias_w + 14;
-var coluna_conteudo_w = tela_w - coluna_evidencias_w - 42;
-
-draw_set_alpha(0.34);
-draw_set_color(cor_painel);
-draw_rectangle(corpo_x, corpo_y, corpo_x + coluna_evidencias_w, corpo_fim_y, true);
+draw_set_alpha(0.96);
+draw_set_color(cor_fundo);
+draw_rectangle(tela_x, tela_y, tela_x + tela_w, tela_y + tela_h, false);
 draw_set_alpha(1);
+
+
+var _txt = function(_x, _y, _s, _w, _cor) {
+    draw_set_color(_cor);
+    draw_text_ext(_x, _y, _s, -1, _w);
+    return string_height_ext(_s, -1, _w);
+};
+
+var _opcao = function(_x, _y, _s, _w, _sel, _p) {
+    var _h = string_height_ext(_s, -1, _w - 24) + 12;
+    if (_sel) {
+        draw_set_color(_p.destaque);
+        draw_rectangle(_x, _y, _x + _w, _y + _h, false);
+        draw_set_color(_p.fundo);
+    } else {
+        draw_set_color(_p.borda);
+        draw_rectangle(_x, _y, _x + _w, _y + _h, true);
+        draw_set_color(_p.suave);
+    }
+    draw_text_ext(_x + 12, _y + 6, _s, -1, _w - 24);
+    return _h;
+};
+
+var _pad = 14;
+var _lh = 27;
+var _gap = 8;
+var _cx = tela_x + _pad;
+var _cw = tela_w - _pad * 2;
+var _rodape_y = tela_y + tela_h - _lh - 4;
+
+
+var _idx = 0;
+var _titulo = "DIAGNOSTICO";
+switch (estado) {
+    case "diagnosticando": _idx = 0; _titulo = "DIAGNOSTICO"; break;
+    case "escolhendo":     _idx = 1; _titulo = "SOLUCAO";      break;
+    case "fluxo":          _idx = 2; _titulo = "AUTOMACAO";    break;
+    case "resultado":      _idx = 3; _titulo = "RESULTADO";    break;
+}
+
+var _y = tela_y + _pad;
+draw_set_color(cor_texto);
+draw_text(_cx, _y, "LANCHONETE  |  ETAPA " + string(_idx + 1) + "/4  " + _titulo);
+
+var _seg = global.tempo_restante mod 60;
+var _tempo = string(global.tempo_restante div 60) + ":" + ((_seg < 10) ? "0" : "") + string(_seg);
+draw_set_halign(fa_right);
+draw_set_color(global.tempo_restante <= 30 ? cor_ruim : cor_destaque);
+draw_text(_cx + _cw, _y, _tempo);
+draw_set_halign(fa_left);
+_y += _lh;
+
+
+var _sw = (_cw - 3 * 6) / 4;
+for (var _i = 0; _i < 4; _i++) {
+    draw_set_color((_i < _idx) ? cor_bom : ((_i == _idx) ? cor_destaque : cor_borda));
+    draw_rectangle(_cx + _i * (_sw + 6), _y, _cx + _i * (_sw + 6) + _sw, _y + 6, false);
+}
+_y += 6 + _gap;
+
+
+var _media = (global.coesao_count > 0) ? round(global.coesao_total / global.coesao_count) : 0;
+draw_set_color(cor_suave);
+draw_text(_cx, _y,
+    "EFIC " + string(global.ind_eficiencia) + "%   CONF " + string(global.ind_confiabilidade)
+    + "%   INTEG " + string(global.ind_integracao) + "%   |   ORC " + string(global.orcamento)
+    + "   DIV " + string(global.divida_tecnica) + "   COESAO " + string(_media) + "%");
+_y += _lh + 4;
+
 draw_set_color(cor_borda);
-draw_rectangle(corpo_x, corpo_y, corpo_x + coluna_evidencias_w, corpo_fim_y, false);
+draw_line(_cx, _y, _cx + _cw, _y);
+_y += _gap;
+
+
+var _by = _y;
+var _bfim = _rodape_y - _gap;
+var _lw = _cw * 0.34;
+var _rx = _cx + _lw + 16;
+var _rw = _cx + _cw - _rx;
+
+
+draw_set_color(cor_painel);
+draw_rectangle(_cx, _by, _cx + _lw, _bfim, false);
 draw_set_color(cor_borda);
-draw_line(coluna_conteudo_x - 8, corpo_y, coluna_conteudo_x - 8, corpo_fim_y);
+draw_rectangle(_cx, _by, _cx + _lw, _bfim, true);
 
-if (instance_exists(problema_alvo)) {
-    draw_set_color(c_aqua);
-    draw_text(corpo_x + 10, corpo_y + 9, "INVESTIGACAO");
-    draw_set_color(cor_texto);
-    draw_text_ext(corpo_x + 10, corpo_y + 32, problema_alvo.problem_data.nome, 16, coluna_evidencias_w - 20);
+var _lx = _cx + 8;
+var _lpw = _lw - 16;
+var _ly = _by + 8;
 
-    var y_evidencia = corpo_y + 78;
-    var ferramentas = ["scanner", "lupa"];
-    var nomes_ferramentas = ["SCANNER", "LUPA"];
-    for (var i = 0; i < array_length(ferramentas); i++) {
-        var descoberta = evidencia_coletada(problema_alvo.problem_id, ferramentas[i]);
-        draw_set_color(descoberta ? c_lime : cor_suave);
-        draw_text(corpo_x + 10, y_evidencia, nomes_ferramentas[i] + (descoberta ? "  /  REGISTRADA" : "  /  NAO INVESTIGADA"));
-        y_evidencia += 19;
+if (snap_id != "") {
+    _ly += _txt(_lx, _ly, snap_nome, _lpw, cor_texto) + _gap;
 
-        if (descoberta) {
-            var texto_evidencia = get_evidencia_texto(problema_alvo.problem_id, ferramentas[i]);
-            draw_set_color(cor_texto);
-            draw_text_ext(corpo_x + 10, y_evidencia, texto_evidencia, 14, coluna_evidencias_w - 20);
-            y_evidencia += string_height_ext(texto_evidencia, 14, coluna_evidencias_w - 20) + 14;
-        } else {
-            y_evidencia += 8;
+    var _ferr = ["scanner", "lupa"];
+    var _nomes_f = ["SCANNER", "LUPA"];
+    for (var _j = 0; _j < 2; _j++) {
+        var _ok = evidencia_coletada(snap_id, _ferr[_j]);
+        draw_set_color(_ok ? cor_bom : cor_suave);
+        draw_text(_lx, _ly, _nomes_f[_j] + (_ok ? "  OK" : "  PENDENTE"));
+        _ly += _lh;
+
+        if (_ok && estado == "diagnosticando") {
+            _ly += _txt(_lx, _ly, get_evidencia_texto(snap_id, _ferr[_j]), _lpw, cor_suave) + _gap;
         }
+    }
+
+
+    if (estado == "escolhendo" && instance_exists(problema_alvo) && array_length(ordem_opcoes) > 0) {
+        var _opt_atual = problema_alvo.problem_data.opcoes[ordem_opcoes[opcao_selecionada]];
+        _ly += _gap;
+        draw_set_color(cor_destaque);
+        draw_text(_lx, _ly, "EFEITO PREVISTO");
+        _ly += _lh;
+        _txt(_lx, _ly, _opt_atual.explicacao, _lpw, cor_texto);
+    }
+
+
+    if (estado == "resultado" && resultado != undefined) {
+        _ly += _gap;
+        draw_set_color(cor_destaque);
+        draw_text(_lx, _ly, "EFEITO");
+        _ly += _lh;
+        _txt(_lx, _ly, resultado.explicacao, _lpw, cor_texto);
     }
 } else {
-    draw_set_color(cor_suave);
-    draw_text(corpo_x + 10, corpo_y + 10, "SEM PROBLEMA SELECIONADO");
+    _txt(_lx, _ly, "SEM PROBLEMA SELECIONADO", _lpw, cor_suave);
 }
 
-if (estado == "diagnosticando" && instance_exists(problema_alvo)) {
-    var diagnostico = get_diagnostico_data(problema_alvo.problem_id);
-    draw_set_color(cor_texto);
-    draw_text_ext(coluna_conteudo_x, corpo_y + 9, diagnostico.pergunta, 18, coluna_conteudo_w);
 
-    var y_opcao = corpo_y + 47;
-    for (var i = 0; i < array_length(ordem_diagnosticos); i++) {
-        var texto_opcao = diagnostico.opcoes[ordem_diagnosticos[i]];
-        var altura_opcao = max(38, string_height_ext(texto_opcao, 16, coluna_conteudo_w - 32) + 14);
-        var selecionada = (i == diagnostico_selecionado);
+var _ry = _by + 8;
 
-        if (selecionada) {
-            draw_set_alpha(0.20);
-            draw_set_color(c_aqua);
-            draw_rectangle(coluna_conteudo_x, y_opcao, coluna_conteudo_x + coluna_conteudo_w, y_opcao + altura_opcao, true);
-            draw_set_alpha(1);
-        }
-        draw_set_color(selecionada ? c_aqua : cor_borda);
-        draw_rectangle(coluna_conteudo_x, y_opcao, coluna_conteudo_x + coluna_conteudo_w, y_opcao + altura_opcao, false);
-        draw_set_color(selecionada ? cor_texto : cor_suave);
-        draw_text_ext(coluna_conteudo_x + 12, y_opcao + 8,
-            string(i + 1) + ". " + texto_opcao, 16, coluna_conteudo_w - 24);
-        y_opcao += altura_opcao + 8;
-    }
-    draw_set_color(cor_suave);
-    draw_text(coluna_conteudo_x, corpo_fim_y - 24, "SELECIONE UMA HIPOTESE; CONFIRME COM E");
-
-} else if (estado == "escolhendo" && instance_exists(problema_alvo)) {
-    var opcoes_solucao = problema_alvo.problem_data.opcoes;
-    draw_set_color(cor_texto);
-    draw_text(coluna_conteudo_x, corpo_y + 9, "SOLUCOES DISPONIVEIS");
-
-    var y_solucao = corpo_y + 36;
-    var altura_linha_solucao = min(54, max(38, (corpo_fim_y - corpo_y - 130) / array_length(ordem_opcoes)));
-    for (var i = 0; i < array_length(ordem_opcoes); i++) {
-        var opcao = opcoes_solucao[ordem_opcoes[i]];
-        var selecionada = (i == opcao_selecionada);
-        if (selecionada) {
-            draw_set_alpha(0.20);
-            draw_set_color(c_aqua);
-            draw_rectangle(coluna_conteudo_x, y_solucao, coluna_conteudo_x + coluna_conteudo_w, y_solucao + altura_linha_solucao, true);
-            draw_set_alpha(1);
-        }
-        draw_set_color(selecionada ? c_aqua : cor_borda);
-        draw_rectangle(coluna_conteudo_x, y_solucao, coluna_conteudo_x + coluna_conteudo_w, y_solucao + altura_linha_solucao, false);
-        draw_set_color(selecionada ? cor_texto : cor_suave);
-        draw_text_ext(coluna_conteudo_x + 10, y_solucao + 5,
-            string(i + 1) + ". " + opcao.texto, 14, coluna_conteudo_w - 20);
-        y_solucao += altura_linha_solucao + 5;
+if (estado == "diagnosticando" && snap_id != "") {
+    var _dg = get_diagnostico_data(snap_id);
+    _ry += _txt(_rx, _ry, _dg.pergunta, _rw, cor_texto) + _gap + 4;
+    for (var _k = 0; _k < array_length(ordem_diagnosticos); _k++) {
+        var _txt_dg = string(_k + 1) + ". " + _dg.opcoes[ordem_diagnosticos[_k]];
+        _ry += _opcao(_rx, _ry, _txt_dg, _rw, (_k == diagnostico_selecionado), _pal) + _gap;
     }
 
-    var opcao_selecionada_real = opcoes_solucao[ordem_opcoes[opcao_selecionada]];
-    draw_set_color(c_yellow);
-    draw_text(coluna_conteudo_x, corpo_fim_y - 70, "EFEITO PREVISTO");
-    draw_set_color(cor_texto);
-    draw_text_ext(coluna_conteudo_x, corpo_fim_y - 48, opcao_selecionada_real.explicacao, 14, coluna_conteudo_w);
-    draw_set_color(cor_suave);
-    draw_text(coluna_conteudo_x, corpo_fim_y - 20, "E/ENTER: PROJETAR FLUXO   X: VOLTAR AO DIAGNOSTICO");
+} else if (estado == "escolhendo" && instance_exists(problema_alvo) && array_length(ordem_opcoes) > 0) {
+    var _opts = problema_alvo.problem_data.opcoes;
+    for (var _k = 0; _k < array_length(ordem_opcoes); _k++) {
+        var _txt_op = string(_k + 1) + ". " + _opts[ordem_opcoes[_k]].texto;
+        _ry += _opcao(_rx, _ry, _txt_op, _rw, (_k == opcao_selecionada), _pal) + _gap;
+    }
 
 } else if (estado == "fluxo") {
-    var etapas_fluxo = ["ENTRADA", "PROCESSAMENTO", "VALIDACAO", "SAIDA"];
-    var opcoes_fluxo;
-    if (room == Hosp) {
-        opcoes_fluxo = [
-            ["Anotacao em papel", "Planilha por ala", "Registro compartilhado"],
-            ["Busca manual", "Conferencia por turno", "Rastreamento por lote"],
-            ["Sem revisao", "Conferencia diaria", "Validar lote e validade"],
-            ["Aviso verbal", "Atualizar quadro", "Alerta por ala"]
-        ];
-    } else {
-        opcoes_fluxo = [
-            ["Registro no caixa", "Fila impressa", "Entrada compartilhada"],
-            ["Preparo manual", "Fila de pedidos", "Despacho integrado"],
-            ["Sem validacao", "Conferencia manual", "Validacao automatica"],
-            ["Copia em papel", "Aviso a cozinha", "Sincronizar estoque"]
-        ];
+    var _etapas = ["ENTRADA", "PROCESSAMENTO", "VALIDACAO", "SAIDA"];
+    var _ops = [
+        ["Registro no caixa", "Fila impressa", "Entrada compartilhada"],
+        ["Preparo manual", "Fila de pedidos", "Despacho integrado"],
+        ["Sem validacao", "Conferencia manual", "Validacao automatica"],
+        ["Copia em papel", "Aviso a cozinha", "Sincronizar estoque"]
+    ];
+    for (var _e = 0; _e < 4; _e++) {
+        var _sel = (_e == fluxo_etapa);
+        var _status = (_e < fluxo_etapa) ? "OK" : (_sel ? "EDITANDO" : "PENDENTE");
+        var _valor = _ops[_e][fluxo_escolhido[_e]];
+        var _hb = _lh + string_height_ext(_valor, -1, _rw - 24) + 12;
+        draw_set_color(_sel ? cor_destaque : cor_borda);
+        draw_rectangle(_rx, _ry, _rx + _rw, _ry + _hb, true);
+        draw_set_color(_sel ? cor_destaque : cor_suave);
+        draw_text(_rx + 12, _ry + 6, _etapas[_e] + "  [" + _status + "]");
+        _txt(_rx + 12, _ry + 6 + _lh, _sel ? ("< " + _valor + " >") : _valor, _rw - 24, _sel ? cor_texto : cor_suave);
+        _ry += _hb + _gap;
     }
-
-    draw_set_color(cor_texto);
-    draw_text(coluna_conteudo_x, corpo_y + 9, "CONFIGURE CADA ETAPA DO PROCESSO");
-    var largura_bloco = (coluna_conteudo_w - 36) / 4;
-    var x_bloco = coluna_conteudo_x;
-    for (var i = 0; i < array_length(etapas_fluxo); i++) {
-        var bloco_atual = (i == fluxo_etapa);
-        var bloco_concluido = (i < fluxo_etapa);
-        var cor_bloco = bloco_atual ? c_aqua : (bloco_concluido ? c_lime : cor_borda);
-        var texto_escolha = opcoes_fluxo[i][fluxo_escolhido[i]];
-
-        draw_set_alpha(bloco_atual ? 0.20 : 0.10);
-        draw_set_color(cor_bloco);
-        draw_rectangle(x_bloco, corpo_y + 52, x_bloco + largura_bloco, corpo_y + 194, true);
-        draw_set_alpha(1);
-        draw_set_color(cor_bloco);
-        draw_rectangle(x_bloco, corpo_y + 52, x_bloco + largura_bloco, corpo_y + 194, false);
-        draw_text_ext(x_bloco + 8, corpo_y + 62, etapas_fluxo[i], 14, largura_bloco - 16);
-        draw_set_color(cor_texto);
-        draw_text_ext(x_bloco + 8, corpo_y + 94, texto_escolha, 14, largura_bloco - 16);
-        draw_set_color(bloco_concluido ? c_lime : cor_suave);
-        draw_text(x_bloco + 8, corpo_y + 169, bloco_concluido ? "CONCLUIDA" : (bloco_atual ? "EDITANDO" : "PENDENTE"));
-
-        if (i < array_length(etapas_fluxo) - 1) {
-            draw_set_color(cor_borda);
-            draw_line(x_bloco + largura_bloco, corpo_y + 123, x_bloco + largura_bloco + 10, corpo_y + 123);
-        }
-        x_bloco += largura_bloco + 12;
-    }
-    draw_set_color(cor_suave);
-    draw_text(coluna_conteudo_x, corpo_fim_y - 24, "ESQUERDA/DIREITA: ALTERAR   E/ENTER: CONFIRMAR ETAPA   X: VOLTAR");
 
 } else if (estado == "resultado" && resultado != undefined) {
-    draw_set_color(cor_texto);
-    draw_text(coluna_conteudo_x, corpo_y + 8, resultado.nome_problema);
-    var cor_coesao = c_red;
-    if (resultado.coesao >= 100) cor_coesao = c_lime;
-    else if (resultado.coesao >= 50) cor_coesao = c_yellow;
-    else if (resultado.coesao >= 10) cor_coesao = c_orange;
-    draw_set_color(cor_coesao);
-    draw_text(coluna_conteudo_x, corpo_y + 30, "COESAO  " + string(resultado.coesao) + "%");
-    draw_set_color(cor_suave);
-    draw_text(coluna_conteudo_x, corpo_y + 46, "SOLUCAO APLICADA");
-    draw_set_color(cor_texto);
-    draw_text_ext(coluna_conteudo_x, corpo_y + 64, resultado.solucao, 14, coluna_conteudo_w);
+    var _cc = (resultado.coesao >= 100) ? cor_bom : ((resultado.coesao >= 50) ? cor_destaque : cor_ruim);
+    draw_set_color(_cc);
+    draw_text(_rx, _ry, "COESAO  " + string(resultado.coesao) + "%");
+    _ry += _lh;
 
-    var titulo_medida = (room == Hosp) ? "INVENTARIO" : "OPERACAO";
-    var antes_1 = (room == Hosp) ? "Busca (min)" : "Fila final";
-    var antes_2 = (room == Hosp) ? "Itens localizados" : "Pedidos processados";
-    var antes_3 = (room == Hosp) ? "Divergencias" : "Retrabalho";
-    draw_set_color(c_aqua);
-    draw_text(coluna_conteudo_x, corpo_y + 96, titulo_medida + "  /  ANTES -> DEPOIS");
+    _ry += _txt(_rx, _ry, resultado.solucao, _rw, cor_texto) + _gap;
 
-    var cor_fila = (resultado.fila_depois < resultado.fila_antes)
-        ? c_lime
-        : ((resultado.fila_depois > resultado.fila_antes) ? c_red : cor_suave);
-    draw_set_color(cor_texto);
-    draw_text(coluna_conteudo_x, corpo_y + 118, antes_1 + ":");
-    draw_set_color(cor_fila);
-    draw_text(coluna_conteudo_x + 150, corpo_y + 118,
-        string(resultado.fila_antes) + " -> " + string(resultado.fila_depois));
+    var _metricas = [
+        { rot: "Fila final",          a: resultado.fila_antes,           d: resultado.fila_depois,           suf: "",  menor: true  },
+        { rot: "Pedidos processados", a: resultado.processados_antes,    d: resultado.processados_depois,    suf: "",  menor: false },
+        { rot: "Retrabalho",          a: resultado.falhas_antes,         d: resultado.falhas_depois,         suf: "",  menor: true  },
+        { rot: "Eficiencia",          a: resultado.eficiencia_antes,     d: resultado.eficiencia_depois,     suf: "%", menor: false },
+        { rot: "Confiabilidade",      a: resultado.confiabilidade_antes, d: resultado.confiabilidade_depois, suf: "%", menor: false },
+        { rot: "Integracao",          a: resultado.integracao_antes,     d: resultado.integracao_depois,     suf: "%", menor: false }
+    ];
+    for (var _m = 0; _m < array_length(_metricas); _m++) {
+        var _mt = _metricas[_m];
+        var _cm = cor_suave;
+        if (_mt.d != _mt.a) {
+            var _melhor = _mt.menor ? (_mt.d < _mt.a) : (_mt.d > _mt.a);
+            _cm = _melhor ? cor_bom : cor_ruim;
+        }
+        draw_set_color(cor_suave);
+        draw_text(_rx, _ry, _mt.rot);
+        draw_set_halign(fa_right);
+        draw_set_color(_cm);
+        draw_text(_rx + _rw, _ry, string(_mt.a) + _mt.suf + " -> " + string(_mt.d) + _mt.suf);
+        draw_set_halign(fa_left);
+        _ry += _lh;
+    }
 
-    var cor_processados = (resultado.processados_depois > resultado.processados_antes)
-        ? c_lime
-        : ((resultado.processados_depois < resultado.processados_antes) ? c_red : cor_suave);
-    draw_set_color(cor_texto);
-    draw_text(coluna_conteudo_x, corpo_y + 139, antes_2 + ":");
-    draw_set_color(cor_processados);
-    draw_text(coluna_conteudo_x + 150, corpo_y + 139,
-        string(resultado.processados_antes) + " -> " + string(resultado.processados_depois));
-
-    var cor_falhas = (resultado.falhas_depois < resultado.falhas_antes)
-        ? c_lime
-        : ((resultado.falhas_depois > resultado.falhas_antes) ? c_red : cor_suave);
-    draw_set_color(cor_texto);
-    draw_text(coluna_conteudo_x, corpo_y + 160, antes_3 + ":");
-    draw_set_color(cor_falhas);
-    draw_text(coluna_conteudo_x + 150, corpo_y + 160,
-        string(resultado.falhas_antes) + " -> " + string(resultado.falhas_depois));
-
-    draw_set_color(c_aqua);
-    draw_text(coluna_conteudo_x, corpo_y + 190, "INDICADORES  /  ANTES -> DEPOIS");
-    draw_set_color(cor_texto);
-    var cor_eficiencia = (resultado.eficiencia_depois > resultado.eficiencia_antes)
-        ? c_lime
-        : ((resultado.eficiencia_depois < resultado.eficiencia_antes) ? c_red : cor_suave);
-    draw_text(coluna_conteudo_x, corpo_y + 212, "Eficiencia");
-    draw_set_color(cor_eficiencia);
-    draw_text(coluna_conteudo_x + 150, corpo_y + 212,
-        string(resultado.eficiencia_antes) + "% -> " + string(resultado.eficiencia_depois) + "%");
-
-    var cor_confiabilidade = (resultado.confiabilidade_depois > resultado.confiabilidade_antes)
-        ? c_lime
-        : ((resultado.confiabilidade_depois < resultado.confiabilidade_antes) ? c_red : cor_suave);
-    draw_set_color(cor_texto);
-    draw_text(coluna_conteudo_x, corpo_y + 233, "Confiabilidade");
-    draw_set_color(cor_confiabilidade);
-    draw_text(coluna_conteudo_x + 150, corpo_y + 233,
-        string(resultado.confiabilidade_antes) + "% -> " + string(resultado.confiabilidade_depois) + "%");
-
-    var cor_integracao = (resultado.integracao_depois > resultado.integracao_antes)
-        ? c_lime
-        : ((resultado.integracao_depois < resultado.integracao_antes) ? c_red : cor_suave);
-    draw_set_color(cor_texto);
-    draw_text(coluna_conteudo_x, corpo_y + 254, "Integracao");
-    draw_set_color(cor_integracao);
-    draw_text(coluna_conteudo_x + 150, corpo_y + 254,
-        string(resultado.integracao_antes) + "% -> " + string(resultado.integracao_depois) + "%");
-
-    draw_set_color(c_yellow);
-    draw_text(coluna_conteudo_x, corpo_y + 282,
-        "CUSTO " + string(resultado.custo) + "  /  ORCAMENTO RESTANTE " + string(resultado.orcamento));
-    draw_set_color(cor_texto);
-    draw_text_ext(coluna_conteudo_x, corpo_y + 306, resultado.explicacao, 14, coluna_conteudo_w);
+    _ry += _gap;
+    draw_set_color(cor_destaque);
+    draw_text(_rx, _ry, "CUSTO " + string(resultado.custo) + "   ORCAMENTO " + string(resultado.orcamento));
 }
 
+
+var _rodape = "";
+switch (estado) {
+    case "diagnosticando": _rodape = "SETA: ESCOLHER   E: CONFIRMAR   X: FECHAR"; break;
+    case "escolhendo":     _rodape = "SETA: ESCOLHER   E: PROJETAR   X: VOLTAR"; break;
+    case "fluxo":          _rodape = "ESQ/DIR: ALTERAR   E: CONFIRMAR   X: VOLTAR"; break;
+    case "resultado":      _rodape = "E / ENTER / ESPACO: FECHAR"; break;
+}
 draw_set_color(cor_suave);
-if (estado == "diagnosticando") {
-    draw_text(tela_x + 14, tela_y + tela_h - 22, "SETA: ESCOLHER   E/ENTER: CONFIRMAR HIPOTESE   X: FECHAR");
-} else if (estado == "escolhendo") {
-    draw_text(tela_x + 14, tela_y + tela_h - 22, "SETA: ESCOLHER   E/ENTER: CONTINUAR   X: FECHAR");
-} else if (estado == "resultado") {
-    draw_text(tela_x + 14, tela_y + tela_h - 22, "E/ENTER/ESPACO: FECHAR RELATORIO");
-}
+draw_text(_cx, _rodape_y, _rodape);
 
 draw_set_alpha(1);
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 draw_set_color(c_white);

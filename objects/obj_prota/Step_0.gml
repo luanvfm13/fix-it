@@ -54,7 +54,7 @@ move_and_collide(_dx, _dy, tilemap, undefined, undefined, undefined);
 
 var _colidiu_npc = false;
 for (var _i = 0; _i < array_length(npc_colisao_objetos); _i++) {
-    if (place_meeting(x, y, npc_colisao_objetos[_i])) {
+   if (place_meeting(x, y, npc_colisao_objetos[_i]) || barreira_no_ponto()) {
         _colidiu_npc = true;
         break;
     }
@@ -66,7 +66,7 @@ if (_colidiu_npc) {
 
     move_and_collide(_dx, 0, tilemap, undefined, undefined, undefined);
     for (var _i = 0; _i < array_length(npc_colisao_objetos); _i++) {
-        if (place_meeting(x, y, npc_colisao_objetos[_i])) {
+       if (place_meeting(x, y, npc_colisao_objetos[_i]) || barreira_no_ponto()) {
             x = _x_inicial;
             break;
         }
@@ -74,7 +74,7 @@ if (_colidiu_npc) {
 
     move_and_collide(0, _dy, tilemap, undefined, undefined, undefined);
     for (var _i = 0; _i < array_length(npc_colisao_objetos); _i++) {
-        if (place_meeting(x, y, npc_colisao_objetos[_i])) {
+      if (place_meeting(x, y, npc_colisao_objetos[_i]) || barreira_no_ponto()) {
             y = _y_inicial;
             break;
         }

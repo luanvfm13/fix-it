@@ -1,4 +1,5 @@
-if (player == noone || !instance_exists(player)) exit;
+if (player == noone || !instance_exists(player)) { visible = false; exit; }
+visible = player.tem_lupa;
 if (!player.tem_lupa) exit;
 
 x = player.x + 10;

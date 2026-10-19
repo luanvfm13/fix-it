@@ -1,3 +1,8 @@
+if (instance_exists(problema_alvo)) {
+    snap_id = problema_alvo.problem_id;
+    snap_nome = problema_alvo.problem_data.nome;
+}
+
 switch (estado) {
     case "diagnosticando":
         if (!instance_exists(problema_alvo)) {
@@ -44,8 +49,8 @@ switch (estado) {
             opcao_selecionada = (opcao_selecionada - 1 + _quantidade_opcoes) mod _quantidade_opcoes;
         }
         if (keyboard_check_pressed(ord("X")) || keyboard_check_pressed(vk_escape)) {
-            instance_destroy();
-            exit;
+            estado = "diagnosticando";
+            break;
         }
 
         if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(ord("E"))) {
