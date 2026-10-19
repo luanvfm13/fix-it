@@ -23,14 +23,11 @@ if (tipo == "controles") {
     var _y = _L.y + 44 * _L.s;
 
     draw_set_color(make_color_rgb(248, 255, 240));
-    draw_text(_cx, _y, "CREDITOS");
-    _y += string_height("CREDITOS") + 28 * _L.s;
+    draw_text(_cx, _y, "CRÉDITOS");
+    _y += string_height("CRÉDITOS") + 28 * _L.s;
 
     var _lista = [
-        ["Líder/Programador", "Luan"],
-        ["Programador", "Davi"],
-        ["Programador", "Iago"],
-        ["Vice-líder troféu", "Agatha"]
+        ["Projeto ainda em Desenvolvimento", ""],
     ];
     for (var i = 0; i < array_length(_lista); i++) {
         draw_set_color(make_color_rgb(18, 89, 162));
@@ -43,7 +40,7 @@ if (tipo == "controles") {
 
     _y += 12 * _L.s;
     draw_set_color(make_color_rgb(18, 89, 162));
-    draw_text(_cx, _y, "Feito com GameMaker Studio 2");
+    draw_text(_cx, _y, "Sendo desenvolvido com GameMaker Studio 2");
 
     desenhar_sprite_topo(spr_botao_x, _L.x + _L.w - 80 * _L.s, _L.y + 12 * _L.s, _L.s);
 }

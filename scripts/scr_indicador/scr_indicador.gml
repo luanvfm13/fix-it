@@ -5,6 +5,7 @@ function alvo_da_etapa() {
     switch (room) {
         case inicio:
             if (_e == 0) return instance_find(inicio_p_gamer, 0);
+			 if (_e == 4) return instance_find(inicio_p_gamer, 0);
             if (_e == 3) return instance_find(inicio_p_restaurante, 0);
             break;
 

@@ -72,8 +72,8 @@ function reset_jogo() {
     };
     global.ui_bloqueando_jogo = false;
 
-    global.tempo_restaurante = 90;
-    global.tempo_restante = 90;
+    global.tempo_restaurante = 180;
+    global.tempo_restante = 180;
     global.timer_ativo = false;
     global.jogo_acabou = false;
     global.jogo_vencido = false;

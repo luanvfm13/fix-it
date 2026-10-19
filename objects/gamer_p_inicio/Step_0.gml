@@ -10,7 +10,7 @@ if (!global.ui_bloqueando_jogo && distance_to_object(obj_prota) < 11) {
            
             var _d = instance_create_layer(x, y, "Instances", obj_dialogo);
             with (_d) {
-                setup_dialogo("gerente_nao_falou");
+                setup_dialogo("sair_sem_gerente");
             }
         } 
         else if (global.etapa < 3) {

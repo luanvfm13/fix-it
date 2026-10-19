@@ -1,8 +1,7 @@
 /// scr_dialogos.gml, msm esquema do scr_problemas, centralização de conversas e puxa por id
-/// 1. Copie o case "modelo_exemplo" aqui embaixo
+/// 1. Copie o case "modelo_exemplo" lá embaixo
 /// 2. Troque o texto do case pelo ID novo
-/// 3. Preencha os nós (cada nó tem texto + opções; cada opção aponta pro proximo_id de outro nó)
-/// 4. Pra usar: setup_dialogo("id_do_dialogo") na instância de obj_dialogo
+/// 4. P usar: setup_dialogo("id_do_dialogo") na instância de obj_dialogo
 
 function get_dialogo_data(_id) {
     switch (_id) {
@@ -136,8 +135,8 @@ function get_dialogo_data(_id) {
 
         case "loirin_inicio":
         return {
-            "1": {nome: "Loirin", texto: "Toda terça, meio-dia e vinte, a fila chega na porta. O gerente ainda chama de surpresa.", opcoes: [{texto: "Ninguém avisou?", proximo_id: 2}]},
-            "2": {nome: "Loirin", texto: "Avisei. Ele anotou no guardanapo e perdeu o guardanapo.", opcoes: []}
+            "1": {nome: "Miguel", texto: "Toda terça, meio-dia e vinte, a fila chega na porta. O gerente ainda chama de surpresa.", opcoes: [{texto: "Ninguém avisou?", proximo_id: 2}]},
+            "2": {nome: "Miguel", texto: "Avisei. Ele anotou no guardanapo e perdeu o guardanapo.", opcoes: []}
         };
 
         case "wilson_inicio":
@@ -235,6 +234,8 @@ case "gerente_final_baixo":
             return {
                 "1": { nome: "", texto: "Você ainda não equipou todas as ferramentas. Pegue o scanner, a lupa e o tablet antes de sair.", opcoes: [] }
             };
+			case "sair_sem_gerente":
+    return { "1": { nome: "Gerente", texto: "Antes de sair, passe aqui. Ainda não falamos sobre o resultado da lanchonete.", opcoes: [] } };
 
         case "lanchonete_bloqueada":
             return {

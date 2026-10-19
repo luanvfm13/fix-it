@@ -65,8 +65,8 @@ if (instance_number(obj_problema) == 0) {
     } else {
         global.missao_restaurante_feita = true;
         global.missoes_concluidas += 1;
-        global.etapa = 4;
     }
+    global.etapa = 4;
 
     if (instance_exists(obj_men)) {
         with (obj_men) {
@@ -93,7 +93,7 @@ if (tempo_step_acumulado >= game_get_speed(gamespeed_fps)) {
 
         global.fim_pendente = global.foi_demitido
             ? ((global.motivo_demissao == "saldo") ? "fim_demitido_saldo" : "fim_demitido_risco")
-            : "fim_tempo";
+            : "fim_tempo"; global.etapa = 4;
 
         if (instance_exists(obj_men)) {
             with (obj_men) {

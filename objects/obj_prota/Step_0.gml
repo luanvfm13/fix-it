@@ -1,6 +1,8 @@
 var _sobreposto = false;
 for (var _i = 0; _i < array_length(npc_colisao_objetos); _i++) {
-    if (place_meeting(x, y, npc_colisao_objetos[_i])) { _sobreposto = true; break; }
+    if (place_meeting(x, y, npc_colisao_objetos[_i])) { _sobreposto = true; break;
+		}
+	if (!_sobreposto && barreira_no_ponto()) _sobreposto = true;
 }
 if (_sobreposto) {
     var _ox = x;
