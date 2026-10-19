@@ -18,16 +18,13 @@ function missao_salvar_estado() {
     if (global.sala_missao_atual == restaurante) {
         global.tempo_restaurante = global.tempo_restante;
         global.scans_restaurante += global.scans_usados;
-    } else if (global.sala_missao_atual == Hosp) {
-        global.tempo_hospital = global.tempo_restante;
-        global.scans_hospital += global.scans_usados;
     }
     global.scans_usados = 0;
 }
 
 function cobrar_scanner(_missao) {
     missao_salvar_estado();
-    var _n = (_missao == restaurante) ? global.scans_restaurante : global.scans_hospital;
+    var _n = global.scans_restaurante;
     var _custo = _n * global.scan_custo_moedas;
 
     global.moedas -= _custo;
@@ -36,8 +33,7 @@ function cobrar_scanner(_missao) {
     global.scans_total += _n;
     global.moedas_gastas_scanner += _custo;
 
-    if (_missao == restaurante) global.scans_restaurante = 0;
-    else global.scans_hospital = 0;
+    global.scans_restaurante = 0;
 
     if (global.moedas < 0) {
         global.foi_demitido = true;
@@ -76,18 +72,15 @@ function reset_jogo() {
     global.ui_bloqueando_jogo = false;
 
     global.tempo_restaurante = 90;
-    global.tempo_hospital = 90;
     global.tempo_restante = 90;
     global.timer_ativo = false;
     global.jogo_acabou = false;
     global.jogo_vencido = false;
 
-    global.missoes_total = 2;
+    global.missoes_total = 1;
     global.missoes_concluidas = 0;
     global.missao_restaurante_feita = false;
-    global.missao_hospital_feita = false;
     global.missao_restaurante_iniciada = false;
-    global.missao_hospital_iniciada = false;
     global.final_dialogo_concluido = false;
     global.final_campanha = false;
 
@@ -104,7 +97,6 @@ function reset_jogo() {
     global.evidencias_coletadas = [];
 
     global.scans_restaurante = 0;
-    global.scans_hospital = 0;
     global.scans_usados = 0;
     global.scans_ultimo = 0;
     global.scans_custo_ultimo = 0;

@@ -43,6 +43,7 @@
     {"id":{"name":"gamer_p_inicio","path":"objects/gamer_p_inicio/gamer_p_inicio.yy",},},
     {"id":{"name":"inicio_p_gamer","path":"objects/inicio_p_gamer/inicio_p_gamer.yy",},},
     {"id":{"name":"inicio_p_restaurante","path":"objects/inicio_p_restaurante/inicio_p_restaurante.yy",},},
+    {"id":{"name":"obj_atende","path":"objects/obj_atende/obj_atende.yy",},},
     {"id":{"name":"obj_atendente","path":"objects/obj_atendente/obj_atendente.yy",},},
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
     {"id":{"name":"obj_col","path":"objects/obj_col/obj_col.yy",},},

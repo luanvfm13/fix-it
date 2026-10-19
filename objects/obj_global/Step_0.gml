@@ -1,5 +1,5 @@
 if (keyboard_check_pressed(vk_escape)
-    && (room == restaurante || room == Hosp || room == inicio || room == gamer || room == escritorio)
+    && (room == restaurante || room == inicio || room == gamer || room == escritorio)
     && !instance_exists(obj_pausa)
     && !instance_exists(obj_dialogo)
     && !instance_exists(obj_tablet)
@@ -15,7 +15,7 @@ if (keyboard_check_pressed(vk_escape)
 
 guia_verificar();
 
-var _missao_ativa = (room == restaurante || room == Hosp);
+var _missao_ativa = (room == restaurante);
 if (!_missao_ativa) {
     if (global.sala_missao_atual != noone) {
         missao_salvar_estado();
@@ -25,7 +25,7 @@ if (!_missao_ativa) {
     exit;
 }
 
-if ((room == restaurante && global.missao_restaurante_feita) || (room == Hosp && global.missao_hospital_feita)) {
+if (room == restaurante && global.missao_restaurante_feita) {
     global.timer_ativo = false;
     exit;
 }
@@ -33,14 +33,13 @@ if ((room == restaurante && global.missao_restaurante_feita) || (room == Hosp &&
 if (global.sala_missao_atual != room) {
     global.sala_missao_atual = room;
     global.timer_ativo = true;
-    global.tempo_restante = (room == restaurante) ? global.tempo_restaurante : global.tempo_hospital;
+    global.tempo_restante = global.tempo_restaurante;
     tempo_step_acumulado = 0;
     global.jogo_acabou = false;
 
-    var _primeira = (room == restaurante) ? !global.missao_restaurante_iniciada : !global.missao_hospital_iniciada;
+    var _primeira = !global.missao_restaurante_iniciada;
     if (_primeira) {
-        if (room == restaurante) global.missao_restaurante_iniciada = true;
-        else global.missao_hospital_iniciada = true;
+        global.missao_restaurante_iniciada = true;
         global.falha_gerada_missao = false;
         global.evento_operacional = "";
     }
@@ -66,9 +65,6 @@ if (instance_number(obj_problema) == 0) {
             global.missao_restaurante_feita = true;
             global.missoes_concluidas += 1;
             global.etapa = 4;
-        } else {
-            global.missao_hospital_feita = true;
-            global.missoes_concluidas += 1;
         }
     }
 
@@ -97,5 +93,3 @@ if (tempo_step_acumulado >= game_get_speed(gamespeed_fps)) {
         _res2.fim_campanha = false;
     }
 }
-
-

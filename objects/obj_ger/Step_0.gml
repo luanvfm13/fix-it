@@ -97,8 +97,6 @@ switch (estado) {
         }
         else if (global.etapa == 2) dialogo_id = "gerente_despedida";
         else if (global.etapa == 1) dialogo_id = "gerente_lembrete";
-        else if (global.etapa == 4) dialogo_id = "gerente_hospital";
-        else if (global.etapa == 5) dialogo_id = "gerente_lembrete_hosp";
          else if (global.etapa == 3) dialogo_id = "gerente_lembrete";
 		
 		else dialogo_id = "gerente_intro";
@@ -123,7 +121,6 @@ switch (estado) {
         if (_perto && !global.ui_bloqueando_jogo && !instance_exists(obj_dialogo)) {
             if (keyboard_check_pressed(ord("E"))) {
                 if (global.etapa == 2) global.etapa = 3;
-				 if (global.etapa == 4) global.etapa = 5;
                 var _id_dialogo = dialogo_id;
                 var _d = instance_create_layer(x, y, "Instances", obj_dialogo);
                 with (_d) {

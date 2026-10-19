@@ -292,6 +292,28 @@ function get_dialogo_data(_id) {
                     opcoes: []
                 }
             }
+			
+		case "at": 
+		return {
+			  "1": {
+    nome: "Jonas (Atendente)",
+    texto: "Oi, boa noite... Olha, já vou te adiantando: o freezer pifou de vez e o sorvete virou sopa. Para piorar, o sistema do caixa caiu. Vai querer arriscar pedir algo?",
+    opcoes: [
+      { texto: "Mas nem o refrigerante tá gelado? Como vou pagar?", proximo_id: 2 },
+      { texto: "Que bagunça! Cadê o gerente para resolver isso?", proximo_id: 3 }
+    ]
+  },
+  "2": {
+    nome: "Jonas (Atendente)",
+    texto: "Gelado? O refrigerante tá morno que parece chá! sinta-se livre para tentar resolver, pior ainda só este caixa.",
+    opcoes: []
+  },
+  "3": {
+    nome: "Jonas (Atendente)",
+    texto: "O gerente? Aquele sumiu faz horas! Aposto que foi embora para não ter que escutar o barulho infernal que esse freezer tá fazendo enquanto derrete as coisas.",
+    opcoes: []
+  }
+		}
 		case "musga":
         if (global.musica_ativa) {
             return {
@@ -313,6 +335,161 @@ function get_dialogo_data(_id) {
             "3": {nome: "Troca-troca", texto: "taokei.", opcoes: []}
         };
 
+        case "fluvio_inicio":
+        return {
+            "1": {nome: "Flávio", texto: "E aí, tudo bem? Notei que o freezer tá dando problema, mas já chamou o técnico? Se precisar de ajuda pra resolver, é só falar.", opcoes: [{texto: "Freezer estragado", proximo_id: 2}, {texto: "Tá funcionando agora", proximo_id: 3}] }};
+            "2": {nome: "Flávio", texto: "Sem freezer a gente perde tudo. O lucro some e o cliente fica chateado. Conseguiu consertar ou precisa de mais alguma coisa?", opcoes: [] }};
+            "3": {nome: "Flávio", texto: "Se precisar de mais alguma coisa, é só chamar. Bom trabalho!", opcoes: [] }};
+        };
+        case "lavio_inicio":
+        return {
+            "1": {nome: "Lávio", texto: "Tava organizando o estoque quando vi que some coisa sumiu. Alguém mexeu sem perguntar? Se for cliente reclamando, já anotei quem foi.", opcoes: [{texto: "Algo sumiu do estoque", proximo_id: 2}, {texto: "Tava tudo no lugar", proximo_id: 3}] }};
+            "2": {nome: "Lávio", texto: "Ah, aquela atendente meio desajeitada... Disse que tava arrumando e sumiu o pão. Preciso verificar o que sobrou.", opcoes: [] }};
+            "3": {nome: "Lávio", texto: "Fica esperto com o estoque. Nada some sem motivo.", opcoes: [] }};
+        };
+        case "leandra_inicio":
+        return {
+            "1": {nome: "Leandra", texto: "Você é o novo consultor? O gerente falou que tô no turno errado, mas parece que ele tava confundido mesmo. Então... e agora?", opcoes: [{texto: "Sobre o turno", proximo_id: 2}, {texto: "Sobre a missão", proximo_id: 3}] }};
+            "2": {nome: "Leandra", texto: "Ah, o turno da noite tá um caos. Pilha de mensagens, cliente reclamando de tudo quanto é lado. Se organize, porque eu tô saturada.", opcoes: [] }};
+            "3": {nome: "Leandra", texto: "Missão? Na lanchonete? Já ouvi falar, mas ainda não fui lá. Deixe eu terminar aqui primeiro, combinado?", opcoes: [] }};
+        };
+        case "loucoquevaifalarcoisas_inicio":
+        return {
+            "1": {nome: "O Louco", texto: "As vozes mandaram que o freezer é o centro do universo e que o sorvete cura tudo! O que você acha?", opcoes: [{texto: "Sorvete cura?", proximo_id: 2}, {texto: "Freezer é centro?", proximo_id: 3}] }};
+            "2": {nome: "O Louco", texto: "Não é o sorvete não! É a energia! Tudo energia! Já viu aqueles potes? Guardam a memória do cosmos!", opcoes: [] }};
+            "3": {nome: "O Louco", texto: "Fala sério, o freezer queimou e agora as vozes ficaram mais altas. Tem mais alguém vendo isso ou é só eu?", opcoes: [] }};
+        };
+        case "nelipefeto_inicio":
+        return {
+            "1": {nome: "Nélio Feto", texto: "Ei, rapaziada! O wi-fi caiu de novo? Quem tá responsá por isso aqui? Se for o provedor, ja estou na hora de reclamar.", opcoes: [{texto: "Wi-fi caiu", proximo_id: 2}, {texto: "Tudo funcionando", proximo_id: 3}] }};
+            "2": {nome: "Nélio Feto", texto: "Essa internet lenta é pior que buraco na estrada. Pedido some, cliente irritado, gerente nervoso. Tava esperando melhorar sozinho, mas não melhora.", opcoes: [] }};
+            "3": {nome: "Nélio Feto", texto: "Se arrumar, avisa aqui. Eu tô ficando velho pra essas modernices.", opcoes: [] }};
+        };
+        case "tonyjark_inicio":
+        return {
+            "1": {nome: "Tony Jark", texto: "E aí, consultor! Tava dando uma olhada no scanner e vi que o freezer tava na porcentagem crítica. Geladeira velha mesmo, tem que renova.", opcoes: [{texto: "Freezer crítico", proximo_id: 2}, {texto: "Tava dando uma olhada", proximo_id: 3}] }};
+            "2": {nome: "Tony Jark", texto: "Critico mesmo! Sorvete derretendo, cliente reclamando, gerente ficando louco. Se consertar, ganha um desconto no próximo pedido.", opcoes: [] }};
+            "3": {nome: "Tony Jark", texto: "Desconto? Show. Se precisar de mais alguma coisa, é só chamar. Tchu!", opcoes: [] }};
+        };
+        case "threepacsentadolado_inicio":
+        return {
+            "1": {nome: "Três Pacentes", texto: "Ei! O senhor viu o que aconteceu com o freezer? Parece que o compressor desistiu da vida. Triste dia pra geladeira!", opcoes: [{texto: "Freezer parado", proximo_id: 2}, {texto: "O que aconteceu?", proximo_id: 3}] }};
+            "2": {nome: "Três Pacentes", texto: "Compressor desistiu! Agora é geladeira normal, sem aquele frio de antes. O sorvete tava bom, hein? Agora é ruim.", opcoes: [] }};
+            "3": {nome: "Três Pacentes", texto: "E o sorvete? O senhor gosta de sorvete? Eu gosto de sorvete. Sorvete bom é sorvete quente... ou frio. De qualquer jeito, bom.", opcoes: [] }};
+        };
+        case "qporra_inicio":
+        return {
+            "1": {nome: "", texto: "Eita, mais um problema pra resolver. O freezer tava viajando denovo. Que porra é essa?", opcoes: [{texto: "Freezer viajando", proximo_id: 2}, {texto: "Tava tranquilo", proximo_id: 3}] }};
+            "2": {nome: "", texto: "Sério? Outra vez? Quando a gente acha que já resolveu, surge outro. É sempre alguma coisa aqui.", opcoes: [] }};
+            "3": {nome: "", texto: "Bom, tem que lidar. Scanner na mão e ver o que tá acontecendo com o sistema.", opcoes: [] }};
+        };
+        case "marcelo_inicio":
+        return {
+            "1": {nome: "Marcelo", texto: "E aí, consultor! Tava olhando pra fila e percebi que a fila dobra a esquina no almoço. O gerente finge que não vê, mas todo mundo vê.", opcoes: [{texto: "Fila dobra na esquina", proximo_id: 2}, {texto: "Gerente finge", proximo_id: 3}] }};
+            "2": {nome: "Marcelo", texto: "Fingir não vê não resolve nada. A fila cresce, cliente irritado, pedido some. Se tem jeito de organizar, chama eu, que eu aviso o pessoal.", opcoes: [] }};
+            "3": {nome: "Marcelo", texto: "Vou anotando aí. Se precisar de ajuda com fila ou estoque, é só chamar. Tá ligado?", opcoes: [] }};
+        };
+        case "sidney_inicio":
+        return {
+            "1": {nome: "Sidney", texto: "E aí, tudo bem? O gerente falou que tô no turno errado, mas parece que ele tava confundido mesmo. Então... e agora?", opcoes: [{texto: "Sobre o turno", proximo_id: 2}, {texto: "Sobre a missão", proximo_id: 3}] }};
+            "2": {nome: "Sidney", texto: "Ah, o turno da manhã tá mais tranquilo. Mas a fila ainda anda devagar. Se organizar, a gente melhora.", opcoes: [] }};
+            "3": {nome: "Sidney", texto: "Missão? Na lanchonete? Já ouvi falar, mas ainda não fui lá. Deixe eu terminar aqui primeiro, combinado?", opcoes: [] }};
+        };
+        case "emerson_inicio":
+        return {
+            "1": {nome: "Emerson", texto: "E aí, consultor! Tava testando o scanner e o freezer mostrou que o sistema tava caindo. Tecnologia velha, dá problema. Tava testando mesmo.", opcoes: [{texto: "Scanner caindo", proximo_id: 2}, {texto: "Tava testando", proximo_id: 3}] }};
+            "2": {nome: "Emerson", texto: "Sistema caindo mesmo! Scanner trava, freezer marca errado, gerente ficando louco. Se arrumar, anota aqui pra gente não repetir.", opcoes: [] }};
+            "3": {nome: "Emerson", texto: "Vou anotando. Se precisar de mais teste, é só chamar. Tecnologia da gente é assim mesmo.", opcoes: [] }};
+        };
+        case "dona_deolane_inicio":
+        return {
+            "1": {nome: "Dona Deolane", texto: "Quer uma história de presidente? Tenho duas na ponta da língua: o primeiro ou o homem que levou a capital pra Brasília?", opcoes: [{texto: "Conta do primeiro", proximo_id: 2}, {texto: "Quero saber de Brasília", proximo_id: 3}] }};
+            "2": {nome: "Dona Deolane", texto: "Marechal Deodoro da Fonseca foi o primeiro presidente do Brasil, depois da Proclamação da República, em 1889. Começou a República com farda e tudo.", opcoes: [{texto: "E o de Brasília?", proximo_id: 3}] }};
+            "3": {nome: "Dona Deolane", texto: "Juscelino Kubitschek prometeu cinquenta anos de progresso em cinco. Brasília foi inaugurada em 1960, no meio do cerrado. Aí sim foi mudança de endereço.", opcoes: [{texto: "Me conta mais uma", proximo_id: 4}] }};
+            "4": {nome: "Dona Deolane", texto: "Tancredo Neves foi eleito em 1985, mas adoeceu antes da posse e morreu. Quem assumiu foi o vice, José Sarney. Política às vezes parece novela, só que ninguém escolhe o final.", opcoes: [] }};
+        };
+        case "gerente_demitido_inicio":
+        return {
+            "1": {nome: "Gerente Demitido", texto: "Ei, você é o novo consultor? Escutei que tava chegando alguém. Aqui tá feio, freezer queimado, gerente sumiu. Precisa de ajuda?", opcoes: [{texto: "Freezer queimado", proximo_id: 2}, {texto: "Gerente sumiu", proximo_id: 3}] }};
+            "2": {nome: "Gerente Demitido", texto: "Freezer queimou de vez. Sorvete derretido, cliente chateado, prejuízo grande. Se consertar, a gente comemora. Se não, a gente luta pra sobreviver.", opcoes: [] }};
+            "3": {nome: "Gerente Demitido", texto: "Gerente sumiu faz semanas. Sumiu mesmo, sumiu de fininho. Ninguém sabe onde foi. Pode ser que tenha ido embora pra não ter que ver esse desastre.", opcoes: [] }};
+            "4": {nome: "Gerente Demitido", texto: "Se achar notícias, avisa aqui. A gente precisa continuar, mesmo com todo esse caos.", opcoes: [] }};
+        };
+        case "gerente_deslike_inicio":
+        return {
+            "1": {nome: "Gerente Deslike", texto: "E aí, consultor? Tava olhando pra fila e vi que a galera t reclamando do atendimento. O sistema caiu, freezer tava viajando, unica coisa que nao tava faltando era problema.", opcoes: [{texto: "Fila reclamando", proximo_id: 2}, {texto: "Sistema caindo", proximo_id: 3}] }};
+            "2": {nome: "Gerente Deslike", texto: "Sistema caindo de novo! Scanner trava, freezer marca errado, cliente irritado. Se arrumar, anota aqui. Se nao, a culpa vai pra mim denovo.", opcoes: [] }};
+            "3": {nome: "Gerente Deslike", texto: "E aquela atendente meio desajeitada... Disse que tava arrumando e sumiu o pão. Preciso verificar o que sobrou.", opcoes: [] }};
+            "4": {nome: "Gerente Deslike", texto: "Fica esperto com o estoque. Nada some sem motivo. Se precisar de mais alguma coisa, é só chamar.", opcoes: [] }};
+        };
+        case "gerente_joinha_inicio":
+        return {
+            "1": {nome: "Gerente Joinha", texto: "E aí, tudo bem? Tava olhando o relatório e vi que as filas t alongando. O scanner t travando denovo, parece que tem algo errado com o sistema.", opcoes: [{texto: "Fila alongando", proximo_id: 2}, {texto: "Scanner travando", proximo_id: 3}] }};
+            "2": {nome: "Gerente Joinha", texto: "Scanner travando denovo! Sistema caindo, freezer viajando, cliente reclamando. Se arrumar, anota aqui pra gente nao repetir o mesmo erro.", opcoes: [] }};
+            "3": {nome: "Gerente Joinha", texto: "E aquela atendente meio desajeitada... Disse que tava arrumando e sumiu o pão. Preciso verificar o que sobrou.", opcoes: [] }};
+            "4": {nome: "Gerente Joinha", texto: "Fica esperto com o estoque. Nada some sem motivo. Se precisar de mais alguma coisa, é só chamar.", opcoes: [] }};
+        };
+        case "gerente_palmas_inicio":
+        return {
+            "1": {nome: "Gerente Palmas", texto: "E aí, consultor! Tava olhando pro freezer e vi que tava na porcentagem crítica. Mais uma vez! Geladeira velha mesmo, tem que renova ou ta na hora de desistir.", opcoes: [{texto: "Freezer crítico", proximo_id: 2}, {texto: "Tava olhando", proximo_id: 3}] }};
+            "2": {nome: "Gerente Palmas", texto: "Critico mesmo! Sorvete derretendo, cliente reclamando, gerente ficando louco. Se consertar, ganha um desconto no próximo pedido. Ou nao. Sua escolha.", opcoes: [] }};
+            "3": {nome: "Gerente Palmas", texto: "Desconto? Show. Se precisar de mais alguma coisa, é só chamar. Tchu! Se nao, boa sorte lidando com esse freezer velho.", opcoes: [] }};
+            "4": {nome: "Gerente Palmas", texto: "Se nao consertar, nao vem reclamar pra mim. Freezer velho da aquela vida, todo mundo ja sabe.", opcoes: [] }};
+        };
+        case "npc1costas_inicio":
+        return {
+            "1": {nome: "", texto: "Fala do lado de cá. Tava olhando pro movimento da rua e vi que tem carro dobrando na esquina. Cuidado pra nao se machucar.", opcoes: [{texto: "Carro na esquina", proximo_id: 2}, {texto: "Tava tranquilo", proximo_id: 3}] }};
+            "2": {nome: "", texto: "E ai, consultor? Tava observando o movimento. Tem cliente chegando, fila andando, o de sempre. Nada de estranho acontecendo.", opcoes: [] }};
+            "3": {nome: "", texto: "Se precisar de mais alguma coisa, é só chamar. Cuidado com as esquinas.", opcoes: [] }};
+        };
+        case "npc2costas_inicio":
+        return {
+            "1": {nome: "", texto: "Fala do lado de cá. Tava olhando pro movimento da rua e vi que tem carro dobrando na esquina. Cuidado pra nao se machucar.", opcoes: [{texto: "Carro na esquina", proximo_id: 2}, {texto: "Tava tranquilo", proximo_id: 3}] }};
+            "2": {nome: "", texto: "E ai, consultor? Tava observando o movimento. Tem cliente chegando, fila andando, o de sempre. Nada de estranho acontecendo.", opcoes: [] }};
+            "3": {nome: "", texto: "Se precisar de mais alguma coisa, é só chamar. Cuidado com as esquinas.", opcoes: [] }};
+        };
+        case "npc3costas_inicio":
+        return {
+            "1": {nome: "", texto: "Fala do lado de cá. Tava olhando pro movimento da rua e vi que tem carro dobrando na esquina. Cuidado pra nao se machucar.", opcoes: [{texto: "Carro na esquina", proximo_id: 2}, {texto: "Tava tranquilo", proximo_id: 3}] }};
+            "2": {nome: "", texto: "E ai, consultor? Tava observando o movimento. Tem cliente chegando, fila andando, o de sempre. Nada de estranho acontecendo.", opcoes: [] }};
+            "3": {nome: "", texto: "Se precisar de mais alguma coisa, é só chamar. Cuidado com as esquinas.", opcoes: [] }};
+        };
+        case "npc4costas_inicio":
+        return {
+            "1": {nome: "", texto: "Fala do lado de cá. Tava olhando pro movimento da rua e vi que tem carro dobrando na esquina. Cuidado pra nao se machucar.", opcoes: [{texto: "Carro na esquina", proximo_id: 2}, {texto: "Tava tranquilo", proximo_id: 3}] }};
+            "2": {nome: "", texto: "E ai, consultor? Tava observando o movimento. Tem cliente chegando, fila andando, o de sempre. Nada de estranho acontecendo.", opcoes: [] }};
+            "3": {nome: "", texto: "Se precisar de mais alguma coisa, é só chamar. Cuidado com as esquinas.", opcoes: [] }};
+        };
+        case "npc5costas_inicio":
+        return {
+            "1": {nome: "", texto: "Fala do lado de cá. Tava olhando pro movimento da rua e vi que tem carro dobrando na esquina. Cuidado pra nao se machucar.", opcoes: [{texto: "Carro na esquina", proximo_id: 2}, {texto: "Tava tranquilo", proximo_id: 3}] }};
+            "2": {nome: "", texto: "E ai, consultor? Tava observando o movimento. Tem cliente chegando, fila andando, o de sempre. Nada de estranho acontecendo.", opcoes: [] }};
+            "3": {nome: "", texto: "Se precisar de mais alguma coisa, é só chamar. Cuidado com as esquinas.", opcoes: [] }};
+        };
+        case "npc6costas_inicio":
+        return {
+            "1": {nome: "", texto: "Fala do lado de cá. Tava olhando pro movimento da rua e vi que tem carro dobrando na esquina. Cuidado pra nao se machucar.", opcoes: [{texto: "Carro na esquina", proximo_id: 2}, {texto: "Tava tranquilo", proximo_id: 3}] }};
+            "2": {nome: "", texto: "E ai, consultor? Tava observando o movimento. Tem cliente chegando, fila andando, o de sempre. Nada de estranho acontecendo.", opcoes: [] }};
+            "3": {nome: "", texto: "Se precisar de mais alguma coisa, é só chamar. Cuidado com as esquinas.", opcoes: [] }};
+        };
+        case "npc7costas_inicio":
+        return {
+            "1": {nome: "", texto: "Fala do lado de cá. Tava olhando pro movimento da rua e vi que tem carro dobrando na esquina. Cuidado pra nao se machucar.", opcoes: [{texto: "Carro na esquina", proximo_id: 2}, {texto: "Tava tranquilo", proximo_id: 3}] }};
+            "2": {nome: "", texto: "E ai, consultor? Tava observando o movimento. Tem cliente chegando, fila andando, o de sempre. Nada de estranho acontecendo.", opcoes: [] }};
+            "3": {nome: "", texto: "Se precisar de mais alguma coisa, é só chamar. Cuidado com as esquinas.", opcoes: [] }};
+        };
+        case "npc8costas_inicio":
+        return {
+            "1": {nome: "", texto: "Fala do lado de cá. Tava olhando pro movimento da rua e vi que tem carro dobrando na esquina. Cuidado pra nao se machucar.", opcoes: [{texto: "Carro na esquina", proximo_id: 2}, {texto: "Tava tranquilo", proximo_id: 3}] }};
+            "2": {nome: "", texto: "E ai, consultor? Tava observando o movimento. Tem cliente chegando, fila andando, o de sempre. Nada de estranho acontecendo.", opcoes: [] }};
+            "3": {nome: "", texto: "Se precisar de mais alguma coisa, é só chamar. Cuidado com as esquinas.", opcoes: [] }};
+        };
+        case "npc9costas_inicio":
+        return {
+            "1": {nome: "", texto: "Fala do lado de cá. Tava olhando pro movimento da rua e vi que tem carro dobrando na esquina. Cuidado pra nao se machucar.", opcoes: [{texto: "Carro na esquina", proximo_id: 2}, {texto: "Tava tranquilo", proximo_id: 3}] }};
+            "2": {nome: "", texto: "E ai, consultor? Tava observando o movimento. Tem cliente chegando, fila andando, o de sempre. Nada de estranho acontecendo.", opcoes: [] }};
+            "3": {nome: "", texto: "Se precisar de mais alguma coisa, é só chamar. Cuidado com as esquinas.", opcoes: [] }};
+        };
         // MODELO, copia e altera p criar diálogos novos
         case "modelo_exemplo":
             return {

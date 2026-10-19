@@ -5,8 +5,6 @@ function guia_config(_etapa) {
         case 1: return { sala: gamer,    obj: gamer_p_esc,         salas_ok: [gamer, escritorio], raio: 150, dica: "guia_escritorio" };
         case 2: return { sala: gamer,    obj: obj_ger,             salas_ok: [gamer, escritorio], raio: 200, dica: "guia_gerente" };
         case 3: return { sala: inicio,   obj: inicio_p_restaurante, salas_ok: [inicio, gamer],     raio: 200, dica: "guia_lanchonete" };
-        case 4: return { sala: gamer,    obj: obj_ger,             salas_ok: [gamer],              raio: 200, dica: "guia_gerente_hosp" };
-        case 5: return { sala: inicio,   obj: gamer_p_hosp,        salas_ok: [inicio, gamer],     raio: -1,  dica: "guia_hospital" };
     }
     return undefined;
 }
