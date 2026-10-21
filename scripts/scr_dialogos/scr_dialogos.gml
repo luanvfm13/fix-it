@@ -129,8 +129,8 @@ function get_dialogo_data(_id) {
 
         case "everaldo_inicio":
         return {
-            "1": {nome: "Everaldo", texto: "Caiu o wi-fi? Culpa do prefeito. Acabou o pão de queijo? Também. Se meu Corinthians perder eu mato esse cavalo ", opcoes: [{texto: "E os buracos da rua?", proximo_id: 2}]},
-            "2": {nome: "Everaldo", texto: "Aí eu culpo com razão! Essa calçada parece fase de plataforma: pula o buraco ou perde uma vida. Se ao menos ele ensinasse o Yuri Alberto a chutar no gol", opcoes: []}
+            "1": {nome: "Everaldo", texto: "Caiu o wi-fi? Culpa do prefeito. Acabou o pão de queijo? Também. Tudo aqui está um desastre ", opcoes: [{texto: "E os buracos da rua?", proximo_id: 2}]},
+            "2": {nome: "Everaldo", texto: "Aí eu culpo com razão! Essa calçada parece fase de plataforma: pula o buraco ou perde uma vida.", opcoes: []}
         };
 
         case "loirin_inicio":
