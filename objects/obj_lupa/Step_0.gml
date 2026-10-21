@@ -1,5 +1,5 @@
 if (player == noone || !instance_exists(player)) { visible = false; exit; }
-visible = player.tem_lupa;
+visible = player.tem_lupa && room == restaurante;
 if (!player.tem_lupa) exit;
 
 x = player.x + 10;

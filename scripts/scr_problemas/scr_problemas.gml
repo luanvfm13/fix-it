@@ -162,14 +162,6 @@ function get_evidencia_texto(_id_problema, _ferramenta) {
             return (_ferramenta == "scanner")
                 ? "Scanner: pedidos acumulam entre preparo e entrega."
                 : "Lupa: equipamentos e tarefas ficam concentrados na mesma bancada.";
-        case "faltaSoro":
-            return (_ferramenta == "scanner")
-                ? "Scanner: uma ala esta sem soro enquanto outras mantem estoque."
-                : "Lupa: as transferencias entre alas nao deixam registro comum.";
-        case "rastreio_soro":
-            return (_ferramenta == "scanner")
-                ? "Scanner: o estoque nao sinaliza lotes proximos do vencimento."
-                : "Lupa: caixas iguais de lotes diferentes estao misturadas.";
         case "lanchonete_fila":
             return (_ferramenta == "scanner")
                 ? "Scanner: o caixa processa pedidos mais devagar que a chegada."
@@ -214,26 +206,6 @@ function get_diagnostico_data(_id_problema) {
                     "As etapas e os equipamentos estao mal distribuidos.",
                     "O estoque do hospital esta desatualizado.",
                     "O caixa precisa de mais uma maquina de pagamento."
-                ],
-                indice_correto: 0
-            };
-        case "faltaSoro":
-            return {
-                pergunta: "Qual causa explica melhor as pistas?",
-                opcoes: [
-                    "Os registros fragmentados escondem o estoque disponivel por ala.",
-                    "Todas as alas precisam receber a mesma quantidade.",
-                    "O hospital precisa apenas comprar mais materiais."
-                ],
-                indice_correto: 0
-            };
-        case "rastreio_soro":
-            return {
-                pergunta: "Qual causa explica melhor as pistas?",
-                opcoes: [
-                    "Lotes e validade nao sao rastreados num registro comum.",
-                    "As equipes precisam guardar caixas em mais lugares.",
-                    "O consumo so precisa ser contado no fim do mes."
                 ],
                 indice_correto: 0
             };

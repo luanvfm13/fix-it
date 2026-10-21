@@ -15,7 +15,7 @@ if (!global.ui_bloqueando_jogo && distance_to_object(obj_prota) < 11) {
         } 
         else if (global.etapa < 3) {
            
-            var _falas = "gerente_nao_falou";
+            var _falas = "sair_sem_gerente";
             if (global.etapa == 1) _falas = "gerente_nao_despediu";
             if (global.etapa == 2) _falas = "gerente_nao_despediu_equipado";
 

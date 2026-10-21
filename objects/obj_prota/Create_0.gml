@@ -7,6 +7,7 @@ move_spd = move_spd_base * (_escala / escala_ref);
 var _collision_layer = (room == restaurante) ? "a" : "tile_col";
 tilemap = layer_tilemap_get_id(_collision_layer);
 npc_colisao_objetos = [obj_npc, obj_npc1, obj_ger, obj_dona, obj_maura, obj_toten, obj_port, obj_port2 ,obj_nelipefeto, obj_flilipe, obj_npc1costas,
+	inicio_p_restaurante, res_p_inicio, inicio_p_gamer, gamer_p_inicio, gamer_p_esc, esc__p_gamer,
     obj_npc2costas,
     obj_npc3costas,
     obj_npc4costas,

@@ -20,11 +20,12 @@ if (keyboard_check_pressed(vk_escape)) {
     instance_destroy();
     exit;
 }
-
+var _consumiu = false;
 if (indice_caractere < string_length(fala.texto)) {
     var _pulo = keyboard_check_pressed(vk_space) || keyboard_check_pressed(ord("Z"));
 
     if (_pulo) {
+		_consumiu = true;
         indice_caractere = string_length(fala.texto);
         texto_exibido = fala.texto;
         texto_completo = true;
@@ -45,7 +46,7 @@ if (indice_caractere < string_length(fala.texto)) {
     texto_completo = true;
 }
 
-if (texto_completo) {
+if (texto_completo && !_consumiu) {
     var qtd_opcoes = array_length(fala.opcoes);
 
     if (qtd_opcoes > 0) {

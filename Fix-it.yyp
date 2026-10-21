@@ -120,6 +120,7 @@
     {"id":{"name":"scr_barreira","path":"scripts/scr_barreira/scr_barreira.yy",},},
     {"id":{"name":"scr_dialogos","path":"scripts/scr_dialogos/scr_dialogos.yy",},},
     {"id":{"name":"scr_guia","path":"scripts/scr_guia/scr_guia.yy",},},
+    {"id":{"name":"scr_hud","path":"scripts/scr_hud/scr_hud.yy",},},
     {"id":{"name":"scr_indicador","path":"scripts/scr_indicador/scr_indicador.yy",},},
     {"id":{"name":"scr_painel","path":"scripts/scr_painel/scr_painel.yy",},},
     {"id":{"name":"scr_pausa","path":"scripts/scr_pausa/scr_pausa.yy",},},

@@ -1,4 +1,4 @@
-/// alvo_da_etapa() <- bota no creation  code, anotação by luan lindo
+
 function alvo_da_etapa() {
     var _e = global.etapa;
 
@@ -35,6 +35,9 @@ function alvo_da_etapa() {
                 }
             }
             if (_e == 2) return instance_find(esc__p_gamer, 0);
+            break;
+		 case restaurante:
+            if (_e == 4) return instance_find(res_p_inicio, 0);
             break;
     }
     return noone;
