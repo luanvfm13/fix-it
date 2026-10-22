@@ -1,6 +1,6 @@
 # Fix-it
 
-> **Status do Projeto:** Em Desenvolvimento
+> **Status do Projeto:** MPV Finalizado. Link para jogar: https://luca-fo13.itch.io/fix-it
 
 ## Visão Geral
 
